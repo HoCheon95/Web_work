@@ -20,13 +20,68 @@
 		
 	
  -->
- 
- 
+
+
 <body>
-<audio src="../audio/Payday.mp3" controls></audio><br>
+	<audio src="../audio/Payday.mp3" controls></audio>
+	<br>
+	<audio src="../audio/Payday.mp3" controls autoplay mute></audio>
+	<br>
+	<audio src="../audio/Payday.mp3" controls autoplay loop></audio>
+	<br><br>
+	<hr color="red"><br>
 
-<audio src="../audio/Payday.mp3" controls autoplay mute></audio><br>
+	<!-- 
+	<video>태그 ==> 동영상을 재생한다.
+	형식) <video src="경로명/파일명.확장자"></video>
+	
+	<video>태그의 지원 형식	==> mp4. webm, ogv
+	
+	<video>태그의 속성
+		- width		==> 재생 화면의 너비(가로 크기)
+		- height	==> 재생 화면의 높이(세로 크기)
+		- autoplay
+		- loop
+		- muted
+		- poster	==> 재생하기 전의 재생 화면에 나타날 그림을 지정한다.
+	
+-->
 
-<audio src="../audio/Payday.mp3" controls autoplay loop></audio>
+	<video src="../video/cloud.mp4" width="400" height="300"></video>
+	<br>
+
+	<video src="../video/cloud.mp4" width="400" controls 
+	           poster="../images/dog.png"></video>
+	<br><br>
+
+	<video src="../video/cloud.mp4" width="400" controls autoplay muted></video>
+	<br><br>
+	
+	<br><hr color="red"><br>
+	
+	<!--
+	
+		<source>태그		==> <audio>나 <video>태그를 구성할 때
+							재생할 파일들을 설정하는 태그이다.
+							(<audio>태그나 <video>태그의 하위 태그)
+							
+		==> <audio>나 <video>태그에 <source>태그가 여러개 있으면
+			위에서 부터 차례로 재생여부를 검사하여 재생할 수 있는 파일이 있으면
+			그 파일을 재생한다.(호환성을 높이기 위해서 사용한다.) 
+	-->
+	<audio controls>
+		<source src="../audio/Payday.mp3">
+		<source src="../audio/Kalimba.ogg">
+		<source src="../audio/Kalimba.mp3">
+	</audio>
+	
+	<br><br><br>
+	
+	<video controls width="400">
+		<source src="../video/cloud.mp4">
+		<source src="../video/trailer.mp4">
+		<source src="../video/Wildlife.webm">
+	</video>
+
 </body>
 </html>

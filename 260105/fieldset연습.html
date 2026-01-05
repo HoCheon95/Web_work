@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<!--
+
+		<fieldset>태그 ==> 입력 요소들을 그룹으로 묶어서 나타내고 싶을 때 사용
+		<legend>태그 ==> fieldset의 제목을 지정할 때 사용
+ 	
+	-->
+
+	<fieldset style= "width: 300px">
+		<legend>인적사항</legend>
+		이름 : <input type= "text" name= "irum"><br><br>
+		전화 : <input type= "text" name= "tel"><br><br>
+		주소 : <input type= "text" name= "addr"><br><br>
+	</fieldset>
+	
+	<fieldset>
+		<legend>checkbox와 radio객체를 label과 연결하기</legend>
+		
+		<!-- 
+			checkbox 또는 radio객체의 id속성값과 같은 값을 label의 for속성에 설정한다. 
+		-->
+		
+		좋아하는 과일 :
+		<input type= "checkbox" name= "tt" value= "사과" id="test1">
+		<label for="test1">사과</label>
+		
+		<input type= "checkbox" name= "tt" value= "배">배
+		
+		<!-- label 태그 안에 checkbox나 radio 객체를 작성한다. -->
+		<label>
+		<input type= "checkbox" name= "tt" value= "복숭아">복숭아
+		</label>
+	</fieldset>
+
+</body>
+</html>
