@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>div 와 span</title>
+<!-- 
+	태그들의 특징으로 분류
+
+1. 블록 요소
+	1) 줄바꿈 기능이 내장되어 있다.
+	2) 영역의 크기(가로크기, 세로크기)를 지정할 수 있다.
+		(크기를 지정하지 않으면 해당 줄 전체를 차지한다.)
+	예) <div>, <table>, <h1> ~ <h6>, <hr>, <p>
+	    <form>, <ul>, <ol>, <li>, <dl>, <dt>, <dd>
+	    <pre> 등
+		
+2. 인라인 요소
+	1) 줄바꿈 기능이 없다.
+	2) 영역의 크기를 지정할 수 없다.
+		(영역의 크기는 '내용(contents)'의 크기와 같다.)
+	예) <span>, 텍스트서식태그들(<b><strong> 등), <a>, <input>
+	   <label>, <img> 등
+-->
+ 
+ 
+ 
+<!--
+ 	<div>태그와 <span>태그의 용도
+ 	==> 문장이나 문자들을 묶음으로 처리하기 위한 태그
+ 	==> <div>태그는 주로 섹션을 분리할 떄 사용하고,
+ 		<span>태그는 글자나 문장에 style을 지정할 때 주로 사용한다. 
+-->
+
+<!-- 
+	요소(태그)에 style을 지정하는 방법
+	형식) <태그명 style="스타일속성명:스타일속성값; 스타일속성명2:속성값2;..">내용</태그명>
+-->
+ 
+<!-- 
+	색깔을 지정하는 방법
+1. 색의 이름을 영문으로 기술한다.
+2. #RRGGBB형식으로 기술한다.
+	RR ==> Red의 값을 16진수로 표기
+	GG ==> Green의 값을 16진수로 표기
+	BB ==> Blue의 값을 16진수로 표기
+3. rgb(red값, green값, blue값)
+	==> 각 색의 값을 10진수로 표기하거나 %(퍼센트)값으로 표기한다.
+4. rgba(red값, green값, blue값, 투명도값)	
+	==> 투명도는 0 ~ 1사이의 값을 지정할 수 있고, 
+	    0은 완전 투명, 1은 완전 불투명	 
+-->
+ 
+ 
+ 
+</head>
+<!-- <body style="background-color:yellow;"> -->
+<!--  <body style="background-color:#FF00FF"> -->
+<!--  <body style="background-color:rgb(255,255,0);"> -->
+<!-- <body style="background-color:rgb(100%,0%,50%);"> -->
+<!-- <body style="background-color:rgba(255,0,0,0.5);"> -->
+<body>
+
+
+보통글자
+<div style="font-family:궁서체; font-size:30pt; color:blue;">이 영역은 div태그의 영역입니다.</div>
+
+<hr color="blue">
+
+보통글자
+<span style="color:rgb(100%, 0%, 0%); font-size:30px;">이 영역은 span태그의 영역입니다.</span>
+ 
+
+</body>
+</html>

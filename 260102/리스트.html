@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>리스트</title>
+</head>
+
+	<!-- 
+	리스트 종류
+	
+	1. 순서가 없는 리스트 ==> <ul>태그 사용
+	2. 순서가 있는 리스트 ==> <ol>태그 사용
+		==> <ul>태그와 <ol>태그의 하위 태그로 <li>태그를 사용하는데
+			<li>태그에는 리스트에 나타날 항목들을 기술한다.
+	3. 정의 리스트		==> <dl>태그 사용	
+		==> <dl>태그의 하위 태그
+		  1) <dt>태그 ==> 제목을 나타낸다.
+		  2) <dd>태그 ==> 그 내용을 기술한다.		
+ 	-->
+<body>
+
+	<h3>순서가 없는 리스트</h3>
+	
+	<!--
+		<ul>태그의 스타일 속성 'list-style-type'를 이용하여
+		 	블릿기호의 종류를 지정할 수 있다.
+		 	==> disc(●), square(■), circle(○) 
+	 -->
+	<ul style="list-style-type:circle;">
+		<li>사과</li>
+		<li>배</li>
+		<li>복숭아
+			<ol>
+				<li>조치원</li>
+				<li>청주</li>
+				<li>옥천</li>
+			</ol>
+		</li>
+		<li>대추</li>
+		<li>감</li>		
+	</ul>
+	
+	<hr color="red">
+	
+	<h3>순서가 있는 리스트</h3>
+	
+	<!--
+		<ol>태그 속성
+			start ==> 시작 번호를 지정한다. 
+			
+			스타일 속성 'list-style-type'에 설정할 수 있는 값
+				==> decimal(숫자), 
+					lower-roman, upper-roman (로마숫자),
+					lower-alpha, upper-alpha (알파벳),
+					hangul(가, 나, 다, 라, ...),
+					korean-hangul-formal( 일, 이, 삼, 사, ...)
+			
+		<ol>태그의 하위 태그인 <li>태그 속성
+			value ==> 해당 항목의 순번을 변경한다.
+					순번이 변경되면 해당항목 이후에 나오는 항목들도
+					자동으로 순번이 변경된다. 
+		
+	 -->
+	
+	<ol start="6" style="list-style-type:korean-hangul-formal;">
+		<li>서울</li>
+		<li>대전</li>
+		<li>대구
+			<ul style="list-style-type:disc;">
+				<li>사과</li>
+				<li>딸기</li>
+				<li>배</li>
+			</ul>
+		</li>
+		<li>광주</li>
+		<li>부산</li>
+		<li value="1">목포
+			<ol>
+				<li>항구</li>
+				<li>호남선</li>
+			</ol>
+		</li>
+		<li>인천</li>
+		<li>강릉</li>
+	</ol>
+	
+	<hr color="red">
+	
+	<h3>정의 리스트</h3>
+	<!--
+		형식)
+			<dl>
+				<dt>제목</dt>
+				<dd>제목에 대한 설명글 등의 내용을 기술한다.</dd>
+			</dl> 
+	 -->
+	 
+	 <dl>
+	 	<dt>WWW</dt>
+	 	<dd>World Wide Web의 약자로 인터넷을 통칭하는 용어이다.</dd>
+	 	
+	 	<dt>에스프레소</dt>
+	 	<dd>커피의 기본, 커피의 원액을 말한다.</dd>
+	 </dl>
+	 <h3>계절별 야생화</h3>
+	 <dl>
+	 	<dt>봄 꽃</dt>
+	 	<dd>봄에 피는 다년생 식물은 꽃잔디, 금낭화, 할미꽃, 어성초, 복수초, 산마늘, 붓꽃, 둥굴레, 삼지구엽초 등이 있다.</dd>
+	 	
+	 	<dt>여름 꽃</dt>
+	 	<dd>여름에 꽃이 피는 식물은 옥잠화, 비비추, 맥문동, 애란, 수국,<br>
+	 	    인동초, 매발톱, 금계국, 달맞이꽃, 금불초 등이 있다.</dd>
+	 	    
+		<dt>가을 꽃</dt>
+		<dd>가을에 꽃이 예쁜 식물은 구절초, 쑥부쟁이, 감국, 억새,</dd>
+		<dd>갈대, 배초향, 수크렁, 고려엉겅퀴 등이 있다.</dd>
+	</dl>
+	
+	<hr color="red">
+	
+	<!-- 
+		1. 자신의 취미들을 순서가 없는 리스트로 나타내 보시오.
+		2. 자신이 가고 싶은 여행지를 순서가 있는 리스트로 나타내 보시오.
+		3. HTML, Request(요청), Response(응답)에 대하여 설명하시오.
+	 -->
+	 
+	<h3>1. 자신의 취미들을 순서가 없는 리스트로 나타내 보시오.</h3>
+	<ul>
+		<li>음악감상</li>
+		<li>영화감상</li>
+		<li>자전거타기</li>
+	</ul> 
+	
+	<h3>2. 자신이 가고 싶은 여행지를 순서가 있는 리스트로 나타내 보시오.</h3>
+	<ol>
+		<li>부산</li>
+		<li>제주도</li>
+	</ol>
+	
+	<h3>3. Html, Request(요청), Response(응답)에 대하여 설명하시오.</h3>
+	<dl>
+		<dt>Html</dt>
+		<dd>Hyper Text Markup Language이라는 문서 형태<br>
+			웹 페이지를 기술하기 위한 마크 업(markup)언어
+		</dd>
+		
+		<dt>Request(요청)</dt>
+		<dd>클라이언트가 서버로 전달하는 메시지</dd>
+		
+		<dt>Response(응답)</dt>
+		<dd>요청에 대한 서버의 답변 메시지</dd>
+	</dl>
+		
+
+
+</body>
+</html>

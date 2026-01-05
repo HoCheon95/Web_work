@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>표(table) 만들기</title>
+</head>
+<body>
+
+	<h3>표 만들기</h3>
+	<table border="1" style="width: 400px; height: 300px;">
+		<tr>
+			<td>1</td>
+			<td>2222</td>
+			<td>33</td>
+			<td>444</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>a<br>b<br>c<br></td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>k<br>bs<br></td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+
+	</table>
+
+	<br>
+	<hr color="red">
+	<br>
+
+	<table border="1" style="background-color: yellow;">
+		<tr style="height: 100px;">
+			<td style="width: 100px;">11</td>
+			<td style="width: 100px;">222</td>
+			<td style="width: 100px;">3333</td>
+			<td style="width: 100px;">44444</td>
+		</tr>
+		<tr style="height: 100px;">
+			<td>&nbsp;</td>
+			<td>a<br>b<br>c<br></td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr style="height: 100px; background-color: cyan;">
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td style="background-color: pink;">&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr style="height: 100px;">
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
+
+	<br>
+	<hr color="blue">
+	<br>
+
+	<table border="1" style="width: 400px; height: 200px;">
+
+		<!--
+		표의 제목 ==> <caption>태그를 사용한다. 
+		
+		표의 제목의 위치 정하기 (style로 설정한다.)
+			==> caption-side : 표의 위쪽(top) 또는 아래쪽(bottom)에 나타나도로고 한다.
+			==> text-align : 내용을 가로방향으로 정렬한다. (left, center, right)
+	 -->
+		<caption style="caption-side: top; text-align: center;">성적표</caption>
+		<!--
+	 	<th>태그의 특징 ==>이 태그의 내용의 글자가 진하고, 가운데 정렬이
+	 					되어서 나타난다.
+	 				==> 각 컬럼의 제목을 나타낼 때 주로 사용한다. 
+	  -->
+		<tr>
+			<th>이름</th>
+			<th>국어</th>
+			<th>영어</th>
+			<th>수학</th>
+		</tr>
+		<tr>
+			<td>이름</td>
+			<td>국어</td>
+			<td>영어</td>
+			<td>수학</td>
+		</tr>
+
+		<!--
+			각 셀(cell)의 내용들 정렬하기
+			1. text-align : 내용들을 가로방향으로 정렬한다. (left, center, right)
+			2. vertical-align : 내용들을 세로 방향으로 정렬한다.(top, middle, bottom)
+			
+		 -->
+		<tr>
+			<td><a href="https://www.daum.net">홍길동</a></td>
+			<td style="text-align: center; vertical-align: middle;">100</td>
+			<td style="font-size: 20pt;">100</td>
+			<td>100<br>
+			<img src="../images/water.jpg"></td>
+		</tr>
+
+	</table>
+
+	<br>
+	<hr color="red">
+	<br>
+
+	<!--
+		border-collapse 속성값 
+			==> collapse(border의 간격을 합친다.)
+			==> separate(기본값, border의 간격을 분리한다.) 
+	 -->
+
+	<table border="1"
+		style="width: 400px; border-color: blue; border-collapse: collapse;">
+		<tr>
+			<td>&nbsp;</td>
+			<td colspan="2">&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td rowspan="3">&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td colspan="2" rowspan="2">&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+	</table>
+
+
+
+</body>
+</html>
