@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+			<title>외부 CSS 적용하기</title>
+			
+			<!-- 
+				외부 CSS파일을 읽어와적용 시키기
+			-->
+			
+			<link type="text/css" rel="stylesheet" href="./mystyle.css">
+			 
+			<style type="text/css">
+				div#myid{
+					background-color: blue;
+				}
+				
+				p.test{
+					border: 1px solid black;
+					/* background-color: pink!important;*/
+					background-color: pink;
+				}
+				
+				p.test{
+					background-color: green;
+				}
+			</style>
+			
+			
+		</head>
+		<body>
+			<p>이것은 p태그 영역입니다.(1번)</p>
+			<div class="test">이것은 <span>div태그</span> 영역입니다.(1번)</div>
+			
+			<p class="test">이것은 <span>p태그</span> 영역입니다.(2번)</p>
+			<div id="myid" style="background-color: red;">이것은 <span>div태그</span> 영역입니다.(2번)</div>
+			
+			<p id="myid">이것은 p태그 영역입니다.(3번)</p>
+			<div class="test">이것은 div태그 영역입니다.(3번)</div>
+			
+			<p class="test">이것은 p태그 영역입니다.(4번)</p>
+			<div>이것은 div태그 영역입니다.(4번)</div>
+		</body>
+	</html>

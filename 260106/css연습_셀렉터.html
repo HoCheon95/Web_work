@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--
+	CSS(Cascading Style Sheet)
+		==> 문서의 장식(스타일)을 정의한다. (글꼴, 색, 크기 등을 설정한다.)
+
+- 문서에 CSS를 적용하는 방법
+1. 인라인 CSS
+	==> 태그에 style 속성을 사용해서 직접 CSS를 지정하는 방법
+	형식)<태그명 style="속성명1:속성값1; 속성명2:속성값2;, ...">내용</태그명>
+
+2. 내부 CSS
+	==> HTML문서 안에 <style>태그를 이용하여 CSS를 지정하는 방법
+	형식)
+		<style type="text/css">
+			셀렉터 { 속성명1:속성값1; 속성명2:속성값2; ...}
+		</style>
+
+3. 외부 CSS
+	==> 스타일을 저으이한 파일을 따로 만들고 이것이 필요한 문서에서 이 파일을
+		읽어와 적용하는 방법
+	==> 여러개의 HTML문서에서 동일한 스타일을 적용할 때 사용한다.
+		(외부 CSS문서의 확장자는 '.CSS'이다.)
+	==> 외부 CSS를 읽어와 문서에 적용시키는 방법
+		(<head>태그의 하위 태그인 <link>태그를 사용한다.)
+	형식) <link type="text/css" rel="stylesheet" href="경로명/파일명.css">
+-->
+<html>
+	<head>
+		<meta charset="UTF-8">
+			<title>스타일 시트(CSS)</title>
+			<style type="text/css">
+			
+				/* style 태그 영역 안에서의 주석 처리 입니다. */
+				
+				/* 
+					CSS의 기본 형식 
+					
+					셀렉터 { 속성명1:속성값1; 속성명2:속성값2; ...}
+					
+					셀렉터 ==> 스타일을 적용할 대상을 나타내는 방법을 말한다.
+				*/
+				
+				/*
+					셀렉터의 종류
+					1. * { 스타일 정의 } : 모든 엘리먼트에 스타일을 적용한다.
+					
+					*{font-size: 15pt; color: green; }
+					
+				*/
+				
+				/*
+					2. 태그명 { 스타일 정의 }
+						==> 지정한 '태그명에' 해당되는 곳에 스타일을 적용한다.
+				
+					div { color: red; font-size: 25pt; }
+					p{ color: blue; font-family: 궁서체; font-size: 30pt; }
+				*/
+				
+				/*
+					3. 태그명.class속성값 { 스타일 정의 }
+						==> 지정한 '태그명'에 해당되는 것들 중에서 'class' 속성의 속성값이
+							'class속성값'과 같은 곳에 스타일을 적용한다.
+							
+					p.test{ color: red; text-decoration: underline; }
+							
+				*/
+				
+				/*
+					4.	*.class속성값 { 스타일 정의 }
+						==> 모든 태그들 중에서 'class'속성의 속성값이 'class속성값'과 같은 곳에
+							스타일을 적용한다.
+					.test {color: blue; font-family: 궁성체; font-size: 20pt; }
+				*/
+				
+				/*
+					5. 태그명#id속성값 { 스타일 정의 }
+						==> 지정한 '태그명'들 중에서 'id'속성의 속성값이 'id속성값'과 같은 곳에
+							스타일을 적용한다.
+					div#myid { color: red; font-size: 20pt; text-decoration: overline; }
+				*/
+				
+				/*
+					6.	#id속성값 { 스타일 정의 }
+						==> 모든 태그들 중에서 'id'속성의 속성값이 'id속성값'과 같은 곳에
+							스타일을 적용한다.
+					#myid { color: gold; font-size: 15pt; font-family: 궁서체; }
+				*/
+				
+				/*
+					7. 셀렉터1, 셀렉터2, 셀렉터3, ... { 스타일 정의 }
+						==> 각각의 셀렉터에 해당되는 모든 곳에 스타일을 적용한다.
+					div, p { color: red; font-size: 20pt; }
+					
+					#myid, .test { color: blue; font-family: 궁서체;}
+				*/
+				
+				/*
+					8. 셀렉터1 셀렉터2 { 스타일 정의 }
+						==> '셀렉터1'의 자손 중에서 '셀렉터2'에 해당되는 곳에 스타일을 적용한다.
+						
+					body span { color: red; font-size: 30pt; }
+					div span { color: green; font-family: 궁서체;  font-size: 30pt;}
+				*/
+				
+				/*
+					9. 셀렉터1 > 셀렉터2 { 스타일 정의 }
+						==> '셀렉터1'의 자식 중에서 '셀렉터2'에 해당되는 곳에 스타일을 적용한다.
+						
+					body > span { color: red; font-size: 30pt; }
+					div > span { color: green; font-family: 궁서체; font-size: 30pt; }
+				*/
+				
+				/*
+					10. 셀렉터1 + 셀렉터2 { 스타일 정의 }
+						==> '셀렉터1'의 뒤에 오는 모든 형제가 '셀렉터2'에 해당되면 스타일을 적용한다.
+					p#myid + div { color: blue; font-size: 30pt;}
+				*/
+				div.test + p { color: red; font-size: 50pt; }
+				
+				/*
+					11. 셀릭터1 ~ 셀렉터2 { 스타일 정의 }
+						==> '셀렉터1'의 뒤에 오는 모든 형제들 중에서 '셀렉터2'에 해당되는 곳에 스타일을 적용한다.
+					p#myid ~ div { color: blue; font-size: 30pt; }
+				*/
+				
+					
+
+				
+			</style>
+		</head>
+		<body>
+			<p>이것은 p태그 영역입니다.(1번)</p>
+			<div class="test">이것은 <span>div태그</span> 영역입니다.(1번)</div>
+			
+			<p class="test">이것은 <span>p태그</span> 영역입니다.(2번)</p>
+			<div id="myid">이것은 <span>div태그</span> 영역입니다.(2번)</div>
+			
+			<p id="myid">이것은 p태그 영역입니다.(3번)</p>
+			<div class="test">이것은 div태그 영역입니다.(3번)</div>
+			
+			<p class="test">이것은 p태그 영역입니다.(4번)</p>
+			<div>이것은 div태그 영역입니다.(4번)</div>
+		</body>
+	</html>
+	
