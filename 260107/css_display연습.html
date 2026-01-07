@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+			<title>display연습</title>
+			<style type="text/css">
+				/*
+					- display	==> inline 요소와 block 요소의 성질을 변경할 수 있다.
+								==> none;	(해당 요소를 출력하지 않는다.)
+								==> block;	(block 요소로 나타낸다.)
+								==> inline;	(inline 요소로 나타낸다.)
+								==> inline-block;	(줄바꿈이 없는 block요소가 된다.)
+								==> table-cell	(table의 cell과 같은 성질로 나타낸다.)
+				*/
+				
+				
+				h1, p, div, pre {
+					display: inline;
+					width: 400px; height: 50px;
+				}
+				
+				em, sapn, img, a{
+					display: block;
+					width: 400px; height: 50px;
+				}
+				
+				.test{
+					background-color: lightblue;
+					width: 300px; height: 50px;
+					display: inline-block;
+				}
+				
+				.test2{
+					display: table-cell;
+					width: 400px; height: 100px;
+					
+					border: 1px solid blue;
+					text-align: center;
+					vertical-align: middle;
+				}
+			</style>
+		</head>
+		<body>
+			<!--
+				블록요소	==> 줄바꿈 기능이 있다. 가로 세로의 크기를 지정할 수 있다.
+			 -->
+		 	<h1 style="background-color: red;">h1태그의 영역입니다.</h1>
+		 	<p style="background-color: yellow;">p태그의 영역입니다.</p>
+		 	<div style="background-color: aqua;">div태그의 영역입니다.</div>
+		 	<pre style="background-color: green;">pre태그의 영역입니다.</pre>
+		 	
+		 	<br><hr color="red"><br>
+		 	
+		 	<!--
+		 		인라인요소	==> 줄바꿈 기능이 없다. 가로 세로의 크기를 지정할 수 없다. 
+		 	 -->
+		 	 <em style="background-color: red;">em태그 영역</em>
+		 	 <span style="background-color: yellow;">span태그 영역</span>
+		 	 <img src="../images/풍차.jpg">
+		 	 <a href="https://www.daum.net" style="background-color: aqua;">a태그 영역</a>
+		 	 
+		 	 <br><hr color="red"><br>
+		 	 
+		 	 inline-block은 <div class="test">줄바꿈이 없는 inline 성질</div>
+		 	 과 <span class="test">크기를 지정할 수 있는 블록 요소의 성질을 </span>
+		 	 갖는다.
+		 	 
+		 	 <br><hr color="red"><br>
+		 	 
+		 	 <div class="test2">안녕하세요</div>
+
+		</body>
+	</html>
