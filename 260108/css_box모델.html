@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Box 모델 연습</title>
+<style type="text/css">
+
+/*
+	- box모델에 margin과 padding이 적용되는 순서
+	예)	margin: 값1 값2 값3 값4	==> 위쪽, 오른쪽, 아래쪽, 왼쪽
+		margin: 값1 값2 값3		==> 위쪽, 좌우, 아래쪽
+		margin: 값1 값2			==> 상하, 좌우
+		margin: 값1				==> 상하좌우 4군데 모두
+		
+	- 인접한 요소들의 margin 값은 교집합 형태로 적용된다.
+	  (즉 인접한 값중 큰 값의 margin이 적용된다.)
+	
+	- 블록요소의 box모델을 가운데 정렬하기
+		==> margin의 좌우값을 auto로 지정하면 된다.
+*/
+#target1 {
+	width: 300px;
+	height: 50px;
+	background-color: yellow;
+	border: 1px solid black;
+	/* display: inline;
+	padding: 10px 30px 50px 70px; */
+	padding: 10px;
+	/* padding-top: 30px; */
+	text-align: center;
+	
+	margin: 10px auto; 
+	
+}
+
+#target2 {
+	width: 300px;
+	height: 50px;
+	background-color: lightgreen;
+	border: 1px solid black;
+	text-align: center;
+	
+	margin-left: auto;
+	margin-right: auto;
+}
+</style>
+</head>
+<body style="text-align: center;">
+	<br>
+	<br>
+	<br>
+	<p id="target1">이것은 p태그 영역입니다.</p>
+	<div id="target2">이것은 div태그 영역입니다.</div>
+
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Table CSS</title>
+<style type="text/css">
+table, th, td {
+	border: 1px solid black;
+}
+
+table {
+	width: 400px;
+	background-color: yellow;
+	/*background-image: url("../images/water.jpg");*/
+	border-collapse: collapse;
+}
+
+table caption {
+	caption-side: bottom;
+	text-align: right;
+}
+
+/* td {
+	text-align: center;
+}
+
+tr.title {
+	background-color: lightgreen;
+}
+
+tr:nth-child(1) {
+	background-color: green;
+}
+*/
+tr:first-child {
+	background-color: lightblue;
+}
+
+td:nth-child(1) {
+	text-align: center;
+}
+
+td:nth-child(2) {
+	/* background-color: pink; */
+	text-indent: 10px;
+}
+
+tr:nth-child(even) {
+	background-color: cyan;
+}
+</style>
+</head>
+<body>
+	<table>
+		<caption>주 소 록</caption>
+		<tr class="title">
+			<th>이 름</th>
+			<th>주 소</th>
+		</tr>
+		<tr>
+			<td>홍길동</td>
+			<td>대전시 중구 오류동</td>
+		</tr>
+		<tr>
+			<td>일지매</td>
+			<td>대전시 서구 도마동</td>
+		</tr>
+		<tr>
+			<td>성춘향</td>
+			<td>대전시 유구 봉명동</td>
+		</tr>
+		<tr>
+			<td>이몽룡</td>
+			<td>대전시 중구 대흥동</td>
+		</tr>
+		<tr>
+			<td>이몽룡</td>
+			<td>대전시 중구 대흥동</td>
+		</tr>
+		<tr>
+			<td>이몽룡</td>
+			<td>대전시 중구 대흥동</td>
+		</tr>
+		<tr>
+			<td>이몽룡</td>
+			<td>대전시 중구 대흥동</td>
+		</tr>
+		<tr>
+			<td>이몽룡</td>
+			<td>대전시 중구 대흥동</td>
+		</tr>
+		<tr>
+			<td>이몽룡</td>
+			<td>대전시 중구 대흥동</td>
+		</tr>
+		<tr>
+			<td>이몽룡</td>
+			<td>대전시 중구 대흥동</td>
+		</tr>
+		<tr>
+			<td>이몽룡</td>
+			<td>대전시 중구 대흥동</td>
+		</tr>
+		<tr>
+			<td>이몽룡</td>
+			<td>대전시 중구 대흥동</td>
+		</tr>
+	</table>
+
+</body>
+</html>
