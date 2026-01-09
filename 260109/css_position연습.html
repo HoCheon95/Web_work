@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+			<title>position 연습</title>
+			
+			<style type="text/css">
+				
+				/*
+				
+					- 요소의 출력 위치를 지정하는 방법
+						==> left, top, bottom, right 속성을 이용해서 출력위치를 지정한다.
+						==> 그런데 이 속성들은 position 속성의 영향을 받는다.
+						
+						1) left : 왼쪽에서부터 떨어진 거리 (x축 좌표)
+						2) right : 오른쪽끝에서부터 떨어진 거리
+						
+						3) top : 위에서부터 떨어진 거리 (y축 좌표)
+						4) bottom : 아래쪽끝에서부터 떨어진 거리
+						
+						5) position : 좌표를 설정하는 기준을 나타낸다.
+							- static : 기본적인 흐름에 맞게 위치가 결정된다.
+									   (기본값, 출력위치를 임의의 변경할 수 없다.)
+							- relative : 정상적으로 출력될 위치를 기준으로 상대적인 위치를 정한다.
+							- absolute : 컨테이너의 원점을 기준으로 위치를 결정한다.
+										 (컨테이너 ==> 자신을 포함하는 요소(부모요소))
+							- fixed : 브라우저 창을 기준으로 위치를 결정한다.
+									  (fixed로 위치를 설정하면 스크롤되어도 항상 같은 위치)
+							- sticky : 스크롤 영역을 기준으로 위치를 결정한다.
+				
+				*/
+
+				div {
+					width: 200px; height: 50px;border: 1px solid black;
+				}			
+					
+				#one{
+					background-color: cyan;
+				}
+				
+				#two{
+					background-color: yellow;
+					
+					left: 350px; top: 600px;
+					
+					/* right: 50px; bottom: 50px; */
+					
+					/* position: relative; */
+					/* position: absolute; */
+					position: fixed;
+					/* position: sticky; */
+					
+					
+				}
+				
+				#three{
+					background-color: lightgreen;
+				}
+				
+			</style>
+		</head>
+		<body>
+		
+		<div id="one">첫번째 영역</div>
+		<div id="two">두번째 영역</div>
+		<div id="three">세번째 영역</div>
+		
+		
+		<br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br>
+		<br><br><br><br><br><br><br><br>
+
+</body>
+	</html>
