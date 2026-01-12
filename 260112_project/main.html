@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>main</title>
+
+<style>
+
+
+body *{
+	box-sizing: border-box;
+	margin: 3px;
+}
+
+#container{
+	display: flex;
+	flex-direction: column;
+	height: 800px;
+}
+
+header{
+	height: 15%;
+	background-color: #F5F5F5;
+	display: flex;
+	align-items: center;
+	
+}
+
+header img {
+	width: 100px;
+}
+
+nav ul{
+	text-align: center;
+	padding: 20px;
+	border-top: 4px dotted #A8A850;
+	border-bottom: 2px solid #A8A850;
+	
+}
+
+a:link, a:visited {
+	color: black;
+	text-decoration: none;
+}
+	
+a:hover, a:active {
+	color: blue;
+	text-decoration: none;
+}
+
+nav ul li {
+	display: inline;
+	text-align: center;
+	
+}
+nav ul li a{
+	padding: 8px 45px;
+}
+
+</style>
+</head>
+<body>
+
+
+<div id="container">
+
+	<header>
+		<img src="../images/쇼핑가방1.jpg">
+		<h1><a href="main.html">Web Shopping</a></h1>
+	</header>
+	<nav>
+		<ul>
+			<li><a href="index.html">HOME</a></li>
+			<li><a href="index.html">SHOPPING ABOUT</a></li>
+			<li><a href="index.html">NEWS</a></li>
+			<li><a href="index.html">MY ACCOUNT</a></li>
+			<li><a href="index.html">CONTACTS</a></li>
+		</ul>
+	</nav>
+	
+	<div>
+	
+		<aside id="left">
+			<ul>
+				<li><a href="computer.html">컴퓨터</a></li>
+				<li><a href="clothing.html">의류</a></li>
+				<li><a href="music.html">음악</a></li>
+				<li><a href="movie.html">영화</a></li>
+				<li><a href="sport.html">스포츠/레져</a></li>
+				<li><a href="interior.html">가구/인테리어</a></li>
+				<li><a href="food.html">식품</a></li>
+				
+			</ul>
+		</aside>	
+		
+		<section id="main">
+			<article id="article1">
+				<iframe src="computer.html" name="ifr">
+				</iframe>
+			</article>
+		</section>
+		
+		<aside id="right">
+			<div id="shopcart">
+			
+			</div>
+			
+			<div id="login">
+				<h4>Log In</h4>
+				<form action="#">
+				
+				</form>
+			</div>
+		</aside>
+	</div>
+	<footer>
+		<p class="footp">
+			Copyright (c)2026 대덕인재개발원
+		</p>
+	</footer>
+
+
+</div>
+
+
+</body>
+</html>
