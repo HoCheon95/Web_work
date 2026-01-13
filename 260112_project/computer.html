@@ -4,30 +4,40 @@
 <meta charset="UTF-8">
 <title>computer</title>
 
-<style type="text/css">
+<style>
+
+/*전체 레이아웃*/
 section {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 }
 
+/*카드*/
 article {
-	border: 1px solid black;
+	width: 300px;	/* 카드 너비 */
+	border: 1px solid #d9d9d9;
 	margin-left: 5px;
+	padding: 20px;
+	display: flex;	/* 플렉스 컨테이너 */
+	flex-direction: column;/* 세로 방향 */
 }
 
+/*이미지 사이즈*/
 article img {
 	width: 300px;
 	height: 300px;
 }
 
+/*설명*/
 p {
-	padding: 0px 30px; /* 상하 좌우 */
+	
 	font-size: 20px;
 }
 
+/*버튼*/
 input {
-	margin-left: 30px;
+	width: 200px;
 }
 
 </style>
@@ -39,25 +49,30 @@ input {
 
 	<div id="container">
 		<section>
+			<!-- 카드 1 -->
 			<article id="article1">
-				<img alt="" src="../images/컴퓨터1.jpg"><br>
+				<img alt="" src="../images/컴퓨터1.jpg">
 				<p>
-					한성컴퓨터 TFG AX8726<br> 데스크탑 i7<br> 8700/RTX2060(로스트아크,<br> 포트나이트,배틀그라운드,<br> 배그,오버워치,롤,피파,방송<br> 용,PC,방,조립,가정용,사무<br> 용,가성비,본체)
+					한성컴퓨터 TFG AX8726 데스크탑 i7 8700/RTX2060(로스트아크, 포트나이트,배틀그라운드, 배그,오버워치,롤,피파,방송 용,PC,방,조립,가정용,사무용,가성비,본체)
 				</p>
 				<input type="submit" value="쇼핑카드에 추가하기">
 
 			</article>
+			
+			<!-- 카드 2 -->
 			<article id="article2">
 				<img alt="" src="../images/컴퓨터2.jpg">
 				<p>
-					LG Gram i7<br> 8700/RTX2060(로스트아크,<br> 포트나이트,배틀그라운드,<br> 배그,오버워치,롤,피파,방송<br> 용,PC,방,조립,가정용,사무<br> 용,가성비,본체)
+					LG Gram i7 8700/RTX2060(로스트아크,포트나이트,배틀그라운드,배그,오버워치,롤,피파,방송 용,PC,방,조립,가정용,사무용,가성비,본체)
 				</p>
 				<input type="submit" value="쇼핑카드에 추가하기">
 			</article>
+			
+			<!-- 카드 3 -->
 			<article id="article3">
 				<img alt="" src="../images/컴퓨터3.jpg">
 				<p>
-					N)CTO주문가눙/이플정품/<br> 아이맥/MNE92KH/A [신<br> 한/KB국민 100만원 이상<br> 11Pay 결제 시 최대 22개<br> 월 무이자] [신한/KB국<br> 민/NH농협/삼성 20만원 이<br> 상 11Pay 결제 시 최대 12<br> 개월 무이자]
+					N)CTO주문가눙/이플정품/아이맥/MNE92KH/A [신한/KB국민 100만원 이상11Pay 결제 시 최대 22개월 무이자] [신한/KB국민/NH농협/삼성 20만원 이상 11Pay 결제 시 최대 12개월 무이자]
 				</p>
 				<input type="submit" value="쇼핑카드에 추가하기">
 			</article>
