@@ -6,6 +6,10 @@
 
 <style>
 
+html, body{
+  height: 100%;
+  margin: 0;
+}
 
 body *{
 	box-sizing: border-box;
@@ -15,7 +19,13 @@ body *{
 #container{
 	display: flex;
 	flex-direction: column;
-	height: 800px;
+	min-height: 100vh;
+}
+
+#content{
+	display: flex;
+	flex-direction: row;
+	flex: 1;
 }
 
 header{
@@ -24,6 +34,14 @@ header{
 	display: flex;
 	align-items: center;
 	
+}
+
+footer{
+	height: 8vh;
+	background-color: #1A1A1A;
+	color: white;
+	text-align: center;
+	margin-top: 20px;
 }
 
 header img {
@@ -57,6 +75,70 @@ nav ul li a{
 	padding: 8px 45px;
 }
 
+nav ul li a:link, nav ul li a:visited{
+	color: blue;
+	font-family: sans-serif;
+}
+
+#right div a{
+	color: blue;
+	text-decoration: underline;
+}
+
+#right div h2, #right div p{
+	display: inline-block;
+	padding-bottom: 20px;
+}
+
+#main{
+	flex: 1;
+}
+
+#main iframe{
+	width: 100%;
+	height: 100%;
+	border: none;
+}
+
+#article1 {
+	width: 100%;
+	height: 100%;
+}
+
+#left{
+	flex-basis: 15%;
+	background-color: #6D7996;
+}
+
+#left ul{
+	list-style: none;
+	padding-left: 0px;
+	padding-top: 20%;
+	padding-bottom: 90%;
+	margin: 0px;
+}
+
+#left ul li{
+	margin: 0px;
+	padding: 5px 10px;
+	border-bottom: 1px solid black;
+	background-color: #525D76;
+}
+
+#left ul li a{
+	color: white;
+}
+
+#right{
+	flex-basis: 15%;
+	background-color: #E2E0D7;
+}
+
+
+.footp{
+	margin-top: 25px;
+}
+
 </style>
 </head>
 <body>
@@ -78,7 +160,7 @@ nav ul li a{
 		</ul>
 	</nav>
 	
-	<div>
+	<div id="content">
 	
 		<aside id="left">
 			<ul>
@@ -95,20 +177,38 @@ nav ul li a{
 		
 		<section id="main">
 			<article id="article1">
-				<iframe src="computer.html" name="ifr">
+				<iframe src="computer.html" name="ifr" >
 				</iframe>
 			</article>
 		</section>
 		
 		<aside id="right">
 			<div id="shopcart">
-			
+				<h2>
+				Shopping<br>
+				Cart
+				</h2>
+				<p>
+					현재 쇼핑카트에 물품이 없습니다.
+				</p><br>
+				<a href="shopcart.html" target="_blank">쇼핑카트 보기</a><br><br>
+				
 			</div>
 			
 			<div id="login">
-				<h4>Log In</h4>
+				<h2>Log In</h2>
 				<form action="#">
-				
+					<div>아이디</div>
+					<input type= "text" name="id"><br>
+					<div>패스워드</div>
+					<input type= "password" name="pwd">
+					<br><br>
+					<input type="submit" value="로그인" >
+					<input type="reset" value="초기화">
+					<br><br>
+					<a href="register.html" target="_blank">회원가입</a>
+					<a href="register.html">비밀번호 분실</a>
+					
 				</form>
 			</div>
 		</aside>

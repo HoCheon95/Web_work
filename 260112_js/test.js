@@ -10,3 +10,9 @@ document.write("<hr color='red'>");
 document.write("이 내용은 외부 스크립트 파일에서 출력하는 내용입니다..<br>");
 document.write("출력이 잘 되는지 확인해 봅니다.<br>");
 document.write("<hr color='red'>");
+
+
+//
+
+/*
+*/

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
-<style>
-/* 전체 레이아웃 */
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>상품 카드 레이아웃</title>
+  <style>
+    /* 전체 레이아웃 */
     .container {
       width: 720px;              /* 화면에 맞게 조절 */
       margin: 20px auto;
@@ -17,6 +17,7 @@
     .card {
       flex: 1;
       border: 1px solid #d9d9d9;
+      background: #fff;
       padding: 18px;
       box-sizing: border-box;
     }
@@ -27,6 +28,7 @@
       height: 170px;
       border: 1px solid #cfcfcf;
       overflow: hidden;
+      background: #f7f7f7;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -36,6 +38,15 @@
       height: 100%;
       object-fit: cover;         /* 이미지 꽉 채우기 */
       display: block;
+    }
+
+    /* 제목 */
+    .title {
+      margin: 14px 0 10px;
+      color: #0b3bd7;            /* 파란 글씨 */
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1.2;
     }
 
     /* 설명 */
@@ -58,12 +69,11 @@
     .btn:active {
       transform: translateY(1px);
     }
-
-</style>
+  </style>
 </head>
 <body>
 
-	<div class="container">
+  <div class="container">
     <!-- 카드 1 -->
     <div class="card">
       <div class="thumb">
@@ -74,7 +84,7 @@
         바지 특가! 여성바지, 팬츠, 바지, 쿠런티, 상품 최저가 보장! 바지,SNS에서 인기있는 데일리바지모음, 여심홀리는 훈남코디룩 완성 ! 트렌디한 로드샵 상품을 한곳에! 겨울 신상의류, 액세서리 할인 모음전! 바지
       </p>
 
-      <input type="submit" value="쇼핑카드에 추가하기">
+      <button class="btn" type="button">쇼핑카트에 추가하기</button>
     </div>
 
     <!-- 카드 2 -->
@@ -89,10 +99,9 @@
         겨울 신상의류, 액세서리 할인 모음전! 바지
       </p>
 
-      <input type="submit" value="쇼핑카드에 추가하기">
+      <button class="btn" type="button">쇼핑카트에 추가하기</button>
     </div>
   </div>
-
 
 </body>
 </html>

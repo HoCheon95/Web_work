@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>제어문</title>
+
+<script>
+
+/*
+ * 
+ 	제어문 ==> 프로그램의 흐름을 제어하는 명령
+ 
+1. 조건문 ==> if문, switch문
+1) if문
+	if(조건식){
+		실행문1;
+		~~~
+	}
+	실행문2;
+
+-------------------------------------------
+
+	if(조건식){
+		실행문1;
+		~~~
+	}else{
+		실행문2;
+		~~~~
+	}
+	실행문3;
+	
+-------------------------------------------
+
+	if(조건식1){
+		실행문1;
+		~~~
+	}else if(조건식2){
+		실행문2;
+		~~~~
+	}else{
+		실행문3;
+		~~~
+	}
+	실행문4;
+*/
+
+
+/* 
+let num = prompt("숫자를 입력하세요.");
+if(num>0){
+	console.log(num + "은 양수입니다.");
+}
+ */
+ 
+/* 
+ if(num>0){
+	 console.log(num + "은 양수입니다.");
+ }else {
+	 console.log(num + "은 양수가 아닙니다.");
+} */
+
+
+/*  
+if(num>0){
+	 console.log(num + "은 양수입니다.");
+}else if(num<0){
+	 console.log(num + "은 음수입니다.");
+}else {
+	console.log(`${num}은 영(zero)입니다.`);
+}
+ 
+ 
+ console.log("끝!"); 
+ 
+ */
+
+/*
+ * 
+ 2) switch문
+ 형식)
+ 	// '조건변수' 자리에는 리터럴(상수), 수식, 변수등이 올 수 있다.
+ 	switch(조건변수){
+ 	case 값1 : 실행문1;
+ 				~~~
+ 				break;
+ 	case 값2 : 실행문2:
+ 				~~~
+ 				break;
+ 	~~~
+ 	~~~
+ 	case 값m : 실행문m;
+ 				~~~
+ 				break;
+	default : 실행문n;
+				~~~
+ 	}
+ 
+ */
+ 
+ 
+ 
+/*  
+ switch (num%2) {
+case 0:
+	console.log(`${num}은 짝수입니다.`);
+	break;
+case 1:
+	console.log(num + "은 홀수입니다.");
+default:
+	console.log(num + "은 숫자가 아닙니다.");
+}
+ 
+  */
+ 
+let num = prompt("숫자를 입력하세요.");
+ // switch문 값과 자료형을 같이 비교한다.
+ switch (num * 1) {
+case 1:
+	alert("하나~~");
+	break;
+case 2:
+	alert("둘~~~");
+	break;
+case 3:
+	alert("셋~~~");
+	break;
+case 4:
+	alert("넷~~~");
+	break;
+case 5:
+	alert("다섯~~~");
+	break;
+
+default:
+	alert("더 이상은 몰라");
+}
+ 
+
+/*
+2. 반복문 ==> for문, while문, do~while문
+ 
+ 	
+ */
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>
