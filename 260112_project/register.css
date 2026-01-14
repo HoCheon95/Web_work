@@ -1,0 +1,28 @@
+body{
+    display: flex;              /* flex Container */  
+    flex-direction: column;     /* 세로 정렬 */    
+    align-items: center;        /* 가로 정렬 */
+}
+
+fieldset{
+    width: 500px;               /* 너비크기 */
+    padding: 0px 50px;          /* 상하 좌우 */
+}
+
+.input_wid{
+    width: 250px;
+}
+
+#table1 tr td input{
+    margin-left: 30px;
+}
+
+#out_in{
+    display: flex;
+    gap: 10px;                  /* 요소 사이 간격 */
+}
+
+#out_in input{
+    flex: 1;                    /* 동일한 비율로 꽉채움 */
+    margin-bottom: 20px;
+}

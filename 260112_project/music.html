@@ -1,88 +1,40 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>music</title>
+  <head>
+    <meta charset="UTF-8" />
+    <title>music</title>
 
+    <link rel="stylesheet" href="./article.css" />
 
-<style>
+    <style></style>
+  </head>
+  <body>
+    <div id="container">
+      <section>
+        <!-- 카드 1 -->
+        <article id="article1">
+          <img src="../images/음악1.jpg" />
+          <p>'5인조 신인 걸그룹' ITZY, 타이틀곡 '달라달라' 발매!</p>
+          <audio src="../audio/Payday.mp3" controls></audio>
+          <input type="submit" value="쇼핑카트에 추가하기" />
+        </article>
 
-/*전체 레이아웃*/
-section {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-}
+        <!-- 카드 2 -->
+        <article id="article2">
+          <img src="../images/Anne-Marie(앤마리)-2002.jpg" />
+          <p>Anne Marie(앤마리)-2002 Anne Marie~~!!!</p>
+          <audio src="../audio/Payday.mp3" controls></audio>
+          <input type="submit" value="쇼핑카트에 추가하기" />
+        </article>
 
-/*카드*/
-article {
-	width:300px;
-	border: 1px solid #d9d9d9;
-	margin-left: 5px;
-	padding: 20px;
-	display: flex;
-	flex-direction: column;
-}
-
-/*이미지 사이즈*/
-article img {
-	width: 300px;
-	height: 300px;
-}
-
-/*설명*/
-p {
-	font-size: 20px;
-}
-
-/*버튼*/
-input {
-	width: 200px;
-}
-
-/*
-	테스트 코트
-*/
-
-</style>
-</head>
-<body>
-
-
-	<div id="container">
-		<section>
-			<!-- 카드 1 -->
-			<article id="article1">
-				<img src="../images/음악1.jpg">
-				<p>
-					'JYP 5인조 신인 걸그룹' ITZY, 타이틀곡 '달라달라' 발매!
-				</p>
-				<input type="submit" value="쇼핑카트에 추가하기">
-				
-			</article>
-			
-			<!-- 카드 2 -->
-			<article id="article2">
-				<img src="../images/Anne-Marie(앤마리)-2002.jpg">
-				<p>
-					Anne Marie(앤마리)-2002
-					Anne Marie~~!!!
-				</p>
-				<input type="submit" value="쇼핑카트에 추가하기">	
-			</article>
-			
-			<!-- 카드 3 -->
-			<article id="article3">
-				<img src="../images/음악3.jpg">
-				<p>
-					소우주(Mikrokosmos)방탄소년단
-				</p>
-				<input type="submit" value="쇼핑카트에 추가하기">	
-			</article>
-		</section>
-	
-	</div>
-
-
-</body>
+        <!-- 카드 3 -->
+        <article id="article3">
+          <img src="../images/음악3.jpg" />
+          <p>소우주(Mikrokosmos)방탄소년단</p>
+          <audio src="../audio/Payday.mp3" controls></audio>
+          <input type="submit" value="쇼핑카트에 추가하기" />
+        </article>
+      </section>
+    </div>
+  </body>
 </html>

@@ -1,10 +1,71 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
 
-</body>
+    <link rel="stylesheet" href="./shopcart.css" />
+  </head>
+  <body>
+    <fieldset>
+      <h2>장바구니 페이지</h2>
+      <form>
+        <table border="1" id="table1">
+          <tr>
+            <th id="th1">품목</th>
+            <th id="th2">가격</th>
+            <th>수량</th>
+            <th>합계</th>
+          </tr>
+          <tr>
+            <td>컴퓨터 세트</td>
+            <td>2,000,000</td>
+            <td>
+              <input class="count_rw" type="text" placeholder="0" />
+            </td>
+            <td>
+              <input class="sum_rw" type="text" placeholder="0" />
+            </td>
+          </tr>
+          <tr>
+            <td>티셔츠</td>
+            <td>50,000원</td>
+            <td>
+              <input class="count_rw" type="text" placeholder="0" />
+            </td>
+            <td>
+              <input class="sum_rw" type="text" placeholder="0" />
+            </td>
+          </tr>
+          <tr>
+            <td>음악파일</td>
+            <td>1,000원</td>
+            <td>
+              <input class="count_rw" type="text" placeholder="0" />
+            </td>
+            <td>
+              <input class="sum_rw" type="text" placeholder="0" />
+            </td>
+          </tr>
+          <tr>
+            <td>영화파일</td>
+            <td>5,000원</td>
+            <td>
+              <input class="count_rw" type="text" placeholder="0" />
+            </td>
+            <td>
+              <input class="sum_rw" type="text" placeholder="0" />
+            </td>
+          </tr>
+        </table>
+
+        <div class="btn_row">
+          <input type="submit" value="계산" />
+          <input type="submit" value="구매" />
+          <input type="reset" value="초기화" />
+        </div>
+      </form>
+      <a href="./main.html" id="home_link">Back to Home</a>
+    </fieldset>
+  </body>
 </html>

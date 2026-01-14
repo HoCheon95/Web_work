@@ -1,0 +1,60 @@
+/* 전체 레이아웃 */
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 테이블 */
+table{
+    border-collapse: collapse;
+    border: 3px solid #d9d9d9;
+    text-align: center;
+    margin: 20px;
+}
+th, td{
+    /* width: 200px; */
+    height: 40px;
+}
+#th1{
+    width: 150px;
+}
+
+#th2{
+    width: 200px;
+}
+.count_rw{
+    width: 70px;
+    height: 30px;
+    flex: 1;
+}
+.sum_rw{
+    width: 100px;
+    height: 30px;
+}
+
+/* 그룹태그 */
+fieldset{
+    width: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 버튼 */
+.btn_row{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Back to Home */
+#home_link{
+    align-self: flex-start;     /* flex에서 개별 왼쪽 정렬 */
+    margin-left: 20px;
+}
+
+/* input */
+input{
+    text-align: center;
+}
