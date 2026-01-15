@@ -434,9 +434,15 @@
 		두번째 사람 : 보
 		판정 결과 : 첫번째 사람 승!!
 	  */
+      let per1;
+      let per2
+      do {
+        per1 = prompt("가위 바위 보 를 입력하시오.");
+      } while (!(per1 == "가위" || per1 == "바위" || per1 == "보"));
 
-      let per1 = prompt("가위 바위 보 를 입력하시오.");
-      let per2 = prompt("가위 바위 보 를 입력하시오.");
+      do{
+        per2 = prompt("가위 바위 보 를 입력하시오.");
+      }while(!(per2 == "가위" || per2=="바위" || per2=="보"));
 
       console.log("첫번째 사람 : " + per1);
       console.log("두번째 사람 : " + per2);
@@ -446,7 +452,7 @@
       } else if (
         (per1 == "가위" && per2 == "보") ||
         (per1 == "바위" && per2 == "가위") ||
-		(per1 == "보" && per2 == "바위")
+        (per1 == "보" && per2 == "바위")
       ) {
         console.log("판정 결과 : 첫번째 사람 승!!");
       } else {

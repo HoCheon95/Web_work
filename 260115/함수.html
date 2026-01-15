@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>함수</title>
+
+    <script>
+      /*
+        함수    
+            ==> 특정 기능을 가진 단위 프로그램
+            ==> 한 가지 목적을 달성하기 위해 작성된 코드들의 집합
+
+        - 함수의 종류
+        1) 내장 함수    ==> 프로그래밍 언어에서 미리 만들어 제공하는 함수
+          (1) eval(수식문자열)
+              ==> 주어진 '수식문자열'을 계산 가능한 식으로 변환 후 이 식을 처리한 결과를 반환한다.
+
+          let str = "(100/4+5)/5";
+          let ex = (100/4+5)/5;
+          let ev = eval(str); // "(100/4+5)/5"  ==> (100/4+5)/5 ==> 6
+
+          console.log("str = " + str);
+          console.log("ex = " + ex);
+          console.log("ev = " + ev);
+
+          let ev2 = eval("ev + 20");  // ev + 20
+
+          console.log("ev2 = " + ev2);
+
+          let con = eval("console");
+          con.log("안녕하세요.");
+          
+          //-------------------------------------------------------------
+          
+          
+        (2) 문자열을 숫자로 변환하는 함수들
+          - parseInt(문자열, 진수);
+            ==> '문자열'을 정수형 숫자로 변환한다. (문자열을 대신해서 숫자도 가능하다.)
+            ==> '진수'에는 10, 2, 8, 16를 사용할 수 있고, 기본값은 10이다.
+
+            console.log("123.45 ==> " + parseInt(123.45));
+            console.log("123.45 ==> " + parseInt("123.45"));
+            console.log("123a45 ==> " + parseInt("123a45"));
+            console.log("a123.45 ==> " + parseInt("a123.45"));
+            console.log("-------------------------------");
+            
+            console.log( parseInt("100", 2));   // 1*2^2 + 0*2^1 + 0*2^0 = 4 + 0 + 0 = 4
+            console.log( parseInt("128", 8));   // 8은 안됨. 1*8^1 + 2*8^0 = 8 + 2 = 10
+            console.log( parseInt("2a", 16));   // 2*16^1 + 10*16^0 = 32 + 10 = 42
+            
+          - parseFloat("문자열");
+            ==> 문자열을 실수형 숫자로 변환한다.
+            
+
+            
+            console.log( parseFloat("123.45"));   // 123.45
+            console.log( parseFloat("123.4a5"));  // 123.4
+            console.log( parseFloat("a123.45"));  // NaN
+            console.log( parseFloat("1.2e3"));    // 1.2e3 ==> 1.2 * 1000 = 1200
+            
+          -  Number(숫자로만구성된문자열)
+            ==> 문자열을 숫자형으로 변환한다.
+            
+            
+            
+            console.log( Number("123"));    // 123
+            console.log( Number("123.45")); // 123.45
+            console.log( Number("1.2e2"));  // 120
+            console.log( Number("12a3"));   // NaN
+            
+            console.log( Number(null));     // 0
+            console.log( Number(""));       // 0
+            
+          //-------------------------------------------------------------
+
+        (3) 숫자 여부를 판단하는 함수들
+          - isFinite(값)
+            ==> 값이 유한수(숫자)이면 true, 그렇지 않으면 false
+          - isNaN(값)
+            ==> 값이 숫자이면 false, 숫자가 아니면 true
+          ==> isFinite()함수와 isNaN()함수는 인자로 받은 값을 Number()함수로 변환 후 검사를 한다.
+          let num1, num2;
+          do {
+            num1 = prompt("첫번째 숫자를 입력하세요.");
+          } while (num1 == null || num1 == "" || !isFinite(num1));
+          
+          do {
+            num2 = prompt("두번째 숫자를 입력하세요.");
+          } while (num2 == null || num2 == "" || !isFinite(num2));
+          
+          let sum = Number(num1) + Number(num2);
+          
+          console.log(`${num1} + ${num2} = ${sum}`);
+          
+      */
+      //======================================================================
+      /*
+        2) 사용자 정의 함수 ==> 사용자(프로그래머)가 만든 함수
+          - 함수 정의 ==> 함수를 작성하는 것
+        형식1) 함수 선언문
+          function 함수명(파라미터변수들...){
+            처리할 내용들;
+            ~~~
+            return 반환값;
+          }
+        
+        형식2) 함수 표현식
+          const 함수명 = function(파라미터변수들...){
+            처리할 내용들;
+            ~~~
+            return 반환값;
+          }
+
+        형식3) Function 생성자 함수 이용 ==> 거의 사용 안함 ==> 생략.....
+
+        형식4) 화살표 함수
+          const 함수명 =(파라미터변수들...) => {
+            처리할 내용들;
+            ~~~
+            return 반환값;
+          }
+
+        - 함수 호출
+          ==> 함수 영역으로 제어가 이동되어 함수가 실행되도록 하는 것
+
+        1) 파라미터가 없고 반환값도 없는 함수 호출
+            함수명();
+
+        2) 파라미터 변수가 있고 반환값이 없는 함수 호출
+            함수명(값들...);
+
+        3) 파라미터 변수는 없고 반환값이 있는 함수 호출
+            변수 = 함수명();
+
+        4) 파라미터 변수가 있고 반환값도 있는 함수 호출
+            변수 = 함수명(값들...);
+      */
+
+      function insa(){
+        console.log("안녕하세요~~~");
+      }
+
+      // insa();
+      // insa();
+      // insa();
+
+      function insa2(name, age){
+        console.log(`나이가 ${age}세인 ${name}씨 안녕하세요.`);
+      }
+
+      // let irum = "홍길동";
+      // let num = 30;
+
+      // insa2(irum, num);
+      // insa2("일지매", 33);
+      
+      function insa3(){
+        let str = "반갑습니다.";
+        return str;
+      }
+
+      // let data = insa3();
+      // console.log("data = " + data);
+
+      // console.log("insa3() => " + insa3());
+
+      function sub(a, b){
+        return a - b;
+      }
+
+      // let a = 100;
+      // let b = 30;
+
+      // let c = sub(a, b);
+      // let c = sub(b, a);
+
+      // console.log("c = " + c);
+    
+      /*
+      문제) 사용자로부터 단을 입력 받아 구구단 중 입력한 단에 해당하는 구구단을 출력하는 프로그램을 작성하시오.
+            (단, 해당 단을 출력하는 부분을 함수로 작성하여 처리하시오.)
+      */
+
+      function guguDan(num){
+
+        console.log(`   ${num} 단`);
+        
+        for(let i=1; i<=9; i++){
+          console.log(`${num} * ${i} = ${num * i}`);
+        }
+      }
+      // let num;
+      // do{
+      //   num = Number(prompt("구구단 단을 입력하세요"));
+      // }while(num==null || num=="" || isNaN(num));
+      
+
+      // guguDan(num);
+
+      /*
+      문제) 두 수를 파라미터로 받아서 작은 수부터 큰 수까지의 합계를 구하는 함수를 작성하시오.
+
+      문제) 년도를 매개변수로 받아서 해당 년도가 윤년인지 평년인지를 판정하여 출력하는 함수를 작성하시오.
+      */
+
+      function min_max_sum(num1, num2){
+
+        let min, max, sum=0;
+
+        if(num1 > num2){// 최대값 구하기
+          max = num1;
+          min = num2;
+        }else{
+          max = num2;
+          min = num1;
+        }
+
+        for(let i = min; i <= max; i++){
+          sum+=i;
+        }
+
+        console.log(`${min}부터 ${max}까지의 합계 : ` + sum);
+      }
+
+      // let num1, num2;
+      // num1 = Number(prompt("첫번째 숫자를 입력해주세요."));
+      // num2 = Number(prompt("두번째 숫자를 입력해주세요."));
+
+      // min_max_sum(num1, num2);
+
+
+
+      function leapYear(year){
+        if((year % 4 ==0 && year % 100 != 0) || year % 400 == 0){
+          console.log("윤년");
+        }else{
+          console.log("평년");
+        }
+      }
+
+      // (4로 나누어 떨어지고 && 100으로 나누어 떨어지지 않거나) || 400으로 나누어 떨어지는 해
+
+
+      let year;
+      year = Number(prompt("년도를 입력하세요."));
+
+      leapYear(year);
+
+
+
+    </script>
+  </head>
+  <body></body>
+</html>
