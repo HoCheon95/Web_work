@@ -136,7 +136,7 @@
             변수 = 함수명(값들...);
       */
 
-      function insa(){
+      function insa() {
         console.log("안녕하세요~~~");
       }
 
@@ -144,7 +144,7 @@
       // insa();
       // insa();
 
-      function insa2(name, age){
+      function insa2(name, age) {
         console.log(`나이가 ${age}세인 ${name}씨 안녕하세요.`);
       }
 
@@ -153,8 +153,8 @@
 
       // insa2(irum, num);
       // insa2("일지매", 33);
-      
-      function insa3(){
+
+      function insa3() {
         let str = "반갑습니다.";
         return str;
       }
@@ -164,7 +164,7 @@
 
       // console.log("insa3() => " + insa3());
 
-      function sub(a, b){
+      function sub(a, b) {
         return a - b;
       }
 
@@ -175,17 +175,16 @@
       // let c = sub(b, a);
 
       // console.log("c = " + c);
-    
+
       /*
       문제) 사용자로부터 단을 입력 받아 구구단 중 입력한 단에 해당하는 구구단을 출력하는 프로그램을 작성하시오.
             (단, 해당 단을 출력하는 부분을 함수로 작성하여 처리하시오.)
       */
 
-      function guguDan(num){
-
+      function guguDan(num) {
         console.log(`   ${num} 단`);
-        
-        for(let i=1; i<=9; i++){
+
+        for (let i = 1; i <= 9; i++) {
           console.log(`${num} * ${i} = ${num * i}`);
         }
       }
@@ -193,7 +192,6 @@
       // do{
       //   num = Number(prompt("구구단 단을 입력하세요"));
       // }while(num==null || num=="" || isNaN(num));
-      
 
       // guguDan(num);
 
@@ -203,20 +201,22 @@
       문제) 년도를 매개변수로 받아서 해당 년도가 윤년인지 평년인지를 판정하여 출력하는 함수를 작성하시오.
       */
 
-      function min_max_sum(num1, num2){
+      function min_max_sum(num1, num2) {
+        let min,
+          max,
+          sum = 0;
 
-        let min, max, sum=0;
-
-        if(num1 > num2){// 최대값 구하기
+        if (num1 > num2) {
+          // 최대값 구하기
           max = num1;
           min = num2;
-        }else{
+        } else {
           max = num2;
           min = num1;
         }
 
-        for(let i = min; i <= max; i++){
-          sum+=i;
+        for (let i = min; i <= max; i++) {
+          sum += i;
         }
 
         console.log(`${min}부터 ${max}까지의 합계 : ` + sum);
@@ -228,26 +228,40 @@
 
       // min_max_sum(num1, num2);
 
-
-
-      function leapYear(year){
-        if((year % 4 ==0 && year % 100 != 0) || year % 400 == 0){
+      function leapYear(year) {
+        if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
           console.log("윤년");
-        }else{
+        } else {
           console.log("평년");
         }
       }
 
       // (4로 나누어 떨어지고 && 100으로 나누어 떨어지지 않거나) || 400으로 나누어 떨어지는 해
 
-
-      let year;
-      year = Number(prompt("년도를 입력하세요."));
+      /*       let year;
+      do{
+        year = Number(prompt("년도를 입력하세요."));
+      }while(y == null || y == "" || isNaN(year));
 
       leapYear(year);
+ */
 
+      //===========================================================
+      /*
+        - 함수의 매개변수(파라미터변수)에 '디폴트값' 설정하기
+        형식) function 함수명(  변수명 = 디폴트값, ...){
+                처리할 내용들;
+                ...
+              }
+      */
 
+      function printMsg(msg = "안녕하세요") {
+        console.log(msg);
+      }
 
+      printMsg("반갑습니다.");
+
+      printMsg();
     </script>
   </head>
   <body></body>

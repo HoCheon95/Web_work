@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>객체</title>
+
+    <script>
+
+        /*
+            객체 ==> 속성과 메서드로 구성된 데이터의 집합
+                속성 : 객체의 데이터를 저장하는 전용 변수를 말한다.
+                메서드 : 객체의 기능을 구현한 전용 함수를 말한다.
+            
+            1) 클래스의 생성자 함수 작성
+                function 클래스명(파라미터변수들...){
+                    this.속성명1;           // 속성 선언
+                    this.속성명2 = 값;      // 속성 선언 및 초기화
+                    ...
+
+
+                    this.메서드명 = function(파라미터변수들... ){
+                        처리할 내용들;
+                        ...
+                        return 반환값;
+                    }
+                }
+                
+                - 메서드를 추가하는 방법2
+                형식) 클래스명.prototype.메서드명 => function(파라미터변수들...){
+                    처리할 내용들;
+                    ...
+                    return 반환값;
+                }
+
+            2) 객체(인스턴스) 생성 및 사용하기
+                const 객체변수 = new 클래스명(값들...);     // 객체 생성
+
+                //속성 사용하기
+                객체변수.속성명 = 값;       // 속성값 셋팅하기
+                변수 = 객체변수.속성명;     // 속성값 가져오기
+
+                //메서드 호출
+                객체변수.메서드명( 값들... );
+
+                // 객체변수.속성명 === 객체변수["속성명"]
+                // 객체변수.메서드명(값들...) === 객체변수["메서드명"](값들...)
+        
+        */
+                // 생성자 함수 작성
+                function Human(name, age){
+                    this.name = name;
+                    this.age = age;
+                    this.addr;
+                    this.tel;
+
+                    this.setName = function(name){
+                        this.name = name;
+                    }
+
+                    this.getName = function(){
+                        return this.name;
+                    }
+
+                    this.setAddr = function(addr){
+                        this.addr = addr;
+                    }
+
+                    this.setTel = function(tel){
+                        this.tel = tel;
+                    }
+                }
+
+                // prototype으로 메서드 추가하기
+                Human.prototype.displayData = function(){
+                    console.log("객체의 속성 정보 출력");
+                    console.log("이 름 : " + this.name);
+                    console.log("나 이 : " + this.age);
+                    console.log("주 소 : " + this.addr);
+                    console.log("전 화 : " + this.tel);
+                    console.log("--------------------------");
+                }
+                
+                const lee = new Human("이몽룡", 33);
+                const hong = new Human("홍길동", 44);
+                
+                let leeName = lee.name;     //lee의 name 속성값 읽기
+                console.log("leeName = " + leeName);
+                
+                let hongName = hong["name"];    //hong의 name 속성값 읽기
+                console.log("hongName = " + hongName);
+                
+                lee.addr = "대전시 중구 오류동";                // lee의 addr속성에 값 저장하기
+                lee.setTel("010-1234-5678");                   // lee의 setTel()메서드 호출
+                lee.displayData();
+                
+                //---------------------------------------------------
+                
+                //hong.setAddr("대전시 서구 도마동");
+                hong["setAddr"]("대전시 서구 도마동");
+                hong.tel = "010-9999-8888";
+                
+                hong.displayData();
+                
+                //---------------------------------------------------
+
+                /*
+                    '객체 리터럴' 방식으로 객체 생성하기 ==> 1회성 객체를 생성할 때 사용하는 방법
+                    형식)
+                        const 객체변수 = { 이름1 : 값1, 이름2 : 값2, ..., 이름n : 값n };
+                            ==> '값'의 자리의 데이터가 일반적인 자료(숫자, 문자 등)이면
+                                '이름'은 '속성명'이 되고, '값'의 자리의 데이터가 익명함수이면
+                                '이름'은 '메서드명'이 된다.
+                    
+                */
+                    const myCar = {
+                        model : "QM 6",
+                        speed : 60,
+                        color : "blue",
+
+                        break : function(){ this.speed -= 10 },
+                        accel : function(){ this.speed += 10 }
+                    }
+
+                    console.log("모델 : " + myCar.model);
+                    console.log("속도 : " + myCar.speed);
+
+                    myCar.accel();
+                    console.log("accel() 호출 후 속도 : " + myCar.speed);
+
+                    myCar.break();
+                    console.log("breake() 호출 후 속도 : " + myCar["speed"]);
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

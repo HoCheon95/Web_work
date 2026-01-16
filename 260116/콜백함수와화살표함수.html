@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>콜백함수와 화살표함수</title>
+
+    <script>
+      /*
+            콜백(callback)함수 ==> 다른 함수의 인자로 전달되는 함수로 이 콜백함수를 인자로 받은 함수 내에서
+                                  호출되어 실행되는 함수를 말한다.
+                              ==> 자바스크립트의 콜백함수는 배열처리나 비동기 작업(이벤트 처리, Ajax처리 등)등에서 자주 사용된다.
+                              ==> 콜백함수를 작성할 때는 주로 익명함수, 화살표 함수를 이용하여 작성한다.
+        
+        */
+
+        function insa(name) {
+            console.log(`${name}씨 안녕하세요.`);
+        }
+
+      //insa("홍길동");
+
+        function inputUserName(myCallback) {
+            const name = prompt("이름을 입력하세요.");
+
+            myCallback(name);
+        }
+
+      /*         const test = function(data){
+                    console.log(`${data}님 반가워요`);
+                } */
+
+      //inputUserName(insa);
+      /*         inputUserName(
+            function(data){
+                console.log(`${data}님 반가워요`);
+            }
+
+        ); */
+
+        //위의 코드를 화살표 함수로 변경하기
+        inputUserName( data => console.log(`${data}님 반가워요 화살표 함수~~`));
+
+
+      /*
+            - 화살표 함수
+                ==> 함수 표현식을 간단하게 나타낸 모양
+            규칙)
+                1) 파라미터 변수가 1개일 경우에는 소괄호('()')를 생략할 수 있다.
+                2) 파라미터 변수가 없거나 2개 이상일 경우에는 소괄호를 생략할 수 없다.
+                3) 처리할 내용이 하나일 경우에는 중괄호('{}')를 생략할 수 있다.
+                4) 처리할 내용이 return문 하나일 경우에는 중괄호와 return을 생략할 수 있다.
+                5) 처리할 내용이 2개 이상일 경우에는 중괄호를 생략할 수 없다.
+                6) 반환값 '객체 리터럴' 이면 '객체 리터럴'을 소괄호로 묶어줘야 한다.
+
+            
+            
+            // 함수 표현식으로 함수 정의
+            const 함수명 = function(파라미터변수들...){
+                처리할 내용들;
+                ...
+            }
+            // ---------------------------------------
+
+            //함수 표현식을 화살표 함수로 나타낸 것
+            const 함수명 = (파라미터변수들...) => {
+                처리할 내용들;
+                ...
+            }
+        
+        */
+        //기본
+/*         const test1 = function (name) {
+            console.log(name + "씨 반가워요!!");
+        }; */
+
+        //규칙 1)
+        const test2 = (name) => { console.log(name + "반가워요!!"); };
+
+        //규칙 2)
+        const test3 =(name, age) => { console.log(name, age) };
+        const test4 = () => { console.log("안녕~~~") };
+
+        //규칙 3)
+        const test5 = name => console.log(name + "씨 반가워요!!");
+
+        //규칙 4)
+        const test6 = (a,b) => { return a+b };
+        const test7 = (a,b) => a+b;
+
+        let temp = test6(5,6);
+        console.log("temp => " + temp);
+
+        temp = test7(100, 200);
+        console.log("temp => " + temp);
+
+    </script>
+  </head>
+  <body></body>
+</html>
