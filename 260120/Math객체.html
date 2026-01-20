@@ -5,103 +5,173 @@
     <title>Math 객체</title>
     <script>
       /*
-            Math 객체 ==> 수학 계산용 객체 (정적객체)
+                 Math 객체 ==> 수학 계산용 객체 (정적객체)
 
-            - 속성
-            Math.PI ==> 3.141592
-            Math.E  ==> 2.718 (오일러 상수)
+                 - 속성
+                 Math.PI ==> 3.141592
+                 Math.E  ==> 2.718 (오일러 상수)
 
-            - 메서드
-                삼각함수 : sin, cos, tan, asin, acos, atan
-                형식) Math.삼각함수(라디안각)
-                    라디안각 = 디그리각 * Math.PI / 180;
+                 - 메서드
+                     삼각함수 : sin, cos, tan, asin, acos, atan
+                     형식) Math.삼각함수(라디안각)
+                         라디안각 = 디그리각 * Math.PI / 180;
 
-                Math.abs(값) : 절대값 반환
-                Math.log(값) : log값
-                Math.exp(값) : e의 '값'승
+                     Math.abs(값) : 절대값 반환
+                     Math.log(값) : log값
+                     Math.exp(값) : e의 '값'승
 
-                Math.max(값1, 값2, 값3, ...); // 값들 중에서 제일 큰 값
-                Math.min(값1, 값2, 값3, ...); // 값들 중에서 제일 작은 값
+                     Math.max(값1, 값2, 값3, ...); // 값들 중에서 제일 큰 값
+                     Math.min(값1, 값2, 값3, ...); // 값들 중에서 제일 작은 값
 
-                Math.pow(x, y);    // x의 y승
-                Math.sqrt(값);     // '값'의 제곱근
-                Math.round(값);    // '값'의 소수점 첫째 자리에서 반올림
+                     Math.pow(x, y);    // x의 y승
+                     Math.sqrt(값);     // '값'의 제곱근
+                     Math.round(값);    // '값'의 소수점 첫째 자리에서 반올림
 
-                Math.floor(값);    // '값'과 같거나 작은 정수들 중에서 제일 큰 값
-                                   // '값'과 같거나 제일 가까운 작은 쪽의 정수
-                Math.ceil(값);     // '값'과 같거나 큰 정수들 중에서 제일 작은 값
-                                   // '값'과 같거나 제일 가까운 큰 쪽의 정수
+                     Math.floor(값);    // '값'과 같거나 작은 정수들 중에서 제일 큰 값
+                                        // '값'과 같거나 제일 가까운 작은 쪽의 정수
+                     Math.ceil(값);     // '값'과 같거나 큰 정수들 중에서 제일 작은 값
+                                        // '값'과 같거나 제일 가까운 큰 쪽의 정수
 
-                Math.random();     // 0이상 1미만 사이의 난수를 발생한다.
+                     Math.random();     // 0이상 1미만 사이의 난수를 발생한다.
 
-                -정수 최소값 ~ 최대값 사이의 난수를 만드는 방법
-                Math.floor(Math.random() * (최대값 - 최소값 + 1)) + 최소값
-        */
+                     -정수 최소값 ~ 최대값 사이의 난수를 만드는 방법
+                     Math.floor(Math.random() * (최대값 - 최소값 + 1)) + 최소값
+             */
 
-      /*  
-      console.log(Math.PI); // 3.141592653589793
-      console.log(Math.E); // 2.718281828459045
-
-      console.log("------------------------------------");
-
-      console.log(Math.sin((30 * Math.PI) / 180)); // 0.49999999999999994
-      console.log(Math.max(10, -5, 3, 0, 25, 100, 75)); // 100
-      console.log(Math.min(10, -5, 3, 0, 25, 100, 75)); // -5
-
-      console.log("------------------------------------");
-
-      console.log(Math.pow(3, 4)); // 81
-      console.log(Math.sqrt(25));
-
-      console.log("------------------------------------");
-
-      console.log(Math.round(123.456)); // 123
-      console.log(Math.round(123.789)); // 124
-
-      console.log("------------------------------------");
-
-      console.log(Math.floor(3.4)); // 3, 2, 1, 0, -1
-      console.log(Math.floor(-3.4)); // -4, -5, -6, ...
-
-      console.log("------------------------------------");
-
-      console.log(Math.ceil(3.4)); // 4, 5, 6, ...
-      console.log(Math.ceil(-3.4)); // -3, -2, -1, ...
-
-      console.log("------------------------------------");
-
-      console.log(Math.random()); // 0.0 ~ 0.9999999...
-
-      //23 ~ 35 사이의 난수 만들기
-      let rnd = Math.floor(Math.random() * (35 - 23 + 1) + 23);
-      console.log("난수값 : " +rnd);
-
- */
       /*
-            문제) 1~10 사이의 난수를 발생한 후 사용자가 이 값을 맞추는 프로그램 작성
-        */
+           console.log(Math.PI); // 3.141592653589793
+           console.log(Math.E); // 2.718281828459045
+
+           console.log("------------------------------------");
+
+           console.log(Math.sin((30 * Math.PI) / 180)); // 0.49999999999999994
+           console.log(Math.max(10, -5, 3, 0, 25, 100, 75)); // 100
+           console.log(Math.min(10, -5, 3, 0, 25, 100, 75)); // -5
+
+           console.log("------------------------------------");
+
+           console.log(Math.pow(3, 4)); // 81
+           console.log(Math.sqrt(25));
+
+           console.log("------------------------------------");
+
+           console.log(Math.round(123.456)); // 123
+           console.log(Math.round(123.789)); // 124
+
+           console.log("------------------------------------");
+
+           console.log(Math.floor(3.4)); // 3, 2, 1, 0, -1
+           console.log(Math.floor(-3.4)); // -4, -5, -6, ...
+
+           console.log("------------------------------------");
+
+           console.log(Math.ceil(3.4)); // 4, 5, 6, ...
+           console.log(Math.ceil(-3.4)); // -3, -2, -1, ...
+
+           console.log("------------------------------------");
+
+           console.log(Math.random()); // 0.0 ~ 0.9999999...
+
+           //23 ~ 35 사이의 난수 만들기
+           let rnd = Math.floor(Math.random() * (35 - 23 + 1) + 23);
+           console.log("난수값 : " +rnd);
+
+      */
+      /*
+                 문제) 1~10 사이의 난수를 발생한 후 사용자가 이 값을 맞추는 프로그램 작성
+             */
       const answer = Math.floor(Math.random() * 10) + 1;
       let userInput = 0;
-
-      while (answer != userInput) {
-        userInput = Number(prompt("숫자를 입력하세요."));
-        if (answer == userInput) {
-          console.log("정답");
-        } else {
-          console.log("오답");
+      let flag = true;
+      function checkAnswer() {
+        //사용자 숫자 입력
+        while (answer != userInput) {
+          userInput = Number(prompt("1 ~ 10 사이의 숫자를 입력하세요"));
+          if (isNaN(userInput) || userInput < 1 || userInput > 10) {
+            console.log("1에서 10사이의 숫자를 입력하세요.");
+          } else if (answer == userInput) {
+            console.log("정답 입니다.");
+            flag = false;
+          } else if (answer > userInput) {
+            console.log("더 큰 숫자 입니다.");
+          } else {
+            console.log("더 작은 숫자 입니다.");
+          }
         }
       }
 
-      /*
-            문제) 컴퓨터와 가위 바위 보 게임을 하는  프로그램 작성하기
-            (컴퓨터의 가위 바위 보는 난수를 이용해서 정하고, 사용자의 가위 바위 보는 
-            prompt()로 입력해서 처리한다.)
-        */
+      //checkAnswer();
 
       /*
-            문제) 로또번호 만들기
-            (1 ~ 45 사이의 중복되지 앟는 난수 6개 만들기)
-        */
+                 문제) 컴퓨터와 가위 바위 보 게임을 하는  프로그램 작성하기
+                 (컴퓨터의 가위 바위 보는 난수를 이용해서 정하고, 사용자의 가위 바위 보는
+                 prompt()로 입력해서 처리한다.)
+             */
+
+      function rps() {
+        let answer = Math.floor(Math.random() * 3); //난수 발생
+
+        switch (answer) {
+          case 0:
+            answer = "바위";
+            break;
+          case 1:
+            answer = "보";
+            break;
+          case 2:
+            answer = "가위";
+            break;
+          default:
+            break;
+        }
+
+        while (true) {
+          let userInput = prompt("가위 바위 보 입력하세요");
+          if (userInput == "" || userInput == null) {
+            console.log("다시 입력해 주세요");
+            continue;
+          } else if (answer == userInput) {
+            console.log("무승부");
+            break;
+          } else if (
+            (answer == "바위" && userInput == "보") ||
+            (answer == "보" && userInput == "가위") ||
+            (answer == "가위" && userInput == "바위")
+          ) {
+            console.log("사용자 승리");
+            console.log(`사용자 : ${userInput} / 컴퓨터 : ${answer}`);
+            break;
+          } else {
+            console.log("컴퓨터 승리");
+            console.log(`사용자 : ${userInput} / 컴퓨터 : ${answer}`);
+            break;
+          }
+        }
+      }
+
+      //rps();
+
+      /*
+                 문제) 로또번호 만들기
+                 (1 ~ 45 사이의 중복되지 않는 난수 6개 만들기)
+             */
+
+      function lotto() {
+        let numbers = []; //난수 6개 담을 배열 생성
+
+        while (numbers.length < 6) {
+          const number = Math.floor(Math.random() * 45) + 1;
+
+          if (!numbers.includes(number)) {
+            //배열에 중복 값이 없으면 push
+            numbers.push(number);
+          }
+        }
+
+        console.log("로또번호 : " + numbers.join(", "));
+      }
+
+      //lotto();
     </script>
   </head>
   <body></body>
