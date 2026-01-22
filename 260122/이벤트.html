@@ -33,9 +33,9 @@
                         (한 요소에 같은 이벤트를 여러개 설정하면 이 내용이 이벤트 큐에 저장되고,
                         실행도 순차적으로 된다.)
                 <script>
-                    객체명.addEvenListener("이벤트명", function()){
+                    객체명.addEvenListener("이벤트명", function(){
                         처리할 내용들;
-                    }
+                    });
                 < /script>
 
             -----------------------------------------------------------------------------------------
@@ -71,7 +71,70 @@
             20. DOMContentLoaded    ==> 문서가 읽혀져서 DOM객체로 변환된 후에 발생하는 이벤트
 
         */
+
+      function insa() {
+        alert("반갑습니다.");
+      }
+
+      //문서의 load이벤트는 window객체에 지정한다.
+      window.onload = function () {
+        // alert("안녕하세요 load이벤트 입니다~~~");
+        // console.log("load", document.getElementById("testBtn"));
+      };
+
+      // document.getElementById("id속성값"); ==> 문서에서 'id속성'의 속성값이
+      //                'id속성값'인 객체(엘리먼트)를 찾아준다.
+
+      //   console.log( document.getElementById("testBtn"));
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // alert("DomContentLoaded 이벤트 입니다.!!!");
+        // console.log("dom", document.getElementById("testBtn"));
+        const btn = document.getElementById("testBtn");
+        btn.onclick = function () {
+          console.log("이것은 id를 이용하여 검색한 버튼을 클릭했습니다.");
+        };
+
+        const btn2 = document.getElementById("testBtn2");
+        btn2.addEventListener("click", function () {
+          console.log("이것은 addEventListener()를 이용한 이벤트 설정입니다.");
+        });
+      });
+
+      function test() {
+        console.log("Daum사이트 가기 링크에 마우스가 놓였습니다.");
+      }
+
+      function test2() {
+        console.log("Daum사이트 가기 링크에 마우스에서 벗어났습니다.");
+      }
     </script>
   </head>
-  <body></body>
+  <!-- <body onload="alert('안녕하세요')"> -->
+  <!-- <body onload="insa()"> -->
+  <body>
+    <h2>이벤트 연습용 문서입니다.</h2>
+
+    <a href="https://www.daum.net" onmouseover="test()" , onmouseout="test2()">Daum사이트 가기</a>
+    <br /><br />
+
+    <input type="button" value="확인" onclick="insa()" />
+    <input type="button" value="클릭하세요" id="testBtn" />
+    <input type="button" value="클릭하세요2" id="testBtn2" />
+
+    <br /><br />
+
+    <input type="text" onfocus="console.log('포커스가 왔습니다.')" onblur="console.log('포커스를 읽었습니다.')" />
+
+    <br /><br />
+
+    keyup :
+    <input type="text" onkeyup="console.log('keyup', this.value)" /><br />
+    keydown :
+    <input type="text" onkeydown="console.log('keydown', this.value)" /><br />
+    keypress :
+    <input type="text" onkeypress="console.log('keypress', this.value)" /><br />
+    input :
+    <input type="text" oninput="console.log('keyinput', this.value)" /><br />
+  </body>
 </html>
