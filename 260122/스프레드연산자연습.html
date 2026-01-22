@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>스프레드 연산자 연습</title>
+    <script>
+      const user1 = { name: "홍길동", age: 25 };
+      const user2 = { name: "일지매", age: 30 };
+
+      const userArr1 = [user1, user2];
+      console.log("userArr1", userArr1);
+
+      //배열 복사하기
+
+      //기존의 방식
+      //   const userArr2 = [];
+      //   userArr2.push(userArr1[0]);
+      //   userArr2.push(userArr1[1]);
+
+      //스프레드연산자 이용
+      //const userArr2 = [...userArr1];
+      //userArr1에 있는 요소들을 낱개로 분해해서 가져온다.
+      //이 떄 복사된 객체는 참조값만 복사된다.
+
+      /* 
+      console.log("userArr2", userArr2);
+      console.log("-----------------------------");
+      userArr1[0].name = "변학도";
+      
+      console.log("userArr1", userArr1);
+      console.log("userArr2", userArr2);
+      
+      */
+
+      //객체 복사하기
+      const user3 = { ...user1 };
+
+      console.log("user1", user1);
+      console.log("user3", user3);
+
+      //배열 합치기
+      const arr1 = ["사과", "딸기"];
+      const arr2 = ["복숭아", "포도", "배"];
+
+      //const arr3 = arr1.concat(arr2);
+      const arr3 = [...arr1, ...arr2];
+
+      console.log("arr1", arr1);
+      console.log("arr2", arr2);
+      console.log("arr3", arr3);
+      console.log("-----------------------------");
+
+      //객체 병합
+      const obj1 = { name: "강감찬" };
+      const obj2 = { age: 44, name: "홍길동" };
+
+      //const obj3 = { ...obj1, ...obj2 };
+      const obj3 = { ...obj2, ...obj1 };
+      //병합되는 객체의 속성명이 중복되면 뒤에 추가되는 속성으로 덮어쓰기가 된다.
+
+      console.log("obj1", obj1);
+      console.log("obj2", obj2);
+      console.log("obj3", obj3);
+      console.log("-----------------------------");
+    </script>
+  </head>
+  <body></body>
+</html>
