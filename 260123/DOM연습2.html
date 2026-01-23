@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DOM 연습</title>
+    <style>
+      div {
+        border: 1px solid blue;
+        margin: 5px;
+        padding: 5px;
+      }
+
+      div span {
+        border: 1px solid red;
+        margin: 5px;
+      }
+
+      .redColor {
+        color: red;
+        background-color: yellow;
+      }
+    </style>
+
+    <script>
+      function view() {
+        //리스트에 나열된 과일들을 모두 읽어와 출력하시오.
+        const items = document.getElementsByTagName("li");
+
+        /* 
+        let str = "";
+
+        for (let i = 0; i < items.length; i++) {
+            // str += items[i].innerHTML + "\n";
+            str += items[i].textContent + "\n";
+        }
+
+        alert(str); 
+        */
+
+        for (let i = 0; i < items.length; i++) {
+            items[i].innerHTML ="<span class='redColor'>" + items[i].innerHTML + "</span>";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      <input type="button" value="확인" onclick="view()" />
+    </form>
+    <br />
+    <hr color="red" />
+    <br />
+
+    <ul>
+      <li>사과</li>
+      <li>딸기</li>
+      <li>복숭아</li>
+      <li>포도</li>
+      <li>수박</li>
+    </ul>
+
+    <div>
+      <span>대전</span>
+      <span>광주</span>
+      <span>대구</span>
+    </div>
+  </body>
+</html>
