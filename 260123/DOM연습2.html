@@ -38,14 +38,84 @@
         */
 
         for (let i = 0; i < items.length; i++) {
-            items[i].innerHTML ="<span class='redColor'>" + items[i].innerHTML + "</span>";
+          items[i].innerHTML = "<span class='redColor'>" + items[i].innerHTML + "</span>";
         }
+      }
+
+      function add() {
+        // <span>부산</span>를 생성해서 <div>태그 안에 추가하기
+
+        // <span></span>태그 생성
+        const spanTag = document.createElement("span");
+
+        // '부산'이라는 문자열을 갖는 textNode 생성
+        const txt = document.createTextNode("부산");
+
+        // <span>태그의 마지막 자식 노드 자리에 textNode 추가 ==> <span>부산</span>
+        spanTag.appendChild(txt);
+
+        // <div>태그 찾기
+        const divTag = document.getElementsByTagName("div")[0];
+
+        // 마지막 위치에 새로 만든 태그 추가히기
+        // divTag.appendChild(spanTag);
+
+        //두 번째 <span>태그 찾기
+        const currSpan = document.getElementsByTagName("span")[1];
+
+        // 두번째 <span>태그 앞에 새로 만든 태그 추가하기
+        // divTag.insertBefore(spanTag, currSpan);
+
+        // <div>태그의 내용을 모두 지우고 새로운 <span>태그 추가하기 ==> innerHTML 이용하기
+        // divTag.innerHTML = "<span>인천</span>";
+
+        // divTag.innerHTML += "<span>인천</span>"; // appendChild()와 같은 결과
+
+        // divTag.innerHTML = "<span>인천</span>" + divTag.innerHTML; // 앞에 추가
+
+        //--------------------------------------------------------------------------
+
+        // 삭제하기 연습
+
+        // 두번째 <span>태그 삭제하기 ==> removeChild()메서드 이용
+
+        // 방법1) 부모 엘리먼트 기준으로
+        // divTag.removeChild(currSpan);
+
+        // 방법2) 삭제하려는 엘리먼트 기준으로 처리하기
+        // currSpan.parentNode.removeChild(currSpan);
+
+        // 방법3) 자신 엘리먼트 삭제하기 ==> remove()메서드 이용
+        // currSpan.remove();
+
+        //--------------------------------------------------------------------------
+
+        //속성 처리하기
+
+        //새로운 속성 추가하기
+        // currSpan.setAttribute("class", "redColor");
+
+        // const val = document.getElementsByTagName("input")[0].getAttribute("value");
+        // alert(val);
+
+        //속성값 변경하기
+        // document.getElementsByTagName("input")[0].setAttribute("value", "완료");
+
+        //속성 삭제하기
+        document.getElementsByTagName("hr")[0].removeAttribute("color");
+      }
+
+      //이벤트 처리하는 이벤트헨들러에서 this는 이벤트가 발생한 객체를 의미한다.
+      function test(el) {
+        console.log("this", el);
       }
     </script>
   </head>
   <body>
     <form>
       <input type="button" value="확인" onclick="view()" />
+      <input type="button" value="추가" onclick="add()" />
+      <input type="button" value="this확인" onclick="test(this)" />
     </form>
     <br />
     <hr color="red" />
