@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        /*
+            출력 예시1)
+                홍길동씨 당신은 남자(여자)이고
+                취미는 여행, 바둑, 배드민턴 이군요
+                
+            출력 예시2)
+                홍길동씨 당신은 남자(여자)이고
+                취미는 없군요
+
+        */
+
+
+         window.onload = ()  =>{
+            const btn = document.querySelector("#viewBtn");// id 참조
+
+            btn.addEventListener("click", function(){
+                
+                const name = document.exForm.irum.value; //이름 읽어옴
+    
+                if(name.trim() == "" || name.length == 0){   // irum 값을 읽어옴
+                    alert("이름을 입력하세요!");
+                    document.exForm.irum.value="";//다시 값을 받기위해 공백처리
+                    document.exForm.irum.focuc(); //포커스
+                }
+
+                const gender = document.exForm.gender.value;    //gender 읽어옴
+
+                let hobbyArr = document.querySelectorAll("input[name=hobby]:checked"); //checkbox에 체크된값만 읽어옴
+                let hobby ="";
+                let result="";
+                if(hobbyArr.length == 0){
+                    result += "취미는 없군요";
+                }else{
+                    // let hobby = "";
+                    for(let i=0; i<hobbyArr.length; i++){
+                        result+=hobbyArr[i].value;
+                        if(i != hobbyArr.length-1){
+                            result+=", "
+                        }
+                    }
+                    result+=" 이군요"
+                }
+                document.exForm.result.value= `${name}씨 당신은 ${gender}이고 \n${result}`;
+            });
+        }
+
+
+    </script>
+</head>
+<body>
+    <form name="exForm">
+        이 름 : <input type="text" name="irum"><br><br>
+
+        성 별 : <input type="radio" name="gender" value="남자" checked>남
+                <input type="radio" name="gender" value="여자">여
+                <br><br>
+        취 미 : 
+            <input type="checkbox" name="hobby" value="여행">여행
+            <input type="checkbox" name="hobby" value="독서">독서
+            <input type="checkbox" name="hobby" value="영화감상">영화감상
+            <input type="checkbox" name="hobby" value="바둑">바둑
+            <input type="checkbox" name="hobby" value="장기">장기
+            <input type="checkbox" name="hobby" value="배드민턴">배드민턴
+            <input type="checkbox" name="hobby" value="테니스">테니스
+            <br><br>
+
+        <input type="button" value="결과 출력" id="viewBtn"><br><br>
+
+        <textarea rows="10" cols="60" name="result"></textarea>
+    </form>    
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>checkbox 객체와 radio 객체</title>
+    <script>
+      /*
+          - checkbox와 radio 객체
+
+          1) name 속성값이 같은 것이 1개일 경우
+              형식) document.폼이름.객체이름.속성및메서드
+
+          2) name 속성값이 같은 것이 2개 이상일 경우
+              형식)    document.폼이름.객체이름.length ==> 같은 '객체이름'의 개수를 나타낸다.
+                      document.폼이름.객체이름[첨자].속성및메서드
+
+          3) querySelector() 또는 querySelectorAll()메서드를 이용하여 체크된 항목만 찾는 방법
+              ( ":checked" 이용 )
+              형식) document.querySelectorAll("checkbox또는 radio객체를 찾는 셀렉터식:checked")
+
+          - 속성
+          1) value    ==> value 속성의 속성값을 읽어오거나 새로운 값으로 설정할 때 사용한다.
+          2) checked  ==> 현재 check된 상태라면 true, 그렇지 않으면 false가 된다.
+                          이 속성에 true를 대입하면 check된 상태가 되고,
+                          false를 대입하면 check가 해제된 상태가 된다.
+
+          - 메서드
+          1) click()  ==> 해당 객체를 클릭해 준다.
+
+      */
+
+      const view = () => {
+        // alert(document.testForm.city.length);//같은 이름이 2개 이상일 경우에만 사용가능
+        // alert(document.testForm.city[2].value);
+        // alert(document.testForm.city[2].checked);
+
+        // document.testForm.city[2].checked=true;
+        // document.testForm.city[2].checked=false;
+        // document.testForm.city[2].click();
+
+        // 체크된 전체 도시 이름 전체를 출력해 보자.
+        // 방법1
+        /*    let str = "";
+          for(let i=0; i<document.testForm.city.lenth; i++){
+              if(document.testForm.city[i].checked){
+                  str += document.testForm.city[i].value + "\n";
+
+              }
+          }
+
+          if(str == ""){
+              alert("check된 항목이 하나도 없습니다.");
+          }else{
+              alert(str);
+          } */
+        // --------------------------------------------------------------------------
+
+        //  방법2
+        let checkedArr = document.querySelectorAll("input[name=city]:checked");
+
+        if (checkedArr.length == 0) {
+          alert("check된 항목이 없습니다.");
+        } else {
+          let str = "";
+          for (let i = 0; i < checkedArr.length; i++) {
+            str += checkedArr[i].value + "\n";
+          }
+          alert(str);
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <form name="testForm">
+      <!-- <input type="checkbox" name="city" value="대전" />대전 <input type="checkbox" name="city" value="부산" checked />부산 <input type="checkbox" name="city" value="인천" />인천
+      <input type="checkbox" name="city" value="강릉" />강릉 <input type="checkbox" name="city" value="목포" checked />목포 <input type="checkbox" name="city" value="서울" />서울 <br /><br /> -->
+
+      <input type="checkbox" name="city" value="대전" />대전 <input type="checkbox" name="city" value="부산" checked />부산 <input type="radio" name="city" value="인천" />인천
+      <input type="checkbox" name="city" value="강릉" />강릉 <input type="checkbox" name="city" value="목포" checked />목포 <input type="radio" name="city" value="서울" />서울 <br /><br />
+      <input type="button" value="확인" onclick="view()" />
+    </form>
+
+    <!--
+        ==> checkbox와 radio객체는 서로 관련있는 항목들의 name속성값을 같게 설정한다.
+        ==> 이런 경우에는 '객체이름'을 배열로 구성해 준다.
+        
+    <form name ="폼이름">
+        <input type="checkbox" name ="객체이름" value="값1">
+        <input type="radio" name ="객체이름" value="값2" checked>
+        <input type="radio" name ="객체이름" value="값1">
+        <input type="radio" name ="객체이름" value="값1">
+        <input type="radio" name ="객체이름" value="값1">
+    </form>
+    <form name ="폼이름">
+        <input type="checkbox" name ="객체이름" value="값1">
+        <input type="radio" name ="객체이름" value="값2" checked>
+        <input type="radio" name ="객체이름" value="값1">
+        <input type="radio" name ="객체이름" value="값1">
+        <input type="radio" name ="객체이름" value="값1">
+    </form>
+    -->
+  </body>
+</html>
