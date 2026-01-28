@@ -34,16 +34,16 @@
         document.uml.width = 300;
         document.uml.height = 400;
 
-        document.uml.src = "/images/JSP2_1.jpg";
+        document.uml.src = "../images/JSP2_1.jpg";
       }
 
       // 방법1
       /*       let flag = false;
       function changeImage(){
         if(flag == false){
-          document.sw.src ="/images/sw_on.png";
+          document.sw.src ="../images/sw_on.png";
         }else{
-          document.sw.src="/images/sw_off.png";
+          document.sw.src="../images/sw_off.png";
         }
         flag = !flag;
       } */
@@ -53,9 +53,9 @@
         const currSrc = document.sw.src;
 
         if(currSrc.indexOf("sw_on") == 1){
-          document.sw.src ="/images/sw_on.png";
+          document.sw.src ="../images/sw_on.png";
         }else{
-          document.sw.src="/images/sw_off.png";
+          document.sw.src="../images/sw_off.png";
         }
       }
  */
@@ -64,9 +64,9 @@
         let currentSrc = document.sw.src;
 
         if (currentSrc.includes("sw_on.png")) {
-          document.sw.src = "/images/sw_off.png";
+          document.sw.src = "../images/sw_off.png";
         } else {
-          document.sw.src = "/images/sw_on.png";
+          document.sw.src = "../images/sw_on.png";
         }
 
         // document.sw.src="/images/sw_on.png";
@@ -81,14 +81,14 @@
     <hr color="red" />
     <br />
 
-    <img src="/images/jQuery.jpg" name="jquery" /><br /><br />
-    <img src="/images/UML.jpg" name="uml" />
+    <img src="../images/jQuery.jpg" name="jquery" /><br /><br />
+    <img src="../images/UML.jpg" name="uml" />
 
     <br />
     <hr color="red" />
     <br />
 
-    <img src="/images/sw_off.png" name="sw" onclick="changeImage()" /><br />
+    <img src="../images/sw_off.png" name="sw" onclick="changeImage()" /><br />
     <!-- <img src="/images/sw_on.png"><br> -->
   </body>
 </html>

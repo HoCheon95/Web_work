@@ -16,7 +16,66 @@
         */
 
 
-         window.onload = ()  =>{
+        //방법1)
+        document.addEventListener("DOMContentLoaded", function(){
+            document.querySelector("#viewBtn").addEventListener("click", function(){
+                const f = document.exForm;
+
+                const name = f.irum.value;
+
+                if(name.trim() ==""){
+                    alert("이름을 입력하세요...");
+                    f.irum.value="";
+                    f.irum.focuc();
+                    return;
+                }
+
+                //성별
+                let gen = "";
+               /*  
+                //방법1
+                if(f.gender[0].checked){
+                    // gen="남자";
+                    gen = f.gender[0].value;
+                }else{
+                    // gen = "여자";
+                    gen = f.gender[1].value;
+                }
+ */
+                //방법2
+                gen = document.querySelector("input[name=gender]:checked").value;
+
+                //----------------------------------------------------------------
+
+                //취미
+                const hobbyArr = [];//선택한 취미가 저장될 배열 선언
+
+                //방법1
+                for(let i=0; i<f.hobby.length; i++){
+                    if(f.hobby[i].checked){
+                        hobbyArr.push(f.hobby[i].value);
+                    }
+                }
+              
+                //방법2
+                const checkedHobbyArr=document.querySelectorAll("input[name=hobby]:checked");
+                for(let i=0; i<checkedHobbyArr.length; i++){
+                    hobbyArr.push(checkedHobbyArr[i].value);
+                }
+                
+                
+                
+                
+                //결과 출력하기
+                f.result.value = name + "씨 당신은 " + gen + "이고\n";
+                f.result.value = hobbyArr.length==0?"취미는 없군요!!":"취미는 " + hobbyArr.join(", ") + "이군요";
+
+                
+            });
+        });
+
+        //방법2
+/*          window.onload = ()  =>{
             const btn = document.querySelector("#viewBtn");// id 참조
 
             btn.addEventListener("click", function(){
@@ -37,7 +96,6 @@
                 if(hobbyArr.length == 0){
                     result += "취미는 없군요";
                 }else{
-                    // let hobby = "";
                     for(let i=0; i<hobbyArr.length; i++){
                         result+=hobbyArr[i].value;
                         if(i != hobbyArr.length-1){
@@ -50,7 +108,7 @@
             });
         }
 
-
+ */
     </script>
 </head>
 <body>

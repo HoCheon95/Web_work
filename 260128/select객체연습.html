@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script>
+      /*
+            단을 선택한 후 '출력'버튼을 누르면 해당 구구단이 아래의 <div>영역에 출력되게 하시오.
+        */
+      window.onload = () => {
+        const btn = document.querySelector("#guguBtn");
+
+        btn.addEventListener("click", function () {
+          const num = document.guguForm.dan.value;
+
+          let result = `<h3>${num} 단</h3>`;
+          for (let i = 1; i <= 9; i++) {
+            result += num + " * " + i + " = " + num * i + "<br>";
+          }
+
+          const div = document.querySelector("#result");
+          div.innerHTML = result;
+        });
+
+        // select 객체의 값이 변경되었을 때 처리되는 이벤트 ==> chang 이벤트
+        document.querySelector("select[name=dan2]").addEventListener("change", function (e) {
+          //e ==> event관련 정보가 저장된 객체 (event 객체라고 한다.)
+
+          // e.currentTarget ==> 이벤트가 발생한 엘리먼트를 나타낸다.
+          // console.log(e.currentTarget);
+
+          const selObj = e.currentTarget;
+
+          const index = selObj.selectedIndex;
+          const dan = selObj.options[index].value;
+
+          let result = `<h3>${dan} 단</h3>`;
+          for (let i = 1; i <= 9; i++) {
+            result += dan + " * " + i + " = " + dan * i + "<br>";
+          }
+
+          const div = document.querySelector("#result2");
+          div.innerHTML = result;
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <form name="guguForm">
+      <select name="dan">
+        <option value="1">1 단</option>
+        <option value="2">2 단</option>
+        <option value="3">3 단</option>
+        <option value="4">4 단</option>
+        <option value="5">5 단</option>
+        <option value="6">6 단</option>
+        <option value="7">7 단</option>
+        <option value="8">8 단</option>
+        <option value="9">9 단</option>
+      </select>
+      <input type="button" value="출력" id="guguBtn" />
+    </form>
+    <h3>결과 출력</h3>
+    <div id="result"></div>
+
+    <br />
+    <hr color="red" />
+    <br />
+
+    <form name="guguForm2">
+      <select name="dan2">
+        <option value="1">1 단</option>
+        <option value="2">2 단</option>
+        <option value="3">3 단</option>
+        <option value="4">4 단</option>
+        <option value="5">5 단</option>
+        <option value="6">6 단</option>
+        <option value="7">7 단</option>
+        <option value="8">8 단</option>
+        <option value="9">9 단</option>
+      </select>
+    </form>
+    <h3>결과 출력</h3>
+    <div id="result"></div>
+  </body>
+</html>
