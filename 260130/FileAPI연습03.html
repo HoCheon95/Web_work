@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>File API 연습</title>
+    <style>
+      #imgArea {
+        width: 100%;
+        margin-top: 2em;
+        overflow-x: auto;
+      }
+    </style>
+    <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const fileObj = document.querySelector("#myFile");
+    const displayArea = document.querySelector("#imgArea");
+    const dataArea = document.querySelector("#data"); // 변수명 확인
+
+    fileObj.addEventListener("change", function () {
+      const fileArr = fileObj.files;
+      const imageType = /image.*/;
+
+      // 초기화
+      displayArea.innerHTML = "";
+      dataArea.value = "";
+
+      for (let i = 0; i < fileArr.length; i++) {
+        let file = fileArr[i];
+
+        if (!imageType.test(file.type)) continue;
+
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+
+        reader.onload = function () {
+          // 방법 2 수정: 누적(+=) 방식으로 변경하여 모든 이미지 표시
+          displayArea.innerHTML += `<img src="${reader.result}" title="${file.name}" width="300">`;
+          
+          // 데이터 영역에도 누적해서 추가
+          dataArea.value += `${file.name} 데이터:\n${reader.result}\n\n`;
+        };
+      }
+    });
+  });
+</script>
+  </head>
+  <body>
+    <div>
+      <h2>이미지 파일 읽기</h2>
+      <div>이미지 파일 선택 : <input type="file" id="myFile" multiple /></div>
+      <hr color="red" />
+      <textarea id="data"></textarea>
+      <div id="imgArea"></div>
+    </div>
+    <!-- <img src=""> -->
+  </body>
+</html>

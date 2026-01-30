@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>File API 연습</title>
+    <script>
+
+        /*
+            - File객체 ==> 파일의 name이나 size등의 기본적인 정보에 접근할 수 있다.
+
+            - FileReader객체 ==> File의 내용을 읽을 수 있는 기능을 제공한다.
+
+        -File 객체가 가지고 있는 속성 및 메서드
+            1) name ==> 파일 이름을 나타낸다.
+            2) type ==> 파일의 MINE type을 나타낸다.(파일의 종류, 알 수 없는 경우에는 null이 된다.)
+            3) size ==> 파일의 크기를 나타낸다. (byte 단위)
+            4) lastModified ==> 파일의 최종 수정 날짜(TimeStamp값)
+            5) lastModifiedDate ==> 파일의 최종 수정 날짜 (Date객체)
+
+            6) slice(start, end) ==> 시작 위치부터 끝 위치를 지정해서 파일의 내용을 잘라내 
+                                        새로운 Blob객체를 만드느 메서드
+
+        - FileReader 객체가 가지고 있는 속성 및 메서드
+            1) readAsBinaryString(파일정보) ==> 파일 내용을 읽어 Binary 문자열로 반환한다.
+            2) readAsText(파일정보, encoding방식) ==> 파일 내용을 읽어서 문자열로 반환한다.
+                                                ==> 기본 encoding방식 : utf-8
+            3) readAsDataURL(파일정보)  ==> 파일 내용을 읽어서 dataURL 형식의 문자열로 반환한다.
+            4) resut ==> 읽어들인 File의 내용을 나타낸다.
+            5) error ==> error 발생 시 error 정보가 저장되어 있다.
+            6) onload ==> 읽어 들이기를 성공적으로 모두 마쳤을 때 발생하는 이벤트 설정
+            7) onprogress ==> 읽어 들이기의 진행 중일 떄 발생하는 이벤트 설정
+            8)onerror ==> 읽어 들이기에서 error 발생시 발생하는 이벤트 설정
+
+        */
+       function readFile(){
+        const file = document.querySelector("#testFile").files[0];
+        const display = document.querySelector("#content");
+
+        for(const x in file){
+            display.value += x + " : " + file[x] + "\n";
+        }
+        display.value += "------------------------------------------------\n";
+        display.value += "\n\n파일 이름 : " + file.name + "\n"
+        display.value += "\n\n파일 크기 : " + file.size + "byte(s)\n"
+        display.value += "================================================\n\n";
+
+        //파일 내용 읽어오기
+        const reader = new FileReader();
+
+        // reader.readAsText(file); // 파일을 기본 인코딩(utf-8)방식으로 읽기
+        reader.readAsText(file, 'euc-kr'); // 파일을 기본 인코딩(utf-8)방식으로 읽기
+                                           // 'euc-kr' == 윈도우환경의 ansi오 같다.
+
+        //읽기가 성공적으로 완료되었을 때의 이벤트 처리
+        reader.onload = function(){
+            display.value += reader.result;
+        }
+       }
+    </script>
+</head>
+<body>
+    <h2>File API 연습</h2>
+    <form>
+        <input type="file" id="testFile">
+
+        <input type="button" value="읽기" onclick="readFile()">
+
+        <hr color="red">
+
+        <textarea id="content" style="width: 600px; height: 400px;"></textarea>
+    </form>
+</body>
+</html>
