@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promise 객체 상태값</title>
+
+    <script>
+
+        const test01 = () =>{
+            const myPromise = new Promise((resolve, reject)=>{
+                setTimeout(()=>{
+                    const data = {name : "홍길동"};
+                    console.log("요청 성공~~~~");
+                },1000);
+            });
+
+            console.log(myPromise);
+        }
+
+        const test02 = () =>{
+            const myPromise = new Promise((resolve, reject)=>{
+                setTimeout(()=>{
+                    const data = {name : "홍길동"};
+                    if(data){
+                        resolve(data);
+                    }else{
+                        reject(new Errlr("데이터 가져오기 실패!!!"));
+                    }
+                },1000);
+            });
+
+            setTimeout(()=>{
+                console.log(myPromise);
+            },2000);
+        }
+        const test03 = () =>{
+            const myPromise = new Promise((resolve, reject)=>{
+                setTimeout(()=>{
+                    // const data = {name : "홍길동"};
+                    const data = null;
+                    if(data){
+                        resolve(data);
+                    }else{
+                        reject(new Error("데이터 가져오기 실패!!!"));
+                    }
+                },1000);
+            });
+
+            setTimeout(()=>{
+                console.log(myPromise);
+            },2000);
+        }
+
+    </script>
+</head>
+<body>
+    <input type="button" value="상태확인1" onclick="test01()">    
+    <input type="button" value="상태확인2" onclick="test02()">    
+    <input type="button" value="상태확인3" onclick="test03()">    
+</body>
+</html>

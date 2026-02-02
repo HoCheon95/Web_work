@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>동기, 비동기</title>
+    <script>
+      /*
+            서버에서 데이터 받아오기
+            예) id가 a001인 회원 이름 가져오기
+        */
+      //콜백함수를 사용하지 않은 경우
+      let memName; //회원 이름이 저장될 변수(전역변수)
+
+      function getMemberName01() {
+        setTimeout(() => {
+          console.log("서버에서 id가 a001인 회원 이름 가져오기...");
+          memName = "홍길동";
+        }, 2000);
+      }
+
+      function test01() {
+        getMemberName01();
+        console.log(`가져온 데이터 : ${memName}`);
+      }
+
+      //==========================================================================
+
+      //콜백 함수를 이용한 처리
+      function getMemberName02(myfn){
+        setTimeout(() =>{
+            console.log("서버에서 id가 a001인 회원 이름 가져오기...");
+            let memName="일지매";
+
+            //콜백함수 호출 ==> 호출시 인자값으로 memName값을 전달해서 처리한다.
+            myfn(memName);
+        },2000);
+      }
+
+      function test02(){
+        getMemberName02(
+            //getMemberName02()함수에서 처리할 콜백함수를 인수값으로 넣어서 호출한다.
+            function(name){
+                console.log("id가 a001인 회원 이름 : " + name);
+            }
+        );
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+        <input type="button" value="자료확인(non콜백)" onclick="test01()">
+        <input type="button" value="자료확인(콜백)" onclick="test02()">
+    </form>
+  </body>
+</html>

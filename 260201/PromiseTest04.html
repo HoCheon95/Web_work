@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script>
+      /*
+            상품을 구매하여 결제까지의 과정
+            1) 로그인   ==> 2) 장바구니 담기 ==> 3) 결제하기
+            (위3가지 작업이 모두 비동기로 처리된다.(Promise객체 이용))
+        */
+
+      //로그인 함수 정의
+      function login(userName) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            if (userName) {
+              resolve(userName);
+            } else {
+              reject(new Error("name을 입력하세요..."));
+            }
+          }, 1000);
+        });
+      }
+      /* 
+        login("홍길동")
+        .then( user =>{
+            console.log(`${user}님 안녕하세요!!!`);
+        }).catch( error =>{
+            console.log(error);
+        })
+         */
+
+      //장바구니
+      function addCart(product) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            if (product) {
+              resolve(product);
+            } else {
+              reject(new Error("추가할 상품이 없습니다."));
+            }
+          }, 1000);
+        });
+      }
+      /* 
+        // addCart("딸기")
+        addCart("")
+        .then( prod =>{
+            console.log(`${prod}를(을) 장바구니에 넣었습니다.`);
+        })
+        .catch(error =>{
+            console.log(error);
+        });
+         */
+
+      //결제하기
+      function makePayment(cardNo, product){
+        return new Promise((resovle, reject)=>{
+            if(cardNo.length!=16){
+                reject(new Error("잘못된 카드 번호입니다."));
+                return;
+            }
+            if(!product){
+                reject(new Error("상품을 넣어주세요..."));
+                return;
+            }
+
+            resovle(product);
+        });
+      }
+/* 
+      makePayment("1234123412341234", "수박")
+      .then( prod =>{
+        console.log(prod+"상품을 결제했습니다...");
+      })
+      .catch(error =>{
+        console.error(error);
+      });
+       */
+
+       function test01(){
+            //전체 처리 내용을 기술하세요...
+            login("홍길동")
+            .then( user =>{
+                console.log(`${user}님 안녕하세요!!!`);
+                return addCart("딸기");
+            })
+            .then( prod =>{
+                console.log(`${prod}를(을) 장바구니에 넣었습니다.`);
+                return makePayment("1234123412341234", prod);
+            })
+            .then( prod =>{
+                console.log(prod+"상품을 결제했습니다...");
+            })
+            .catch(error =>{
+                console.error(error);
+            });
+       }
+    </script>
+  </head>
+  <body>
+        <input type="button" value="확인" onclick="test01()">
+  </body>
+</html>
