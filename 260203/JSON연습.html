@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSON</title>
+    <script>
+        /*
+            JSON(JavaScript Object Notation - 자바스크립트 객체 표기법)
+                ==> 자바스크립트 객체 문법으로 만든 구조화된 데이터 교환 형식을 말한다.
+
+            - 네트워크를 사용하는 데이터 통신은 데이터를 byte 형식으로 전달한다.
+            - 데이터 통신에서 데이터를 전달할 때 사용한 자료 형식 중에서 대표적인 것이 XML과 JSON이다.
+            - 지금은 구조가 간단하고 사용하기 편한 JSON을 주로 사용한다.
+
+            - 기본적인 JSON의 형태는 객체 형식과 배열 형식 두 가지가 있다.
+              (두 형식은 서로 혼합해서 사용할 수 있다.)
+              객체 형식) {"key1" : value1, "key2" : value2 }
+                    ==> key값들은 반드시 큰따옴표(")로 감싸서 나타내어야 한다.
+              배열 형식) [값1, 값2, ... ]
+        */
+
+        //자바스크립트 객체 생성
+
+        //리터럴 방식
+        const myObj ={
+            name : "홍길동",
+            age : 30,
+            hello : function(){
+                return "이름은 " + this.name + "이고, 나이는 " + this.age + "세 이다.";
+            }
+        }
+
+        // console.log(myObj);
+        // console.log(myObj.name);
+        // console.log(myObj.age);
+        // console.log(myObj["age"]);
+        // console.log(myObj.hello());
+
+        // const emptyObj = {};        // 빈 객체 생성
+        
+        // 동적으로 속성(멤버변수)과 메서드를 추가할 수 있다.
+        // emptyObj.name = "이순신";
+        // emptyObj.score = 80;
+        // emptyObj.print = function(){
+        //     return `이름 : ${this.name}, 점수 : ${this.score}`;
+        // }
+
+        // console.log(emptyObj);
+
+        // const str = emptyObj.print();
+        // console.log(str);
+
+        // ===============================================================
+
+        //JSON 표기법
+        const jsonStr=
+        `
+        {
+            "name" : "홍길동",
+            "addr": "대전시",
+            "age" : 30,
+            "friends":[
+                {
+                    "name" : "이순신",
+                    "nickname" : "불사조"
+                },
+                {
+                    "name" : "강감찬",
+                    "nickname" : "날다람쥐"
+                },
+                {
+                    "name" : "이몽룡",
+                    "nickname" : "잠꾸러기"
+                }
+            ]
+        }
+        `;
+
+        console.log(jsonStr);
+
+        //JSON형태의 문자열을 JavaScript 객체로 변환하기
+        //  ==> JSON.parse(json문자열);
+        const jsonObj = JSON.parse(jsonStr);
+        console.log(jsonObj);
+        console.log(jsonObj.name);
+        console.log(jsonObj.friends[1].name);
+
+        //JavaScript 객체를 JSON형태의 문자열로 변환하기
+        //      ==> JSON.stringify(JavaScript객체);
+        const str = JSON.stringify(jsonObj);
+        console.log(str);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

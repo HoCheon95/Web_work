@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function(){
+            document.querySelector("#addr").addEventListener("change", function(e){
+            // document.querySelector("#addr").addEventListener("change", (e) =>{
+                //select 객체에서 선택한 value값 구하기
+
+                //이벤트 헨들에서 this는 이벤트가 발생한 객체를 나타낸다.
+                //하지만 화살표 함수로 이벤트 헨들러를 작성하면 this는 이벤트가 발생한 객체가 아니다.
+                console.log("this", this); 
+                console.log("e.currentTarget", e.currentTarget);
+
+                const currSel = e.currentTarget;
+
+                //select 객체에서 선택한 value값 구하기
+                console.log(this.value);
+                console.log(currSel.value);
+                console.log(currSel.querySelector("option:checked").value);
+
+                const selAddr = currSel.value;
+
+                let htmlCode = "";
+
+                //전체 <span>요소들을 찾고 찾은 개수만큼 반복 처리
+                document.querySelectorAll("span").forEach(function(v, i){
+                    //select객체에서 선택한 값과 span태그의 data-address속성값을 비교한다.
+                    if(selAddr == v.dataset["address"]){
+                        htmlCode += 
+                            `
+                                name : ${v.dataset["name"]}<br>
+                                address : ${v.dataset.address}<br>
+                                code : ${v.dataset["code"]}<hr>
+                            `;
+                    }
+                });
+                document.querySelector("#result").innerHTML = htmlCode;
+            });
+        });
+    </script>
+</head>
+<body>
+    <h3>선택한 주소와 일치하는 데이터를 result 영역에 출력하시오.</h3>
+    <select id="addr">
+        <option value="대전">
+            = 대전 =
+        </option>
+        <option value="서울">
+            = 서울 =
+        </option>
+        <option value="제주">
+            = 제주 =
+        </option>
+    </select>
+    <br><br>
+    <span data-name="한국1" data-address="대전" data-code="10101">코리아1</span>
+    <span data-name="한국2" data-address="서울" data-code="10102">코리아2</span>
+    <span data-name="한국3" data-address="대전" data-code="10103">코리아3</span>
+    <span data-name="한국4" data-address="제주" data-code="10104">코리아4</span>
+    <span data-name="한국5" data-address="서울" data-code="10105">코리아5</span>
+    <hr color="red">
+
+    <div id="result"></div>
+    
+</body>
+</html>
