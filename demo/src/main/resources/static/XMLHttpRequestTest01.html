@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelector("#testBtn").addEventListener("click", function () {
+          //입력한 자료 가져오기
+          const userName = document.querySelector("#username").value;
+          const userTel = document.querySelector("#usertel").value;
+
+          if (userName.length == 0) {
+            alert("이름을 입력하세요");
+            return;
+          }
+
+          if (userTel.length == 0) {
+            alert("전화번호를 입력하세요");
+            return;
+          }
+          //-----------------------------------------------
+
+          //1) XMLHttpRequest 객체 생성
+          const xhr = new XMLHttpRequest();
+
+          //2)
+          // xhr.open("get", "test01.jsp?username=" + userName + "&usertel=" + userTel);
+          // xhr.open("get", `test01.jsp?username=${userName}&usertel=${userTel}`);
+          xhr.open("post", "test01");
+
+          //3) 생략가능
+          xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+
+          // 4) 응답 처리
+          xhr.onload = function () {
+            if (xhr.status === 200) {
+              // 정상 응답인 경우만 출력
+              const resData = xhr.responseText;
+              document.querySelector("#result").innerHTML = resData;
+            }
+          };
+
+          // 5) 데이터 전송
+          // xhr.send(); //get방식일 때
+          xhr.send(`username=${userName}&usertel=${userTel}`);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div>
+      <form id="testForm" action="test01" method="get">
+        이 름 : <input type="text" name="username" id="username" /><br /><br />
+        전 화 : <input type="text" name="usertel" id="usertel" /><br /><br />
+
+        <input type="submit" value="동기방식" />
+        <input type="button" value="비동기방식" id="testBtn" />
+      </form>
+    </div>
+
+    <hr color="red" />
+
+    <h3>응답 결과</h3>
+    <div id="result"></div>
+  </body>
+</html>
