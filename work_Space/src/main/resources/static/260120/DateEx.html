@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DateEx</title>
+    <script>
+      //[1] 만나고 1000일 되는 날 구하기 (기념일 계산)
+      function calculateAnniversary() {
+        const startDate = new Date(2023, 0, 1); // 2023년 1월 1일 (월은 0부터 시작)
+        const thousandDays = 1000 * (24 * 60 * 60 * 1000); // 1000일을 밀리초로 변환
+
+        // 시작일의 밀리초 + 1000일의 밀리초
+        const targetTime = startDate.getTime() + thousandDays;
+
+        const resultDate = new Date();
+        resultDate.setTime(targetTime); // 계산된 시간으로 재설정
+
+        console.log("--- 1000일 기념일 계산 ---");
+        console.log(`우리 만난 날: ${startDate.toLocaleDateString()}`);
+        console.log(`1000일 되는 날: ${resultDate.toLocaleDateString()}`);
+      }
+
+      // [2] 과정 수료일까지 남은 일수 구하기 (D-Day 계산)
+      function calculateDDay() {
+        const today = new Date(); //현재 날짜
+        const endDate = new Date(2026, 6, 31); // 2026년 7월 31일 (월은 0부터 시작)
+
+        //두 날짜의 차이 (밀리초)
+        const gap = endDate - today;
+
+        //밀리초를 일(day) 단위로 변환 후 올림 처리
+        //1일 = 24시간 * 60분 * 60초 * 1000ms
+        const dDay = Math.ceil(gap / (24 * 60 * 60 * 1000));
+
+        console.log("--- 수료일 D-Day 계산 ---");
+        console.log(`오늘 날짜: ${today.toLocaleDateString()}`);
+        console.log(`수료일: ${endDate.toLocaleDateString()}`);
+        console.log(`남은 기간: D-${dDay}`);
+      }
+
+      calculateAnniversary();
+      console.log("---------------------------------------");
+      calculateDDay();
+    </script>
+  </head>
+  <body></body>
+</html>

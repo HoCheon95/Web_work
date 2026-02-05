@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script>
+      /*
+        자바스크립트의 this에 대하여...
+        - 자바스크립트의 this는 함수가 어떻게 호출되었는지에 따라 동적으로 결정된다.
+        */
+      //1) 일반 함수 호출 ==> 독립적으로 함수가 호출될 때의 this는 전역객체를 가리킨다.
+      //                      (전역객체 ==> window객체)
+      function myFunction() {
+        console.log(this);
+      }
+
+      //    myFunction();   // this는 전역객체(window)가 된다.
+      //    window.myFunction();
+
+      //===================================================================
+
+      //2) 메서드 호출 : 해당 메서드를 호출한 객체를 가리킨다.
+      const myObject = {
+        name: "홍길동",
+        sayHello: function () {
+          console.log(this);
+          console.log(`안녕하세요. 제 이름은 ${this.name}입니다.`);
+        },
+      };
+      //   myObject.sayHello(); //this는 myObject가 된다.
+      //===================================================================
+
+      //3) 생성자 함수 호출(new 생성자함수명()) : this는 새롭게 생성된 인스턴스 객체를 가리킨다.
+      function Person(name) {
+        this.name = name;
+        console.log(this);
+        console.log(`새로운 Person 객체 생성 : ${this.name}`);
+      }
+
+      // const p1 = new Person("홍길동");    //this는 p1
+      // const p2 = new Person("이순신");    //this는 p2
+
+      //===================================================================
+
+      //4) 화살표 함수 : 화살표 함수 내부에서의 this는 자신을 둘러싸고 있는 가장 가까운 일반 함수의 this를 상속 받는다.
+      //                (일반함수가 없으면 전역 객체가 된다.)
+      const myObject2 = {
+        name: "홍길동",
+        greet: function () {
+          setTimeout(function () {
+            console.log(`일반 함수 내부의 this :`, this);
+          }, 100);
+
+          setTimeout(() => {
+            console.log(`화살표 함수 내부의 this :`, this);
+          }, 200);
+        },
+      };
+
+      //   myObject2.greet();
+
+      //===================================================================
+
+      //5) this를 명시적으로 지정할 수 있는 메서드들 : call(), apply(), bind()
+      /*
+        - call() : 함수를 호출할 때 첫번째 인수로 this로 사용할 값을 지정하고,
+                    나머지 인수는 호출할 함수의 인수에 전달될 값을 지정하여 호출한다.
+        - apply() : 함수를 호출할 때 첫번째 인수로 this로 사용할 값을 지정하고
+                    나머지 인수는 호출할 함수의 인수에 전달될 값을 배열로 구성해서 지정하여 호출한다.
+        - bind() : 설정의 call()메서드와 같은 방식으로 하는데,
+                    이것은 this값이 고정된 새로운 함수가 생성된다.
+    */
+      const person = { name: "강감찬" };
+
+      const greeting = function (message, city) {
+        console.log("this", this);
+        console.log(`${message}, ${city}에 사는 ${this.name}입니다.`);
+      };
+
+      //   greeting("안녕하세요", "도마동");
+      //   greeting.call(person, "반갑습니다", "도안동");
+      //   greeting.apply(person, ["다시 만나서 반갑습니다.", "오류동"]);
+
+      const newGreeting = greeting.bind(person, "즐거운 마지막 시간입니다.", "옥천");
+
+      newGreeting();
+    </script>
+  </head>
+  <body></body>
+</html>

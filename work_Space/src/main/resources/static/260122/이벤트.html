@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>이벤트 처리</title>
+    <script>
+      /*
+            이벤트(event)   ==> 사용자의 행동 발생을 알리는 신호를 말한다.
+
+            이벤트헨들러     ==> 이벤트가 발생했을 때 처리할 프로그램 집합
+                            ==> 보통 이벤트 헨들러의 내용이 복잡하거나 많으면 이런 내용을 함수로 작성하고
+                                '이벤트헨들러'에서는 이 함수를 호출해서 실행한다.
+
+            즉, 이벤트와 이벤트헨들러를 서로 연결하여 프로그램을 진행한다.
+
+            -----------------------------------------------------------------------------------------
+
+            - 이벤트와 이벤트헨들러 연결하기
+            1) HTML태그에서 직접 지정하는 방법(인라인 방식 ==> 주로 test용으로 많이 사용한다.)
+            형식) <태그명 ... on이벤트명="이벤트헨들러">내용</태그명>
+
+            2) <script> 영역에서 지정하는 방법
+                2-1) '객체.on이벤트명'를 이용하는 방법
+                        (한 요소에 같은 이벤트를 여러개 설정하면 덮어 써진다.)
+                <script>
+                    객체명.on이벤트명 = function(){
+                        처리할 내용들;
+                        ...
+                    }
+                < /script>
+            
+                2-2) addEvenListener()메서드를 이용하는 방법
+                        (한 요소에 같은 이벤트를 여러개 설정하면 이 내용이 이벤트 큐에 저장되고,
+                        실행도 순차적으로 된다.)
+                <script>
+                    객체명.addEvenListener("이벤트명", function(){
+                        처리할 내용들;
+                    });
+                < /script>
+
+            -----------------------------------------------------------------------------------------
+
+            - 이벤트 종류
+            1. click                ==> 클릭
+            2. dblclick             ==> 더블클릭
+            3. mousedown            
+            4. mouseup
+            5. mouseover            ==> 마우스 커서가 객체 영역으로 들어오는 순간 발생
+            6. mouseout             ==> 마우스 커서가 객체 영역에서 벗어나는 순간 발생
+            7. mousemove            ==> 마우스가 움직이는 순간마다 발생
+
+            8. focus                ==> 포커스가 발생하는 순간 발생하는 이벤트
+            9. blur                 ==> 포커스를 읽어버리는 순간 발생하는 이벤트
+
+            10. change              ==> 값이 변경되었을 때 발생하는 이벤트
+            11. input               ==> <input>, <textarea>, <select> 태그에서 값이 변경되었을 때
+                                        발생하는 이벤트
+
+            12. submit              ==> 서버로 데이터를 전송하는 순간 발생하는 이벤트
+            13. reset               ==> <form>에서 reset(초기화)하는 순간에 발생하는 이벤트
+            
+            14. load                ==> 문서내용, 이미지등의 읽기 작업(로딩)이 완료된 후에 발생되는 이벤트
+            15. unload              ==> 문서가 닫히는 순간에 발생하는 이벤트
+
+            16. keydown             ==> 키보드의 키를 누르는 순간에 발생
+            17. keyup               ==> 눌려진 키보드가 올라오는 순간 발생
+            18. keypress            ==> 키보드가 눌렸다 떨어진 순간에 발생
+
+            19. resize              ==> 크기가 변경도는 순간에 발생하는 이벤트
+
+            20. DOMContentLoaded    ==> 문서가 읽혀져서 DOM객체로 변환된 후에 발생하는 이벤트
+
+        */
+
+      function insa() {
+        alert("반갑습니다.");
+      }
+
+      //문서의 load이벤트는 window객체에 지정한다.
+      window.onload = function () {
+        // alert("안녕하세요 load이벤트 입니다~~~");
+        // console.log("load", document.getElementById("testBtn"));
+      };
+
+      // document.getElementById("id속성값"); ==> 문서에서 'id속성'의 속성값이
+      //                'id속성값'인 객체(엘리먼트)를 찾아준다.
+
+      //   console.log( document.getElementById("testBtn"));
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // alert("DomContentLoaded 이벤트 입니다.!!!");
+        // console.log("dom", document.getElementById("testBtn"));
+        const btn = document.getElementById("testBtn");
+        btn.onclick = function () {
+          console.log("이것은 id를 이용하여 검색한 버튼을 클릭했습니다.");
+        };
+
+        const btn2 = document.getElementById("testBtn2");
+        btn2.addEventListener("click", function () {
+          console.log("이것은 addEventListener()를 이용한 이벤트 설정입니다.");
+        });
+      });
+
+      function test() {
+        console.log("Daum사이트 가기 링크에 마우스가 놓였습니다.");
+      }
+
+      function test2() {
+        console.log("Daum사이트 가기 링크에 마우스에서 벗어났습니다.");
+      }
+    </script>
+  </head>
+  <!-- <body onload="alert('안녕하세요')"> -->
+  <!-- <body onload="insa()"> -->
+  <body>
+    <h2>이벤트 연습용 문서입니다.</h2>
+
+    <a href="https://www.daum.net" onmouseover="test()" , onmouseout="test2()">Daum사이트 가기</a>
+    <br /><br />
+
+    <input type="button" value="확인" onclick="insa()" />
+    <input type="button" value="클릭하세요" id="testBtn" />
+    <input type="button" value="클릭하세요2" id="testBtn2" />
+
+    <br /><br />
+
+    <input type="text" onfocus="console.log('포커스가 왔습니다.')" onblur="console.log('포커스를 읽었습니다.')" />
+
+    <br /><br />
+
+    keyup :
+    <input type="text" onkeyup="console.log('keyup', this.value)" /><br />
+    keydown :
+    <input type="text" onkeydown="console.log('keydown', this.value)" /><br />
+    keypress :
+    <input type="text" onkeypress="console.log('keypress', this.value)" /><br />
+    input :
+    <input type="text" oninput="console.log('keyinput', this.value)" /><br />
+  </body>
+</html>

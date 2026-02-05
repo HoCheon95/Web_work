@@ -1,0 +1,19 @@
+@charset "UTF-8";
+/*
+	이것은 외부 CSS를 정의한 문서입니다.
+	이곳에는 CSS만 정의해서 저장하면 됩니다.
+*/
+.test {
+	border: 1px solid red;
+	font-family: 궁서체;
+	width: 500px;
+	height: 50px;
+	font-size: 20pt;
+}
+
+div#myid{
+	width: 500px; height: 50px;
+	background-color: yellow;
+	color:cyan;
+	font-size:15pt;
+}

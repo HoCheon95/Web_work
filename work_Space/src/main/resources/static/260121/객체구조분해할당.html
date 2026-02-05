@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>객체 구조 분해 할당</title>
+    <script>
+      /*
+      2. 객체 구조 분해 할당
+      	형식1) const 또는 let {변수명1, 변수명2, ~~~ } = 객체;
+      		==> '변수명'들은 '객체'의 key값(속성명)과 같아야 한다.
+      			(순서는 관계 없다.)
+
+      	형식2) const 또는 let {변수명1, 변수명2:새로운변수명, ~~~ } = 객체;
+      		==> '변수명'대신 '새로운변수명'으로 사용할 때
+
+      	형식3) const 또는 let {변수명1, 변수명2=기본값, ~~~ } = 객체;
+      		==> '변수명'이 존재하지 않으면 '기본값'으로 할당된다.
+
+      	형식4) const 또는 let {변수명1, 변수명2, ~~~, ...변수명n } = 객체;
+      		==> '변수'들에 할당하고 남은 데이터들을 '변수명n'에 모두 설정한다.
+      		==> 이 때 '변수명n'는 객체변수가 된다.
+
+		const subjects = {
+			kor: "국어",
+			eng: "영어",
+			mat: "수학"
+		};
+
+		//기존 방식
+		const kor = subjects.kor
+		const eng = subjects.eng
+		const mat = subjects.mat
+
+		//구조 분해 할당
+		//const {kor, eng, mat} = subjects;
+		const {eng, mat, kor} = subjects; //변수의 순서는 관계 없다.
+
+		//---------------------------------------
+
+		const {kor, mat} = subjects;
+
+		console.log("kor = ",kor);
+		//console.log("eng = ",eng);
+		console.log("mat = ",mat);
+
+		//---------------------------------------
+
+		let mat = "산수";
+
+		const {kor, eng, mat:math} = subjects; //이름을 변경해서 사용하기
+		console.log("kor = ",kor);
+		console.log("eng = ",eng);
+		console.log("mat = ",mat);
+		console.log("math = ",math);
+
+		//---------------------------------------
+
+		//const {kor, eng, science} = subjects; //없는 변수를 사용하면 undefined가 된다.
+
+		const {kor="한국어", eng, science="과학"} = subjects; //기본값 설정
+
+		console.log("kor = ",kor);
+		console.log("eng = ",eng);
+		console.log("science = ",science);
+
+		//---------------------------------------
+
+		console.log("subjects", subjects);
+
+		//변수에 할당하고 남은 속성들로 구성된 객체가 생성('rest'변수)되어 나머지 데이터가 저장된다.
+		const {kor, ...rest} = subjects;
+
+		console.log("kor = ",kor);
+		console.log("rest = ",rest);
+
+		//---------------------------------------
+
+		//활용하기
+
+		*/
+      const users = [
+        { name: "홍길동", age: 25 },
+        { name: "일지매", age: 30 },
+        { name: "성춘향", age: 33 },
+      ];
+
+      /*
+		//기존의 방식
+		for(const user of users){
+			console.log("이름 : "+users.name);
+			console.log("이름 : "+users.age);
+		}
+       */
+      /*
+            //구조 분해 할당 이용
+            for (const { name, age } of users) {
+              console.log("-이름 : " + name);
+              console.log("-나이 : " + age);
+              console.log("=======================");
+            }
+       */
+
+      //-------------------------------------
+      const user = { name: "이순신", age: 43 };
+
+      //함수의 매개변수를 구조 분해 할당으로 처리하기
+
+      //개체를 매개변수로 받아서 해당 속성값들을 출력하는 함수 만들기
+
+      function printUser(paramUser) {
+        const name = paramUser.name;
+        const age = paramUser.age;
+        console.log("이름 : " + name + ", 나이 : " + age);
+      }
+
+      function printUser2({ name, age }) {
+        console.log(`-이름 : ${name}, -나이 : ${age}`);
+      }
+
+      printUser(user); // 함수호출
+      console.log("-------------------------------------");
+      printUser2(user);
+    </script>
+  </head>
+  <body></body>
+</html>

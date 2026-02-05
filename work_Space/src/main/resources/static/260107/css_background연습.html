@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+			<title>배경 설정 연습</title>
+			
+			<style type="text/css">
+				/*
+					- 배경 이미지 설정
+					형식) background-image: url('경로명/그림파일명.확장자');
+					
+					- CSS에서 상대경로를 설정할 떄 기준위치(현재위치)
+					 1) 인라인 CSS, 내부 CSS ==> HTML문서의 저장위치
+					 2) 외부 CSS		==> 외부 CSS 파일의 저장 위치
+					 
+					- background-repeat : 배경이미지의 반복 여부를 설정한다.
+						repeat (상하 좌우 반복 ==> 기본값)
+						no-repeat (반복하지 않는다.) 
+						repeat-x, repeat-y (x축, y축 방향으로만 반복)
+						
+					- background-position : 배경이미지의 위치를 설정한다.
+						top, center, bottom ==> 상하 방향
+						left, center, right ==> 좌우 방향
+					
+					-background-attachment : 배경의 스크롤 여부 설정
+						local
+						scroll
+						fixed (배경은 스크롤되지 않고 내용만 스크롤된다.)
+						
+						
+				*/
+				body {
+					background-color: yellow;
+					background-image: url("../images/dog.png");
+					background-repeat: repeat-y;
+					/*background-position: bottom center;*/
+					background-size: 100px 100px; /*배경이미지의 크기 설정*/
+					background-attachment: fixed;
+					
+				}
+			</style>
+		</head>
+		<body>
+			<!-- <img src="../images/bird.jpg">  -->
+			
+			<h3>background를 연습합니다.</h3>
+			배경은...<br><br><br><br><br><br><br><br><br><br>
+			<br><br><br><br><br><br><br><br><br><br><br><br>
+			<br><br><br><br><br><br><br><br><br><br><br><br>
+			
+			가나다라
+			<br><br><br><br><br><br><br><br><br><br><br><br>
+			<br><br><br><br><br><br><br><br><br><br><br><br>
+			
+			마바사아
+			<br><br><br><br><br><br><br><br><br><br><br><br>
+			<br><br><br><br><br><br><br><br><br><br><br><br>
+			
+			자차카타
+			<br><br><br><br><br><br><br><br><br><br><br><br>
+			<br><br><br><br><br><br><br><br><br><br><br><br>
+			
+			
+		</body>
+	</html>

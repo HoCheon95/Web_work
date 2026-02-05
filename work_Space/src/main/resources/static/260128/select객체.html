@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>select 객체</title>
+    <script>
+        /*
+            select 객체 ==> 콤보박스, 리스트박스
+                1) 콤보박스     ==> size 속성이 생략되거나 size 속성값이 1일 경우
+                2) 리스트박스   ==> size 속성값이 2이상일 경우
+
+            - 속성
+            1) length           ==> select 객체의 항목 수를 나타낸다.
+            2) selectedIndex    ==> 선택한 항목의 index(첨자) 값을 나타낸다.
+                                    (선택한 항목이 하나도 없으면 -1이 된다.)
+            3) value            ==> 현재 선택한 항목의 value 속성값을 나타낸다.
+
+            - 각 항목(<option>태그로 구성된 것)의 속성
+            1) document.폼이름.객체이름.options.length = select 객체의 전체 항목 수를 나타낸다.
+
+            2) document.폼이름.객체이름.options[첨자].value
+                    ==> '첨자'번째 항목의 value 속성값을 나타낸다.
+            3) document.폼이름.객체이름.options[첨자].text
+                    ==> '첨자'번째 항목의 text값(내용)을 나타낸다.
+            4) document.폼이름.객체이름.options[첨자].selected
+                    ==> '첨자'번쨰 항목이 선택된 상태이면 true, 그렇지 않으면 false가 된다.
+                    ==> 이 속성에 true를 대입하면 선택된 상태가 되고
+                        false를 대입하면 서낵이 해제된 상태가 된다.
+            
+        */
+
+        const test = () =>{
+            // console.log("length", document.testForm.selTest.length);
+            // console.log("selectedIndex", document.testForm.selTest.selectedIndex);
+
+            // document.testForm.selTest.selectedIndex=3;
+            // document.testForm.selTest.selectedIndex=-1;
+            // console.log("value", document.testForm.selTest.value);
+
+            // console.log("length2", document.testForm.selTest.options.length);
+            // console.log("text", document.testForm.selTest.options[1].text);
+            // console.log("value", document.testForm.selTest.options[1].value);
+
+            // console.log("현재 선택된 상태 : ", document.testForm.selTest.option[1].selected);
+
+            // document.testForm.selTest.option[1].selected = true;
+            // document.testForm.selTest.option[1].selected = false;
+
+            //------------------------------------------------------------------------------------
+
+            //querySelector() 또는 querySelectorAll()를 이용하여 선택된 항목만 찾는 방법
+            // console.log(document.querySelector("select[name=selTest] option:checked"));
+            // console.log(document.querySelectorAll("select[name=selTest] option:checked"));
+
+            //------------------------------------------------------------------------------------
+/* 
+            const index = document.testForm.selTest.selectedIndex;
+            if(index==-1){
+                alert("항목을 선택한 후 사용하세요...");
+                return;
+            }
+
+            alert(document.testForm.selTest.options[index].text);
+ */
+            //------------------------------------------------------------------------------------
+
+            //선택된 항목이 여러개일 경우 선택된 모든 항목의 value값들을 구해보자.
+            const selObj = document.querySelector("select[name=selTest]");
+
+            const valueArr = [...selObj.options] //option 객체들로 구성된 배열만
+                            .filter(option => option.selected).map(option => option.value);// 선택된 항목만 찾기
+
+            console.log("valueArr", valueArr);
+
+            //------------------------------------------------------------------------------------
+
+            const valueArr2 =[];
+            for(let i=0; i<selObj.options.length; i++){
+                if(selObj.options[i].selected){
+                    valueArr2.push(selObj.options[i].value);
+                }
+            }
+            console.log("valueArr2", valueArr2);
+        }
+
+    </script>
+</head>
+<body>
+    
+    <form name="testForm">
+        <select name="selTest" size="10" multiple>
+            <option value="일">하나</option>
+            <option value="이">둘</option>
+            <option value="삼">셋</option>
+            <option value="사">넷</option>
+            <option value="오">다섯</option>
+        </select>
+        <br><br>
+
+        <input type="button" value="확 인" onclick="test()">
+    </form>
+
+
+    <!--
+        <form name="폼이름">
+        <select name="객체이름" size="항목수" multiple>
+            <option value="값1">text값1</option>
+            <option value="값2" selected>test값2</option>
+            <option value="값3">text값3</option>
+            <option value="값4">text값4</option>
+            <option value="값5">text값5</option>
+            <option value="값6">text값6</option>
+        </select>
+    </form>
+    -->    
+</body>
+</html>

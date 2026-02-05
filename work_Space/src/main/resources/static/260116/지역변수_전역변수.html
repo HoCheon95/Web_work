@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>지역변수, 전역변수</title>
+    <script>
+        /*
+        1) 전역변수
+            ==> 프로그램 전체에서 사용 가능한 변수
+            ==> 변수가 생성되면 프로그램이 끝날 때 까지 남아 있다.
+            ==> 함수 밖에서 만들어진 변수
+            ==> var(let, const) 명령없이 생성된 변수 ('암묵적 전역'이라 한다.)
+            ==> var로 선언한 전역변수와 암묵적 전역은 전역 객체인 window의 프로퍼터(속성)가 된다.
+                (그렇지만 let, const로 선언한 전역변수는 별도의 전역 스코프에 존재하며
+                window 객체를 통해서 접근할 수 없다.)
+        
+        2) 지역변수
+            ==> 해당 지역( 함수영역(var) 또는 블록영역(let, const))에서만 사용 가능한 변수
+            ==> 해당 지역을 벗어나면 자동으로 변수가 삭제된다.
+            ==>
+
+        */
+       
+        /* 
+        var myVar = 1000;
+
+        function myFunc(){  // 함수정의
+            var myVar = 50; // 지역변수
+
+            myGlobal = 500; // 암묵적 전역변수
+
+            console.log("함수 안에서 myVar = " + myVar);
+            console.log("함수 안에서 myGlobal = " + myGlobal);
+        }
+
+        myFunc();   // 함수 호출
+
+        console.log("함수 밖에서 myVar = " + myVar);
+        console.log("함수 밖에서 myGlobal = " + myGlobal); 
+        */
+
+        /*
+        let이나 const로 선언한 전역변수는window의 프로퍼티가 아니라 별도의 전역 영역에 존재한다.
+        */
+       let x = 1;
+       console.log("window.x = " + window.x);   //undefined 출력
+       console.log("블록 시작 이전 밖에서 x = " + x);
+
+       {
+        x = 99;
+        console.log("블록 안에서 x = " + x);
+       }
+
+       console.log("블록 끝 이후 밖에서 x = " + x);
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

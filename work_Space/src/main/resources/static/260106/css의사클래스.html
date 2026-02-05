@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+			<title>Insert title here</title>
+			<style type="text/css">
+				/*
+					- 의사 클래스 ==> 선택하고자 하는 요소의 특별한 상태를 명시할 때 사용한다.
+					형식) 셀렉터: 의사클래스형 { 스타일 정의 }
+				*/
+				
+				/*
+					1. 동적 의사 클래스
+					a:link		==> 방문한 내역이 없는 링크 걸린 부분에 스타일이 적용된다.
+					a:visited	==> 방문한 내역이 있는 링크 걸린 부분에 스타일이 적용된다.
+					
+					셀렉터:hover	==> '셀렉터'에 해당되는 곳에 마우스 커서가 놓였을 때 스타일이 적용된다.
+					셀렉터:active	==> '셀렉터'에 해당되는 곳을 클릭하는 순간에 스타일이 적용된다.
+					셀렉터:focus	==> '셀렉터'에 해당되는 곳에 focus가 오면 스타일이 적용된다.
+					
+					2. 상태 의사 클래스
+					셀렉터:checked	==> checkbox나 radio버튼이 체크된 상태와
+										<select>태그의 <option>중 선택된 상태일 때 스타일이 적용된다.
+					셀렉터:enabled	==> 입력 요소들이 enabled 상태일 때 스타일이 적용된다.
+					셀렉터:disabled	==> 입력 요소들이 disabled 상태일 때 스타일이 적용된다.
+					
+					3. 기타 의사 클래스
+					셀렉터1:not(셀렉터2)	  ==> '셀렉터1'에 해당되는 요소들 중에서 '셀렉터2'에 해당되지 않는
+											  요소에 스타일이 적용된다.
+				*/
+				
+				/*----------------------------------------------*/
+				/* 동적 의사 클래스 연습*/				
+				/*
+				a:link{ color: green; }
+				a:visited { color: red; }
+				*/
+				
+				div { width: 200px; height: 50px; background-color: yellow; }
+				
+				div:hover{
+					background-color: pink; border: 2px solid blue;
+				}
+				
+				div:active {
+					background-color: red; 
+					border: 2px solid pink; font-size: 15pt;
+				}
+				
+				a:link, a:visited {
+					color: black;
+					text-decoration: none;
+				}
+				a:hover, a:active {
+					color: blue;
+					text-decoration: underline;
+				}
+				
+				/*----------------------------------------------*/
+				/* 상태 의사 클래스 연습 */
+				input:disabled { /* 비활성화 상태 ==> 사용할 수 없는 상태 */
+					background-color: gray;
+				}
+				
+				input:enabled{	/* 활성화 상태 ==> 사용할 수 있는 상태 */
+					background-color: pink;
+				}
+				
+				input:checked {
+					width: 20px; height: 20px;
+				}
+				
+				input:checked + label {
+					font-weight: bold;
+				}
+				
+				select option:checked{
+					background-color: pink;
+				}
+		
+			</style>
+		</head>
+		<body>
+			보통의 글자<br><br>
+			
+			<a href="https://www.daum.net">Daum 사이트 가기</a><br><br>
+			
+			<a href="https://www.kbs.co.kr">KBS 방송국 가기</a><br><br>
+			
+			<div>안녕하세요</div>
+			
+			<br><hr color="red"><br>
+			
+			<form>
+				<fieldset>
+					<legend>이름과 나이</legend>
+					<label for="name">이름</label>
+					<input type="text" id="name" name="name"> <br>
+					<label for="age">나이</label>
+					<input type="number" id="age" name="age" disabled>
+				</fieldset>
+				<fieldset>
+					<legend>좋아하는 음식 고르기</legend>
+					<input type="checkbox" name="food" id="one">
+					<label for="one">제육볶음</label>
+					
+					<input type="checkbox" name="food" id="two">
+					<label for="two">돈까스</label>
+					
+					<input type="checkbox" name="food" id="three">
+					<label for="three">순대국밥</label>
+				</fieldset>
+				<fieldset>
+					<legend>좋아하는 과일 선택하기</legend>
+					<select size="10" multiple>
+						<option value="사과">사과</option>
+						<option value="복숭아">복숭아</option>
+						<option value="딸기">딸기</option>
+						<option value="바나나">바나나</option>
+						<option value="배">배</option>
+					</select>
+				</fieldset>
+			</form>
+			
+		</body>
+	</html>

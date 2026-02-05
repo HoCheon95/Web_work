@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>text류 객체</title>
+    <script>
+      /*
+            text 객체, password 객체, textarea 객체
+
+            - 속성
+            1) value    ==> 객체에 입력된 현재 값을 읽어온다.
+                        ==> 이 속성에 '새로운 값'을 대입하면 해당 객체에 출력된다.
+                        ==> textarea에서는 줄바꿈을 '\n'을 사용한다.
+            
+            - 메서드
+            1) focus()  ==> 해당 객체에 포커스를 준다.
+            2) blur()   ==> 해당 객체에 있는 포커스를 없앤다.
+        */
+
+      const view = function () {
+        //const view = () =>{
+        // console.log("text1", document.forms[0].txtName.value);
+        // console.log("text2", document.testForm.txtName.value);
+        // console.log("text3", document.querySelector("#txtName").value);
+        // console.log("text4", document.getElementById("txtName").value);
+
+        // console.log("password", document.testForm.pass.value);
+
+        // console.log("textarea", document.testForm.content.value);
+
+        // document.querySelector("#txtName").value="저는 홍길동입니다.";
+
+        // document.testForm.content.value ="textarea 영역에 출력할 내용입니다. \n두번째 줄 내용입니다.";
+
+        document.querySelector("#txtName").value=""; //value값 지우기
+        // document.testForm.txtName.focus();
+        document.testForm.txtName.blur();
+      };
+    </script>
+  </head>
+  <body>
+    <form name="testForm">
+      이 름 : <input type="text" name="txtName" id="txtName" /><br /><br />
+
+      비밀번호 : <input type="password" name="pass" /><br /><br />
+
+      내 용 : <textarea rows="7" cols="50" name="content"></textarea><br /><br />
+
+      <input type="button" value="확인" onclick="view()" />
+    </form>
+  </body>
+</html>

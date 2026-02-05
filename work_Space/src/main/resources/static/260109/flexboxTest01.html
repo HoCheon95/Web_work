@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Flex Box 연습</title>
+
+<style type="text/css">
+
+/*
+	display 속성'flex'로 지정한 요소가 'flex Container'가 된다.
+	
+	'flex Container'의 자식 요소들은 'flex Item'이 된다.
+
+*/
+
+.flex-container {
+	background-color: green;
+	height: 100vh; /* vh단위 ==>  viewport의 높이의 비율 */
+}
+
+.flex-item {
+
+	color: white; width: 80px; height: 80px;
+	background-color: lightpink;
+	text-align: center;
+	border: 1px solid yellow;
+}
+
+.flex-container {
+	display: flex;
+	/* display: inline-flex; */
+	
+	
+	/* 주 축, 교차 축 설정하기 */
+	
+	/* flex-direction: row; */ /* 주축(수평축), 교차축(수직축))) */ 
+	/* flex-direction: row-reverse; */ /* 주축(수평축), 교차축(수직축))) */ 
+	
+	/* flex-direction: column; */ /* 주푹(수직축), 교차축(수평축) */
+	/* flex-direction: column-reverse; */ /* 주푹(수직축), 교차축(수평축) */
+	
+	/* item의 여러 줄 묶음(줄바꿈)을 설정한다. */
+	
+	/* flex-wrap: nowrap; */ /* 기본값 (한 줄로 표시한다.) */
+	/* flex-wrap: wrap; */		 /* 줄바꿈 허용 */
+	/* flex-wrap: wrap-reverse; */	 /* wrap의 역방향으로 줄바꿈 */
+	
+	
+	/* flex-direction과 flex-wrap을 한꺼번에 설정하기 */
+	flex-flow: row wrap;	/* 이런것을 단축 속성이라 한다. */
+	
+	/* -------------------------------------------------- */
+	
+	/* 주 축을 기준으로 정렬하기 ==> justify-content */
+	/* justify-content: stretch; */		/* 기본값 (item의 height값이 없을 때) */
+	/* justify-content: flex-start; */
+	/* justify-content: flex-end; */
+	/* justify-content: center; */
+	/* justify-content: space-around; */
+	/* justify-content: space-between; */
+	/* justify-content: space-evenly; */
+	
+	/* -------------------------------------------------- */
+	
+	/* 교차 축을 기준으로 정렬하기 */
+	
+	/* align-content ==> 2줄 이상일 때 */
+	/* align-content: flex-start; */
+	/* align-content: flex-end; */
+	/* align-content: center; */
+	/* align-content: space-around; */		/* 균등 분할 */
+	/* align-content: space-between; */		/* 첫번쨰와 마지막 요소는 끝에 붙여 놓고 균등 분할 */
+	/* align-content: space-evenly; */		/* 모든 여백을 고르게 분배 */
+	
+	
+	/* align-items ==> 한 줄일 때 사용 */
+	/* align-items: flex-start; */
+	/* align-items: flex-end; */
+	/* align-items: center; */
+	/* align-items: baseline; */
+	
+	gap : 3em;	/* 각 item 사이의 간격 설정 */
+}		
+
+
+/* .flex-item:nth-child(1) {
+	font-size: 25pt;
+}
+.flex-item:nth-child(2) {
+	font-size: 15pt;
+}
+.flex-item:nth-child(3) {
+	font-size: 35pt;
+} */
+
+</style>
+</head>
+<body>
+
+	<div class="flex-container">
+		<div class="flex-item">1A</div>
+		<div class="flex-item">2g</div>
+		<div class="flex-item">3k</div>
+		<div class="flex-item">4</div>
+		<div class="flex-item">5</div>
+
+		<div class="flex-item">6</div>
+		<div class="flex-item">7</div>
+		<div class="flex-item">8</div>
+		<div class="flex-item">9</div>
+		<div class="flex-item">10</div>
+
+		<div class="flex-item">11</div>
+		<div class="flex-item">12</div>
+		<div class="flex-item">13</div>
+		<div class="flex-item">14</div>
+		<div class="flex-item">15</div>
+	</div>
+
+
+
+</body>
+</html>

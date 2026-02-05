@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>File API 연습</title>
+    <style>
+        #imgArea{
+            width: 100%;
+            margin-top: 2em;
+            overflow-x: auto;
+        }
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            const fileObj = document.querySelector("#myFile");
+            const displayArea = document.querySelector("#imgArea");
+
+            fileObj.addEventListener("change", function(){
+                const file = fileObj.files[0];
+                const imageType = /image.*/;
+
+                //선택한 파일이 이미지 파일인지 여부 검사
+                if(!imageType.test(file.type)){
+                    displayArea.innerHTML="<h2>이미지 파일이 아닙니다.<h2>";
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+
+                reader.onload = function(){
+                    displayArea.innerHTML = "";
+                    
+                    //방법1
+                    // Image 객체 생성 후 추가하기
+                    // const img = new Image();
+                    // img.src = reader.result;//이미지 파일에서 읽어온 값을 src 속성에 대입
+
+                    // displayArea.appendChild(img);
+
+                    //방법2
+                    displayArea.innerHTML = `<img src="${reader.result}">`;
+                }
+            })
+        });
+    </script>
+</head>
+<body>
+    <div>
+        <h2>이미지 파일 읽기</h2>
+        <div>이미지 파일 선택 : <input type="file" id="myFile"></div>
+        <hr color="red">
+        <div id="imgArea"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Event 객체</title>
+    <script>
+        /*
+            event 객체  ==> 이벤트가 발생될 때 전달되는 부가적인 정보가 저장된 객체
+                        ==> event 객체는 보통 window.event라는 이름으로 저장되어 있다.
+        */
+       function test1(){
+        console.log(window.event);
+        console.log(event.type);
+       }
+
+       function test2(e){
+        console.log("mouse-which", e.which);
+       }
+
+       function test3(ee){
+        // console.log("keyCode", ee.keyCode); //누른 키의 코드값
+        // console.log("key-which", ee.which); //keyCode와 같다.
+        // console.log("key", ee.key);
+
+        console.log("Alt", ee.altKey);      // Alt키가 눌린상태이면 true, 그렇지 않으면 false
+        console.log("shift", ee.shiftKey);  // 
+        console.log("ctrl", ee.ctrlKey);
+       }
+
+       //이벤트가 발생하면 처리되는 이벤트 헨들러의 매개변수에는 event객체가 자동으로 주입된다.
+       document.onmousedown = function(e){
+        //매개변수 'e'에 자동으로 'event 객체'가 저장된다.
+
+        // console.log(e.which);
+        if(e.which == 3){
+            alert("오른쪽 버튼 사용 금지...");
+        }
+       }
+
+    </script>
+</head>
+<body>
+    <form>
+        <input type="button" value="클릭" onclick="test1()">
+        <input type="button" value="클릭2" onclick="test2(event)">
+        <input type="text" onkeydown="test3(event)">
+    </form>    
+</body>
+</html>

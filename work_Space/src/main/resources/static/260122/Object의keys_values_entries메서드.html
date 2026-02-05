@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Object의 keys(), values(), entries(), formEntries()</title>
+    <script>
+      /*
+            - 일반 객체의 구성 요소들(속성(key), 속성값(value))을 배열로 변환하는 Object객체의 메서드
+            1) Object.keys(객체)
+                ==> 객체의 속성명(key)만 담은 배열을 반환한다.
+            2) Object.values(객체)
+                ==> 객체의 속성값(value)만 담은 배열을 반환한다.
+            3) Object.entries(객체)
+                ==> [키(key), 값(value)] 쌍을 담은 배열을 반환한다.
+
+            - 배열을 다시 일반 객체로 변환하는 Object객체의 메서드
+                1) Object.fromEntries(배열)
+                    ==> [키(key), 값(value)] 쌍을 담은 배열을 객체로 반환한다.
+                2)
+        */
+
+      /* 
+      const user = {
+        name: "홍길동",
+        age: 30,
+      };
+      console.log("keys", Object.keys(user)); //["name", "age"]
+      console.log("value", Object.values(user)); //["홍길동", 30]
+
+      //[["name", "홍길동"], ["age", 30]]
+      console.log("entries", Object.entries(user));
+      console.log("--------------------------------");
+
+      //객체의 속성값만 출력하기
+      for (const temp in user) {
+        console.log(user[temp]);
+      }
+      console.log("--------------------------------");
+      for (const val of Object.values(user)) {
+        console.log(val);
+      }
+
+      
+      const personArr = [
+        ["name", "이순신"],
+        ["age", 33],
+        ["city", "대전"],
+    ];
+    
+    const personObj = Object.fromEntries(personArr);
+    console.log("personObj", personObj);
+    */
+
+      //과일에 대한 아래와 같은 가격 정보가 있다.
+      let prices = {
+        바나나: 90,
+        오렌지: 75,
+        딸기: 120,
+      };
+
+      //문제) 각 과일 가격의 전체 합계를 구하시오.
+      // 방법1)
+      let sum = 0;
+      for (let key in prices) {
+        sum += prices[key];
+      }
+      console.log("과일 가격의 전체 합계 : ", sum);
+      //방법2)
+      let sum2 = 0;
+      for (const val of Object.values(prices)) {
+        sum2 += val;
+      }
+      console.log("과일 가격의 전체 합계 : ", sum2);
+      //방법3)
+      let sum3 = Object.values(prices).reduce((tot, num) => tot + num, 0);
+      console.log("과일 가격의 전체 합계 : ", sum3);
+
+      //문제) 각 과일별 가격을 두 배로 늘리시오.
+      //방법1)
+      /* for (const key of Object.keys(prices)) {
+        prices[key] = prices[key] * 2;
+      }
+      console.log("방법1 prices ", prices);
+       */
+
+      //방법2)
+      //[[바나나, 90], [오렌지, 75], [딸기, 120]]
+      /*
+      let doubleArr = Object.entries(prices).map((price) => [
+        price[0],
+        price[1] * 2,
+      ]);
+      //console.log("doubleArr", doubleArr);
+      let doubleObj = Object.fromEntries(doubleArr);
+      */
+
+      let doubleObj = Object.fromEntries(
+        Object.entries(prices).map((price) => [price[0], price[1] * 2]),
+      );
+      console.log("doubleArr", doubleObj);
+    </script>
+  </head>
+  <body></body>
+</html>

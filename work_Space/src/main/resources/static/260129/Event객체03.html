@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      ul {
+        list-style-type: nono;
+        padding: 0px;
+      }
+      li {
+        padding: 0px;
+        display: inline;
+      }
+      .imgTxt {
+        padding: 0px 5px;
+        border: 1px solid red;
+        background-color: yellow;
+      }
+    </style>
+    <script>
+      //문제) 링크 걸린 글자를 클릭하면 해당 이미지가 아래쪽의 <img>태그에 나오도록 한다.
+
+      document.addEventListener("DOMContentLoaded", function () {
+
+/*         
+        // 1. 클래스가 'imgTxt'인 모든 요소를 가져옵니다.
+        const aTagList = document.querySelectorAll(".imgTxt");
+
+        aTagList.forEach(function (v, i) {
+          v.addEventListener("click", function (e) {
+            e.preventDefault(); // 링크 클릭 시 페이지 이동 방지
+
+            const current = e.currentTarget;
+            document.querySelector("#imgView").src = current.href;
+          });
+        });
+ */
+        
+        //===================================================================
+
+            // <a>태그의 조상인 <ul>태그에서 이벤트를 처리한다. ==> 이런 것을 '위임'이라 한다.
+            document.querySelector("ul").addEventListener("click", function(e){
+                e.preventDefault();
+
+                const target = e.target;
+                if(target.tagName!="A")return;
+
+                document.querySelector("#imgView").src = target.href;
+            });
+        //===================================================================
+
+        document.querySelector("#addBtn").addEventListener("click", function(){
+            document.querySelector("ul").innerHTML += 
+                            `<li><a href="../images/dog.png" class="imgTxt">DOG</a></li>`;
+        });
+      });
+
+
+
+    </script>
+  </head>
+  <body>
+    <ul>
+      <li><a href="../images/jQuery.jpg" class="imgTxt">jQuery</a></li>
+      <li><a href="../images/JSP2_1.jpg" class="imgTxt">JSP</a></li>
+      <li><a href="../images/UML.jpg" class="imgTxt">UML</a></li>
+    </ul>
+    <br />
+    <hr color="red" />
+    <br />
+
+    <img src="../images/jQuery.jpg" id="imgView" />
+    <br><br>
+    <button type="button" id="addBtn">list 추가</button>
+  </body>
+</html>

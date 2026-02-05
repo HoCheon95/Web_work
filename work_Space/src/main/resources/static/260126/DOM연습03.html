@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script>
+      /*
+            '버튼 추가' 버튼을 누르면
+            <input type="button" value="삭제_번호" onclick="del(this)">
+            와 같은 버튼을 아래의 <div>영역에 추가하고 추가된 버튼을 누르면 해당 버튼이 삭제되도록 한다.
+            (단, 위 내용 중 '번호'는 1,2,3, ... 생성된 순번을 나타낸다.)
+                
+        */
+      let cnt = 0; //번호를 나타낼 변수
+      function add() {
+        cnt++;
+
+        // const div = document.getElementById("buttonList");
+        const div = document.querySelector("#buttonList");
+
+        // const myBtn = document.createElement("input");
+
+        // myBtn.setAttribute("type", "button");
+        // myBtn.setAttribute("value", "삭제_" + cnt);
+        // myBtn.setAttribute("onclick", "del(this)");
+
+        // div.appendChild(myBtn);
+
+        //방법2
+        div.innerHTML += `<input type ="button" value="삭제_${cnt}" onclick="del(this)">`;
+      }
+      function del(btn) {
+        btn.parentNode.removeChild(btn);
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      <input type="button" value="버튼 추가" onclick="add()" />
+    </form>
+    <br />
+    <hr color="red" />
+    <br />
+
+    <div id="buttonList"></div>
+  </body>
+</html>

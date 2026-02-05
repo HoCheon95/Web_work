@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>location 객체</title>
+    <script>
+        /*
+            location 객체 ==> 문서가 저장된 위치에 대한 정보를 관리하는 객체
+                                (URL정보를 관리한다.)
+            
+            - URL주소 : 
+                http://www.ddit.or.kr:9090/main/index.html?name=hong&age=30one
+            
+            protocol : http
+            hostname : www.ddit.or.kr
+            port : 9090                 // port번호가 80번일 때는 값이 출력되지 않는다.
+            host : www.ddit.or.kr:9090  // port번호가 80번일 때는 값이 출력되지 않는다.
+            pathname : main/index.html
+            hash : #one
+            search : ?name=hong&age=30
+
+            href : URL주소 전체
+
+            //-----------------------------------------------
+
+            location.href = "새로운문서명 또는 URL주소";
+            location.assign("새로운문서명 또는 URL주소");
+
+            location.replace("새로운문서명 또는 URL주소");  ==> 이전 문서로 돌아갈 수 없다.
+                                                                (뒤로가기 불가능)
+
+                ==> 위의 3가지 명령은 모두
+                    현재의 문서가 지정한 '새로운문서명 또는 URL주소'로 변경된다.
+            
+            location.reload();  ==> 새로고침(현재 문서를 다시 읽어온다.)
+        */
+
+        function test(){
+            console.log("href", location.href);
+            console.log("protocol", location.protocol);
+            console.log("hostname", location.hostname);
+            console.log("port", location.port);
+            console.log("host", location.host);
+            console.log("pathname", location.pathname);
+            console.log("hash", location.hash);
+            console.log("search", location.search);
+
+            // location.href = "window객체.html";
+            // location.assign("window객체.html");
+
+            // location.replace("window객체.html"); // 뒤로가기 불가능
+
+            location.reload();
+
+        }
+    </script>
+</head>
+<body>
+    <a href="location객체.html?name=hong&age=30one">현재 문서 다시열기</a>
+    <br><hr><br>
+
+    <input type="button" value="확인" onclick="test()">
+</body>
+</html>

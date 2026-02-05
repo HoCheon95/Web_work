@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+			<title>CSS 구조기반 의사 클래스</title>
+			
+			<style type="text/css">
+				
+				/*
+					웹 문서의 구조를 기반으로 특정 요소를 선택하는 방법
+					(자식 요소들의 순번을 이용해서 선택한다.)
+					
+				1) 셀렉터:nth-child(번호)
+					==> '셀렉터'의 부모의 모든 자식들 중에서 '번호'번쨰 요소가
+						'셀렉터'와 일치하는 요소를 선택한다. (번호는 1부터 시작한다.)
+				2) 셀렉터:nth-child(odd)
+					==> '셀렉터'의 부모의 모든 자식들 중에서 '홀수'번째 요소가
+						'셀렉터'와 일치하는 요소를 선택한다.
+				3) 셀렉터:nth-child(even)
+					==> '셀렉터'의 부모의 모든 자식들 중에서 '짝수'번째 요소가
+						'셀렉터'와 일치하는 요소를 선택한다.
+				4) 셀렉터:nth-child(xn + y)
+					==> x, y는 숫자 (양수, 음수 모두 가능)
+					==> 위의 식에서 'n'자리에 0,1,2,3,...의 정수를 차례로 대입하여
+						계산된 결과값으로 선택할 위치를 구한다.
+				5) 셀렉터:first-child()
+					==> 첫번째 요소 찾기, nth-child(1)와 같다.
+				6) 셀렉터:last_child()
+					==> 마지막번째 요소 찾기
+				7) 셀렉터:only_child
+					==> 하나밖에 없는 요소 찾기
+				8) 셀렉터:nth-last-child(번호)
+					==> '셀렉터'의 부모의 모든 자식들 중에서 뒤에서 '번호'번째 요소가
+						'셀렉터'와 일치하는 요소를 선택한다.(번호는 1부터 시작한다.)
+						
+					셀렉터:nth-last-child(odd), 셀렉터:nth-last-child(even),
+					셀렉터:nth-last-child(xn+y)도 동일하게 적용된다.
+				*/
+				
+				/*
+				td:nth-last-child(odd){
+					background-color: yellow;
+				}
+				
+				td:nth-last-child(even){
+					background-color: pink;
+				}
+				
+				*/
+				td:nth-last-child(3n+1) {
+					background-color: pink;	
+				}
+				
+				td {
+					width: 50px; text-align: center;
+				}
+				
+				/*
+				td:nth-last-child(2){
+					background-color: yellow;
+				}
+				
+				td:nth-child(3) {
+					background-color: yellow;
+				}
+				
+				td:nth-child(odd) {
+					background-color: green;
+				}
+				
+				td:nth-child(even) {
+					background-color: pink;
+				}
+				
+				td:nth-child(4n - 3) {
+					background-color: pink;
+				}
+				td:first-child {
+					background-color: cyan;
+				}
+				
+				td:last-child {
+					background-color: yellow;
+				}
+				
+				td:only-child {
+					background-color: green;
+				}
+				*/
+				
+			</style>
+		</head>
+		<body>
+			<table border="1">
+				<tr>
+					<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+				</tr>
+				<tr>
+					<td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+				</tr>
+				<tr>
+					<td>11</td><td>12</td><td>13</td><td>14</td><td>15</td>
+				</tr>
+			
+			</table>
+			
+			<br><hr color="red"><br>
+			
+			<table border="1">
+				<tr>
+					<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+					<td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+					<td>11</td><td>12</td><td>13</td><td>14</td><td>15</td>
+				</tr>
+			</table>
+			
+			<br><hr color="red"><br>
+			
+			<table border="1">
+				<tr>
+					<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+				</tr>
+				<tr>
+					<td colspan="5">6</td>
+				</tr>
+				<tr>
+					<td colspan="2">7</td><td>8</td><td>9</td><td>10</td>
+				</tr>
+			</table>
+			
+		</body>
+	</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+
+/*
+	-box-sizing 속성
+	1) content-box	==> padding, border, margin을 제외한 순수한 content의 크기가 된다.
+	2) border-box	==> 설정한 크기가 content + padding + border + margin의 크기가 된다. 
+*/
+.container {
+	width: 1000px;
+	height: 500px;
+	border: 1px solid black;
+}
+
+.test1 {
+	width: 1000px;
+	height: 250px;
+	border: 10px solid green; 
+ 	/* box-sizing: content-box; */
+	box-sizing: border-box;
+}
+
+.test2 {
+	width: 1000px;
+	height: 250px;
+	border: 10px solid red;
+	/* box-sizing: content-box; */
+	box-sizing: border-box;
+}
+</style>
+</head>
+<body>
+	<div class="container">
+		<div class="test1">첫번째</div>
+		<div class="test2">두번째</div>
+	</div>
+</body>
+</html>

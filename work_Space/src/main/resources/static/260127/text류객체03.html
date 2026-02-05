@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script>
+      /*
+            단 값을 입력한 후 '출 력' 버튼을 누르면 입력한 단에 해당하는 구구단을 아래의
+            textarea영역에 출력하시오.
+        */
+
+      window.onload = () => {
+        const btn = document.querySelector("#printBtn");
+
+        btn.addEventListener("click", function () {
+          let num1 = document.testForm.dan.value; //dan의 값을 읽어옴
+          if (num1.trim() == "" || isNaN(num1)) {
+            // num1의 값이 공백이거나 값이 없는 경우
+            alert("다시 값을 입력하세요!");
+            document.testForm.num1.value = ""; // 다시 값을 받기위해 공백처리
+            document.testForm.num1.focuc(); // 포커스
+            return;
+          }
+
+          let result = num1 + " 단\n\n"; // 변수 초기화
+
+          for (let i = 1; i <= 9; i++) {
+            result += num1 + " * " + i + " = " + num1 * i + "\n"; // result에 값을 계속 저장한다
+          }
+
+          document.testForm.display.value = result; //저장한 값을 출력
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <form name="testForm">
+      <input type="text" name="dan" size="3" />단 <input type="button" value="출 력" id="printBtn" /><br /><br />
+      <textarea rows="15" conls="20" name="display"></textarea>
+    </form>
+  </body>
+</html>

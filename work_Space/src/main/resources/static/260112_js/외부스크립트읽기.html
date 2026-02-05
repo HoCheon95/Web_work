@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>외부 스크립트 파일 읽기</title>
+
+<!-- 
+
+	외부 스크립트 파일을 읽어와 실행하기
+	형식) <script src="경로명/파일명.js"></script>
+		
+		- 'src'속성을 사용한 <script>태그 영역에서 자바스크립트 명령을 사용할 수 없다.
+		  사용하더라도 무시된다.
+ -->
+ 
+
+<script src="./test.js">
+	document.write("이 부분의 내용은 처리되지 않습니다..<br>");
+</script>
+
+<!-- 
+	다른 스크립트 명령을 사용하려면 <script>태그를 따로 구성해서 작성해야 한다.
+ -->
+ 
+
+<script>
+	document.write("내부 스크립트 방식으로 출력한 내용입니다.");
+</script>
+
+
+
+</head>
+<body>
+
+</body>
+</html>

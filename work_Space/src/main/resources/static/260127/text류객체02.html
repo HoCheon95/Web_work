@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script>
+      /*
+            숫자 2개와 연산자를 입력한 후, '결과 출력'버튼을 누르면 계산된 결과가
+            출력되는 프로그램을 작성하시오.
+            (단, 연산자는 +, -, *, /, % 만 처리한다.)
+        */
+
+      //window.onload = function(){
+      window.onload = () => {
+        // const btn = document.getElementById("calcBtn");
+        const btn = document.querySelector("#calcBtn");
+
+        btn.addEventListener("click", function () {
+          let num1 = document.exForm.num1.value; // 첫번째 값
+          if (num1.trim() == "" || isNaN(num1)) {
+            alert("첫번째 값을 다시 입력하세요.");
+            document.exForm.num1.value = "";
+            document.exForm.num1.focue();
+            return; //함수종료
+          }
+
+          let num2 = document.exForm.num2.value; // 두번째 값
+          if (num2.trim() == "" || isNaN(num2)) {
+            alert("두번째 값을 다시 입력하세요.");
+            document.exForm.num1.value = "";
+            document.exForm.num1.focue();
+            return; //함수종료
+          }
+
+          const op = document.exForm.op.value; //연사자 값
+
+          num1 = Number(num1);
+          num2 = Number(num2);
+
+          let result;
+          switch(op){
+            case "+" : result = num1 + num2; break;
+            case "-" : result = num1 - num2; break;
+            case "*" : result = num1 * num2; break;
+            case "/" : result = num1 / num2; break;
+            case "%" : result = num1 % num2; break;
+            default : result = "연산자가 잘못 되었습니다.";
+          }
+
+          document.exForm.result.value = result;
+        });
+      };
+
+
+    </script>
+  </head>
+  <body>
+    <form name="exForm">
+      첫번째 값 : <input type="text" name="num1" /><br />
+      두번째 값 : <input type="text" name="num2" /><br />
+      연 산 자 : <input type="text" name="op" maxlength="1" /><br />
+      <input type="button" value="결과 출력" id="calcBtn" /><br />
+      결 과 : <input type="text" name="result" />
+    </form>
+  </body>
+</html>

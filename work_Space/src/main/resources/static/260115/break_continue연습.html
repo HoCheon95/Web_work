@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>break문, continue문</title>
+
+    <script>
+      /*
+            - break문과 continue문
+        1) break문  ==> switch문과 반복문에서만 사용 가능
+                    ==> 반복문에서 break문을 만나면 그 즉시 반복문을 완전히 빠져나가서
+                        반복문 다음 문장으로 제어가 이동한다.
+
+        2) continue문   ==> 반복문에서만 사용 가능
+                        ==> 반복문에서 continue문을 만나면 반복문의 조건절 위치로
+                            제어가 이동한다.
+                            (조건절 위치 : for문 ==> 증감식 자리, while문과 do~while문 ==> 조건식 자리)
+        */
+      /* 
+      for(let i=1; i<=10; i++){
+
+        if(i==5){
+          //break;
+          continue;
+        }
+        console.log(`i = ${i}`);
+      }
+
+      console.log("반복문 다음 문장");
+ */
+      /* 
+    문제) 1 ~ 200까지의 짝수의 합계를 구하시오. (continue문 이용)
+ */
+      let sum = 0;
+      for (let i = 1; i <= 200; i++) {
+        if (i % 2 != 0) {
+          continue;
+        }
+        sum += i;
+      }
+      console.log(`1~200까지의 짝수의 합계 : ${sum}`);
+
+      /* 
+      문제) 사용자가 입력한 값을 계속 더하여 누적하고, 사용자가 0을 입력하면
+      그 때까지 누적한 값을 출력하시오.(break문 이용)
+       */
+/* 
+      let total_sum = 0;
+      while (true) {
+        let num = Number(prompt("숫자를 입력하세요."));
+        if (num == 0) {
+          break;
+        } else {
+          total_sum += num;
+        }
+      }
+      console.log("누적합 : " + total_sum);
+
+ */      
+    </script>
+  </head>
+  <body></body>
+</html>

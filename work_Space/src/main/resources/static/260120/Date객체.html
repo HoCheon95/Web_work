@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Date 객체</title>
+
+    <script>
+      /*
+        - Date 객체   ==> 날짜와 시간을 관리하는 객체
+            ==> 기준날짜 : 1970년 1월 1일 0시 0분 0초 (표준시간)
+                           1970년 1월 1일 9시 0분 0초 (우리시간)
+
+        - 객체 생성
+            객체변수 = new Date();
+                ==> 현재 날짜 및 시간으로 구성된 Date 객체 생성
+            객체변수 = new Date(밀리세컨드값);
+                ==> 기준날짜로부터 주어진 '밀리세컨드값'만큼 경과한 날짜 및 시간으로 구성된 Date객체 생성
+                    (밀리세컨드 ==> 1/1000초 즉, 1000 == 1초)
+            객체변수 = new Date(날짜 문자열)
+                ==> 주어진 날짜로 구성된 Date 객체 생성
+                ==> 날짜 문자열 형식) 'YYYY-MM-DDThh:mm:ss.sssZ'
+                    YYYY : 년도(4자리)
+                    MM   : 월(2자리, 01~12)
+                    DD   : 일(2자리, 01~31)
+                    T    : 날짜와 시간의 구분 문자
+                    hh   : 시(2자리, 00~23)
+                    mm   : 분(2자리, 00~59)
+                    ss   : 초(2자리, 00~59)
+                    sss  : 밀리세컨드(3자리, 000~999)
+                    Z    : 협정 세계시(UTC)를 나타내는 문자
+            객체변수 = new Date(년, 월-1, 시, 분, 초)
+                ==> 주어진 날짜로 구성된 Date 객체 생성 (일, 시, 분, 초)는 생략 가능
+                ==> Date객체의 '월'의 값이 0이면 '1월'을 의미하고, 1이면 '2월' ... 11이면 '12월'로 처리된다.
+
+        - 메서드
+        1) getter 메서드 => Date객체에 설정된 정보를 가져오는 메서드
+            - getFullYear() : 년도
+            - getMonth() : 월
+            - getDate() : 일
+            - getDay() : 요일( 반환값이 0:일, 1:월, 2:화, ... 6:토 )
+
+            - getHours() : 시
+            - getMinutes() : 분
+            - getSeconds() : 초
+
+            - getTime(): 기준날짜로부터 'Date객체'에 설정된 날짜 및 시간까지 결과한 시간을 밀리세컨드 단위로 반환한다.
+
+        */
+
+      /*
+      const testDay = new Date(1970, 0, 1, 9, 0, 35); // 1970년 1월 1일 9시 0분 35초
+      console.log("getTime => " + testDay.getTime()); // 35000 (밀리세컨드 단위)
+
+      let y = testDay.getFullYear(); // 년도
+      let m = testDay.getMonth() + 1; // 월은 0~11까지 반환하므로 1을 더해준다.
+      let d = testDay.getDate(); // 일
+
+      let w = testDay.getDay(); // 요일 (0~6)
+
+      console.log(`${y}년 ${m}월 ${d}일 ${w}`);
+
+      let week = "";
+      switch (w) {
+        case 0:
+          week = "일요일";
+          break;
+        case 1:
+          week = "월요일";
+          break;
+        case 2:
+          week = "화요일";
+          break;
+        case 3:
+          week = "수요일";
+          break;
+        case 4:
+          week = "목요일";
+          break;
+        case 5:
+          week = "금요일";
+          break;
+        case 6:
+          week = "토요일";
+          break;
+      }
+      console.log(`${y}년 ${m}월 ${d}일 ${week}`);
+        */
+      //------------------------------------------------
+      /*
+        2) setter 메서드 => Date객체에 설정된 값을 변경하는 메서드
+            - setYear(년도); // 년도 설정
+            - setMonth(월-1); // 월
+            - setDate(일); // 일
+
+            - setHours(시); // 시
+            - setMinutes(분); // 분
+            - setSeconds(초); // 초
+
+            - setTime(경과시간);
+                ==> 기준날짜로부터 주어진 '경과시간'만큼 경과한 날짜 및 시간으로 'Data객체'를 재설정한다.(경과시간은 밀리세컨드 단위로 기술한다.)
+
+        3) 날짜와 시간 정보를 반환하는 메서드
+            - toGMTString()        ==> 표준시간을 기준으로 날짜와 시간을 반환한다.
+            - toLocalString()      ==> 해당 지역의 시간을 기준으로 날짜와 시간을 반환한다.
+        */
+
+      /*       
+      const testDay = new Date(); // 현재 날짜 및 시간으로 구성된 Date 객체 생성
+
+      console.log("toGMTString => " + testDay.toGMTString());
+      console.log("toLocalStiring => " + testDay.toLocaleString());
+      console.log("toString =>" + testDay.toString());
+      console.log("-----------------------------------------------");
+
+      testDay.setYear(2000);
+      console.log("toLocaleString => " + testDay.toLocaleString());
+
+      testDay.setTime(100000); // 100초 후의 날짜 및 시간으로 재설정
+      console.log("toLocaleString =>" + testDay.toLocaleString()); */
+
+      /*
+        문제) 2010년 1월 1일부터 오늘까지의 날짜 수를 구하는 프로그램을 작성하시오.
+        */
+
+      const today = new Date(); // 현재 날짜 및 시간
+      const testDay = new Date(2010, 0, 1); //2010년 1월 1일
+
+      //const gap = today.getTime() - testDay.getTime(); // 밀리세컨드 단위의 차이값
+      const gap = today - testDay;
+
+      const diffDays = parseInt(gap / (24 * 60 * 60 * 1000)) + 1;
+
+      console.log("날짜 수 : " + diffDays + "일");
+      console.log("-----------------------------------------------");
+
+      /*문제) 오늘부터 500일 후의 날짜를 출력하는 프로그램을 작성하시오.
+       */
+
+      const today2 = new Date(); // 현재 날짜 및 시간
+
+      //24 * 60 * 60 * 1000 : 1일에 해당하는 밀리세컨드 값
+
+      let total = today2.getTime() + 500 * (24 * 60 * 60 * 1000); // 500일 후의 밀리세컨드 값
+
+      today2.setTime(total);
+
+      const y = today2.getFullYear();
+      const m = today2.getMonth() + 1;
+      const d = today2.getDate();
+
+      console.log(`${y}년 ${m}월 ${d}일`);
+    </script>
+  </head>
+  <body></body>
+</html>

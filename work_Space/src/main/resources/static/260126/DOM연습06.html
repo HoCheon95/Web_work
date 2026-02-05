@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      body {
+        text-align: center;
+      }
+      table {
+        margin: 0 auto;
+      }
+      .man {
+        background-color: yellow;
+      }
+      .com {
+        background-color: pink;
+      }
+    </style>
+    <script>
+      /*
+        '게임시작' 버튼을 누르면 컴퓨터와 가위 바위 보를 진행하는 프로그램이 실행된다.
+        컴퓨터의 가위 바위 보는 난수를 이용하여 정하고
+        사용자의 가위 바위 보는 prompt로 입력 받아서 처리한다.
+        사용자와 컴퓨터의 가위 바위 보가 정해지면 화면의 이미지가 변경되고
+        승패 결과는 id 속성값이 'result'인 곳에 출력되도록 한다.
+        */
+
+      //방법1
+
+      /* function comImageChange(com) {
+        switch (com) {
+          case "바위":
+            document.comImage.src = "/images/바위_우.png";
+            break;
+          case "보":
+            document.comImage.src = "/images/보_우.png";
+            break;
+          case "가위":
+            document.comImage.src = "/images/가위_우.png";
+            break;
+        }
+      }
+      function userImageChange(user) {
+        switch (user) {
+          case "바위":
+            document.userImage.src = "/images/바위_좌.png";
+            break;
+          case "보":
+            document.userImage.src = "/images/보_좌.png";
+            break;
+          case "가위":
+            document.userImage.src = "/images/가위_좌.png";
+            break;
+        }
+      }
+      function rps() {
+        let comNum = Math.floor(Math.random() * 3); //난수 발생
+
+        switch (comNum) {
+          case 0:
+            comNum = "바위";
+            break;
+          case 1:
+            comNum = "보";
+            break;
+          case 2:
+            comNum = "가위";
+            break;
+          default:
+            break;
+        }
+        comImageChange(comNum);
+
+        while (true) {
+          let userInput = prompt("가위 바위 보 중에 입력하세요.");
+          userImageChange(userInput);
+          if (userInput == "" || userInput == null) {
+            //사용자가 빈값이나 공백을 입력할시
+            console.log("다시 입력해 주세요");
+          } else if (comNum == userInput) {
+            console.log("무승부 입니다.");
+          } else if ((comNum == "바위" && userInput == "보") || (comNum == "보" && userInput == "가위") || (comNum == "가위" && userInput == "바위")) {
+            console.log("사용자 승리");
+            console.log(`사용자 : ${userInput} / 컴퓨터 : ${comNum}`);
+            break;
+          } else {
+            console.log("컴퓨터 승리");
+            console.log(`사용자 : ${userInput} / 컴퓨터 : ${comNum}`);
+            break;
+          }
+        }
+      } */
+
+      //방법 2
+      function rps() {
+        const data = ["가위", "바위", "보"];
+        const index = Math.floor(Math.random() * 3);
+
+        const com = data[index];
+
+        let man;
+
+        do {
+          man = prompt("가위 바위 보를 입력하세요.");
+        } while (man != "가위" && man != "바위" && man != "보");
+
+        let result;
+
+        if (com == man) {
+          result = "비겼습니다.";
+        } else if ((man == "바위" && com == "보") || (man == "보" && com == "가위") || (man == "가위" && com == "바위")) {
+          result = "축하합니다. 당신이 이겼습니다.";
+        } else {
+          result = "당신이 졌습니다.";
+        }
+
+        document.userImage.src = `/images/${man}_좌.png`;
+        document.comImage.src = `/images/${com}_우.png`;
+
+        document.querySelector("#result").innerHTML = `결과 : ${result}`;
+      }
+    </script>
+  </head>
+  <body>
+    <form>
+      <input type="button" value="게임시작" id="startBtn" onclick="rps()" />
+    </form>
+
+    <table>
+      <tr>
+        <td class="man">사용자</td>
+        <td class="com">컴퓨터</td>
+      </tr>
+      <tr>
+        <td><img src="/images/바위_좌.png" name="userImage" /></td>
+        <td><img src="/images/바위_우.png" name="comImage" /></td>
+      </tr>
+      <tr>
+        <td colspan="2" id="result"></td>
+      </tr>
+    </table>
+  </body>
+</html>

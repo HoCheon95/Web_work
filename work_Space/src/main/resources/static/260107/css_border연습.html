@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+			<title>border(테두리선)</title>
+			<style type="text/css">
+				div.test1 {
+	width: 100px; height: 100px;
+	text-align: center;
+	border-width: 1px;		/* 테두리선의 두께 */
+	border-style: solid; 	/* 테두리선의 종류 */
+	border-color: blue;		/* 테두리선의 색깔 */
+	
+	border-radius: 50px;	/* 둥근 테두리선 (꼭지점 모따기) */
+	background-image: url("../images/dog.png");
+	background-repeat: no-repeat;
+	background-size: 100px 100px;
+	
+}
+				div.test2 {
+	width: 100px; height: 100px;
+	text-align: center;
+	border: 1px solid blue; /* 테두리선의 두께, 종류, 색깔 */
+	
+	box-shadow: 10px 30px 10px blue;	/* box의 그림자 효과 */
+										/* x방향 y방향 번짐크기 그림자색깔 */
+	
+	border-top-color: red;
+	border-left-style: dotted;
+	border-bottom-width: 5px;
+	border-right-color: red;
+}
+				p {
+	width: 500px; height: 50px;
+	border-width: 5px;
+	border-color: green;
+}
+			</style>
+		</head>
+		<body>
+			<div class="test1">border 연습1</div>
+			<br>
+			<div class="test2">border 연습2</div>
+			
+			<br><hr color="red"><br>
+			
+			<h3>테두리선의 종류들(border-style 속성값)</h3>
+			<p style="border-style: none;">none</p>
+			<p style="border-style: dotted;">dotted</p>
+			<p style="border-style: dashed;">dashed</p>
+			<p style="border-style: solid;">solid</p>
+			<p style="border-style: double;">double</p>
+			<p style="border-style: groove;">groove</p>
+			<p style="border-style: ridge;">ridge</p>
+			<p style="border-style: inset;">inset</p>
+			<p style="border-style: outset;">outset</p>
+
+</body>
+	</html>

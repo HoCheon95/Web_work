@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM연습</title>
+    <style>
+        div{
+            border: 1px solid red;
+        }
+    </style>
+    <script>
+        function test(){
+            //id속성값을 이용해서 찾기
+            const myDiv = document.getElementById("testId");
+            // console.log(myDiv);
+            // alert(myDiv.innerHTML);
+            // alert(myDiv.textContent);
+
+            // myDiv.innerHTML+="<h3>반가워요</h3>";
+            // myDiv.textContent="<h3>반가워요</h3>";
+
+            // 찾은 엘리먼트에 style을 자바스크립트로 설정하는 방법
+            //  E.style.스타일속성명 = "스타일속성값";
+            //      ==> '스타일속성명'에 '-'문자가 포함된 속성은 '-'문자를 지우고
+            //          '-'문자 바로 다음에 오는 문자를 대문자로 변경해서 사용한다.
+            //          ( 예 : background-color ==> backgroundColor)
+
+            myDiv.style.color = 'red';
+            // myDiv.style.backgroundColor = 'yellow';
+            // myDiv.style["background-color"]="pink"; //속성명에 포함된 '-'문자를 사용할
+
+            myDiv.insertAdjacentHTML("beforebegin", "<h3>beforebegin입니다.</h3>");
+            myDiv.insertAdjacentHTML("afterbegin", "<h3>afterbegin입니다.</h3>");
+            myDiv.insertAdjacentHTML("beforereend", "<h3>beforereend입니다.</h3>");
+            myDiv.insertAdjacentHTML("afterbegin", "<h3>afterbegin입니다.</h3>");
+        }
+
+    </script>
+</head>
+<body>
+    <h2>DOM 요소 찾기 연습</h2>
+
+    <form>
+        <input type="button" value="연습" onclick="test()">
+    </form>
+    <br><hr color="blue"><br>
+
+    <div id="testId">여러분 <span>안녕하세요.</span> 반갑습니다.</div>
+</body>
+</html>

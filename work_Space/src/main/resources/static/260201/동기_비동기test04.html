@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>동기, 비동기</title>
+    <script>
+      /*
+              상품을 구매하여 결제까지의 과정
+              1) 로그인       ==> 2) 장바구니 담기    ==> 3) 결제하기
+              (위 3가지 작업이 모두 비동기로 처리된다.)
+          */
+      //로그인을 처리하는 함수
+      function login(userName, fnPro) {
+        setTimeout(() => {
+          fnPro(userName);
+        }, 2000);
+      }
+
+      //    login("홍길동", function(name){
+      //     console.log(`${name}님 안녕하세요.`);
+      //    });
+
+      //장바구니에 넣기를 처리하는 함수
+      function addCart(product, fnPro) {
+        setTimeout(() => {
+          fnPro(product);
+        }, 3000);
+      }
+
+      //   addCart("딸기", item=>{
+      //     console.log(`${item}을(를) 장바구에 넣었습니다.`);
+      //   });
+
+      //결제를 처리하는 함수
+      function makePayment(cardNo, product, fnPro) {
+        setTimeout(() => {
+          fnPro(cardNo, product);
+        }, 1000);
+      }
+
+      //   makePayment("1234123412341234", "딸기", (cardNo, prod)=>{
+      //     console.log(`${cardNo.substring(0.4)}********** 으로 ${prod}을 구매했습니다.`);
+      //   });
+
+      const test01 = () => {
+        /* login("홍길동", function(name){
+            console.log(`${name}님 안녕하세요.`);
+        });
+
+        addCart("딸기", item=>{
+            console.log(`${item}을(를) 장바구니에 넣었습니다.`);
+        });
+
+          makePayment("1234123412341234", "딸기", (cardNo, prod)=>{
+          console.log(`${cardNo.substring(0.4)}********** 으로 ${prod}을 구매했습니다.`);
+        }); */
+
+        //----------------------------------------------------------------------------------
+
+        //순차 처리를 위한 콜백 함수 사용하기
+        login("홍길동", function (name) {
+          console.log(`${name}님 안녕하세요`);
+
+          addCart("딸기", (item) => {
+            console.log(`${item}을(를) 장바구니에 넣었습니다.`);
+
+            makePayment("1234123412341234", "딸기", (cardNo, prod) => {
+              console.log(`${cardNo.substring(0.4)}********** 으로 ${prod}을 구매했습니다.`);
+            });
+          });
+        });
+        //========================================================================================
+        //만약 결제 후에 review를 작성하고 review 작성 후에 쿠폰 받기 작업이 추가된다고 가정하면
+        // 콜백함수가 추가되는 작업 만큼 많이 사용될 것이다.
+
+        /*
+        
+        login("홍길동", function (name) {
+            console.log(`${name}님 안녕하세요`);
+
+            addCart("딸기", (item) => {
+                console.log(`${item}을(를) 장바구니에 넣었습니다.`);
+
+                makePayment("1234123412341234", "딸기", (cardNo, prod) => {
+                console.log(`${cardNo.substring(0.4)}********** 으로 ${prod}을 구매했습니다.`);
+
+                    //리뷰 작성
+                    review( () => {
+                        //...
+                        
+                        //쿠폰받기
+                        getCoupon( () =>{
+                            //...
+                        });
+                    });
+                });
+            });
+        });
+
+        */
+      };
+    </script>
+  </head>
+  <body>
+    <input type="button" value="여러개의 비동기 처리를 순차적으로 처리하기" onclick="test01()" />
+  </body>
+</html>

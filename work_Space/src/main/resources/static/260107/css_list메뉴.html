@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+			<title>list를 이용한 메뉴 만들기</title>
+			<style type="text/css">
+				/*
+					list에 지정하는 스타일
+					- list-style-type	==> 블릿기호를 설정한다.
+						(
+						종류	:
+							decimal(숫자), 
+							lower-roman, upper-roman (로마숫자),
+							lower-alpha, upper-alpha (알파벳),
+							hangul(가, 나, 다, 라, ...),
+							korean-hangul-formal( 일, 이, 삼, 사, ...)
+							none (블릿기호를 출력하지 않는다.)
+						)
+					- list-style-image: url("경로명/그림파일명.확장자")
+						==> 블릿 기호 대신 지정한 이미지로 출력한다.
+				*/
+				
+				/*
+				ul {
+	list-style-type: lower-alpha;
+	list-style-image: url("../images/dot.png");
+}
+				ol {
+	list-style-type: circle;
+	list-style-type: none;
+}
+				*/
+				
+				ul {
+	list-style-type: none;
+}				
+				ul li {
+	display: inline;
+	border: 1px solid red;
+	background-color: aqua;
+	padding: 10px 30px;
+	margin: 10px;
+}
+				ul li a {
+	text-decoration: none;
+	color: black;
+}
+				ul li:hover {
+	background-color: gray;
+}
+			</style>
+		</head>
+		<body>
+			<ul>
+				<li><a href="#">홈으로</a></li>
+				<li><a href="#">회사소개</a></li>
+				<li><a href="#">제품소개</a></li>
+				<li><a href="#">질문과응답</a></li>
+				<li><a href="#">연락처</a></li>
+				<li><a href="#">고객센터</a></li>
+			</ul>
+			
+			<br><hr color="red"><br>
+			
+			<ol>
+				<li><a href="#">홈으로</a></li>
+				<li><a href="#">회사소개</a></li>
+				<li><a href="#">제품소개</a></li>
+				<li><a href="#">질문과응답</a></li>
+				<li><a href="#">연락처</a></li>
+				<li><a href="#">고객센터</a></li>
+			</ol>	
+					
+		</body>
+	</html>

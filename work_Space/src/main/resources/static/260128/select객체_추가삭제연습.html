@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+      table {
+        margin: 0 auto;
+      }
+      td {
+        text-align: center;
+      }
+      select {
+        width: 150px;
+        height: 300px;
+      }
+      .btn {
+        width: 60px;
+      }
+    </style>
+    <script>
+
+      const add = () => {
+        //입력한 값 가져오기
+        const data = document.exForm.addData.value;
+
+        if (data.trim() == "") {
+          alert("추가할 내용을 입력하세요.");
+          document.exForm.addData.value = "";
+          document.exForm.addData.focus();
+          return;
+        }
+
+        const newOp = new Option(data);
+        const len = document.exForm.left.length; //왼쪽 select의 마지막 인덱스 값을 가져옴
+        document.exForm.left.options[len] = newOp;
+
+        document.exForm.left.value = "";
+      }
+
+      // 공용 alert 
+      function al_del(){
+        alert("이동할 항목을 선택한 후 사용하세요...");
+      }
+
+      //좌 -> 우 1개 이동 함수
+      const sh_r = () =>{
+        const index = document.exForm.left.selectedIndex; //선택한 항목 인덱스
+        if(index == -1){
+            al_del();
+            return;
+        }
+        data = document.exForm.left.options[index].value; //왼쪽의 선택한 인덱스의 값을 data에 대입
+        const newOp = new Option(data); // 선택한 data를 객체에 저장
+        const len = document.exForm.right.length;//오른쪽 select의 마지막 인덱스 값을 가져옴
+        document.exForm.right.options[len] = newOp; // 객체를 우측의 마지막 인덱스에 저장
+        document.exForm.left.options[index]=null;   // 왼쪽의 선택한 인덱스 값을 null
+      }
+
+      //우 -> 좌 1개 이동 함수
+      const sh_l = () =>{
+        const index = document.exForm.right.selectedIndex; //선택한 항목 인덱스
+        if(index == -1){
+            al_del();
+            return;
+        }
+        data = document.exForm.right.options[index].value; //오른쪽의 선택한 인덱스의 값을 data에 대입
+        const newOp = new Option(data); // 선택한 data를 객체에 저장
+        const len = document.exForm.left.length;//왼쪽 select의 마지막 인덱스 값을 가져옴
+        document.exForm.left.options[len] = newOp; // 객체를 왼측의 마지막 인덱스에 저장
+        document.exForm.right.options[index]=null;   // 오른쪽의 선택한 인덱스 값을 null
+      }
+
+      // 좌 -> 우 전체 이동 함수
+      const sh_rall = () =>{
+        const leftSelect = document.exForm.left;
+        const rightSelect = document.exForm.right;
+
+       while (leftSelect.options.length > 0) {
+          const data = leftSelect.options[0].value;
+          const newOp = new Option(data);
+          rightSelect.options[rightSelect.length] = newOp;
+          leftSelect.options[0] = null; // 이동 후 삭제
+        }
+      }
+
+      // 우 -> 좌 전체 이동 함수
+      const sh_lall = () =>{
+        const leftSelect = document.exForm.left;
+        const rightSelect = document.exForm.right;
+
+        while (rightSelect.options.length > 0) {
+          const data = rightSelect.options[0].value;
+          const newOp = new Option(data);
+          leftSelect.options[leftSelect.length] = newOp;
+          rightSelect.options[0] = null; // 이동 후 삭제
+        }
+      }
+
+    </script>
+  </head>
+  <body>
+    <form name="exForm">
+      <table>
+        <tr>
+          <td colspan="3"><h2>select객체 연습</h2></td>
+        </tr>
+        <tr>
+          <td><select name="left" size="15"></select></td>
+          <td>
+            <input type="button" value=">" class="btn" onclick="sh_r()" /><br /><br />
+            <input type="button" value=">>" class="btn" onclick="sh_rall()" /><br /><br />
+            <input type="button" value="<" class="btn" onclick="sh_l()" /><br /><br />
+            <input type="button" value="<<" class="btn" onclick="sh_lall()" /><br /><br />
+          </td>
+          <td><select name="right" size="15"></select></td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <input type="text" name="addData" />
+            <input type="button" value="추가하기" onclick="add()" />
+          </td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>

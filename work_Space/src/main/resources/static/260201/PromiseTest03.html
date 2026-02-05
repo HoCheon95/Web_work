@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        //비동기 방식으로 이름을 받아서 처리하기
+
+        //보통 Promise객체를 반환하는 함수를 작성해서 진행한다.
+        function getData(){
+            return new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                    // const data = {name:"홍길동"};
+                    const data = null;
+                    if(data){
+                        resolve(data);
+                    }else{
+                        reject(new Error("데이터 가져오기 실패!!"));
+                    }
+                }, 1000);
+            });
+        }
+
+        function test01(){
+            getData()   //Promise객체를 반환하는 함수 호출해서 작업을 진행한다.
+            .then( myData => {//Promise에서 resolve(data)를 호출했을 때 실행되는 부분
+                              //resolve(data)에서 'data'변수값이 then()메서드의
+                              //'myData'변수에 자동으로 저장된다.
+                console.log("이름 : " + myData.name);
+                document.querySelector("#result").innerHTML = "이름 : " +  myData.name;
+
+            })
+            .catch(error =>{    //Promise에서 reject()를 호출했을 때 실행되는 부분
+                                //reject(오류객체)에서 '오류객체'가 catch()의 
+                                //'error'변수에 자동으로 저장된다.
+                // console.log(error)
+                console.error(error)
+            })
+            .finally( () =>{
+                console.log("실패 또는 성공 작업이 완료되었습니다.")
+            });
+        }
+        //---------------------------------------------------------------------------------------
+
+        const test02 = () =>{
+            //콜백 함수 안에서 여러가지 기능을 반복적으로 실행할 때 처리
+            getData().then(data1 => {
+                console.log("data1", data1);
+                data1.age = 30;  //name과 age 속성으로 구성된 data 객체
+                return data1;    //then()메서드에서 반환되는 값은 Promise객체로 감싸져서 빈
+            }).then( data2 =>{
+                console.log("data2", data2);
+                data2.addr="대전";
+                return data2;
+            }).then( data3 =>{
+                console.log("data3", data3);
+            }).catch( error =>{
+                console.log(error)
+            }).finally(()=>{
+                console.log("작업을 모두 마쳤습니다...");
+            })
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="확인1" onclick="test01()">
+    <input type="button" value="확인2" onclick="test02()">
+    <br><hr color="red">
+</body>
+</html>
