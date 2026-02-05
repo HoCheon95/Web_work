@@ -57,16 +57,50 @@
                 const userId =document.querySelector("#userid").value;
                 const userName = document.querySelector("#username").value;
                 const userEmail = document.querySelector("#useremail").value;
-
+                
                 //가져온 데이터를 이용하여 JavaScript객체를 만든다.
                 //이 때 속성명은 사용할 VO객체의 멤버변수명과 맞춰서 작성한다.
                 const member = {
                     id : userId,
-                    name : userName.
+                    name : userName,
                     email : userEmail
                 };
 
-                
+                fetch("/json/fetchPostJsonTest.do", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json; charset=utf-8"
+                    },
+                    body: JSON.stringify(member)
+                })
+                .then(res => {
+                    if(res.ok) {
+                        return res.json();
+                    } else {
+                        throw new Error("서버 응답 오류: " + res.statusText);
+                    }
+                })
+                .then(data => {
+                    console.log("응답 데이터 수신 완료:", data);
+                    
+                    // htmlCode 생성을 .then 내부로 이동
+                    let htmlCode = `
+                        <div style="border:1px solid blue; padding:10px; margin-top:10px;">
+                            <strong>서버 응답 데이터</strong><br>
+                            아이디 : \${data.id}<br>
+                            이 름 : \${data.name}<br>
+                            이메일 : \${data.email}<br>
+                        </div>
+                    `;
+                    
+                    // 화면에 결과 출력하는 코드를 반드시 .then 안에 작성!
+                    document.querySelector("#result").innerHTML = htmlCode;
+                })
+                .catch(error => {
+                    console.error("전송 중 에러 발생:", error);
+                    alert("데이터 전송에 실패했습니다.");
+                });
+
             })
         });
     </script>

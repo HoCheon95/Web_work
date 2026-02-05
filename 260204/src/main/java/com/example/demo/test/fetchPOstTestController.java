@@ -3,6 +3,7 @@ package com.example.demo.test;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -29,7 +30,7 @@ public class fetchPOstTestController {
 
     @PostMapping("/json/fetchPostJsonTest.do")
     @ResponseBody
-    public TestVO fetchPostJsonTest(TestVO vo){
+    public TestVO fetchPostJsonTest(@RequestBody TestVO vo){
         System.out.println("수신 확인 : " + vo.toString());
         return vo;
     }
