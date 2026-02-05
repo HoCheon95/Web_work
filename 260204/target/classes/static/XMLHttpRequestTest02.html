@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <script>
+      //Promise객체를 반환하는 함수 정의
+      const getData = function (url) {
+        return new Promise((resolve, reject) => {
+          const xhr = new XMLHttpRequest();
+          xhr.open("get", url);
+
+          xhr.send();
+
+          xhr.onload = function () {
+            resolve(xhr.responseText);
+          };
+
+          xhr.onerror = function () {
+            reject(new Error("데이터 수신 중 오류 발생"));
+          };
+        });
+      };
+
+      document.addEventListener("DOMContentLoaded", function () {
+        //text 형태의 데이터를 받아서 처리하기 (보통의 방법)
+        document.querySelector("#nontxtBtn").addEventListener("click", function () {
+          const xhr = new XMLHttpRequest();
+          xhr.open("get", "/json/jsonTest.do?choice=str");
+
+          xhr.send();
+
+          xhr.onload = function () {
+            const data = xhr.responseText; //응답 데이터 받기
+
+            // data = "사과/배/복숭아/딸기/포도";
+            console.log("data", data);
+
+            const dataArr = data.split("/");
+            console.log("dataArr", dataArr);
+
+            let htmlCode = "<ul>";
+            dataArr.forEach(function (v, i) {
+              htmlCode += `<li>${v}</li>`;
+            });
+            htmlCode += "</ul>";
+
+            console.log("htmlCode", htmlCode);
+
+            document.querySelector("#result").innerHTML = htmlCode;
+          };
+        });
+
+        //text 형태의 데이터 받아서 처리하기 (Promise객체 이용)
+        document.querySelector("#txtBtn").addEventListener("click", function () {
+          new Promise((resolve, reject) => {
+            const xhr = new XMLHttpRequest();
+            xhr.open("get", "/json/jsonTest.do?choice=str");
+
+            xhr.send();
+
+            xhr.onload = function () {
+              resolve(xhr.responseText);
+            };
+
+            xhr.onerror = function () {
+              reject(new Error("데이터 수신 중 오류 발생!!!"));
+            };
+          }).then((text) => {
+            const dataArr = text.split("/");
+
+            let htmlCode = "<ul>";
+            dataArr.forEach(function (v, i) {
+              htmlCode += `<li>${v}</li>`;
+            });
+            htmlCode += "</ul>";
+
+            console.log("htmlCode", htmlCode);
+
+            document.querySelector("#result").innerHTML = htmlCode;
+          });
+        });
+        //=================================================================
+        document.querySelector("#arrayBtn").addEventListener("click", function () {
+          getData("/json/jsonTest.do?choice=array").then((text) => {
+            // text = ["홍길동","이순신","강감찬","을지문덕","김유신"]
+            // console.log("응답데이터", text);
+
+            // JSON.parse(JSON구조의 문자열) ==> 'JSON구조의 문자열'을 JavaScript 객체로 변환한다.
+            const nameArr = JSON.parse(text);
+
+            let htmlCode = "<ol>";
+            nameArr.forEach(function (v, i) {
+              htmlCode += "<li>" + v + "</li>";
+            });
+            htmlCode += "</ol>";
+
+            document.querySelector("#result").innerHTML = htmlCode;
+          });
+        });
+        //=================================================================
+
+        //객체 처리
+        document.querySelector("#objBtn").addEventListener("click", function () {
+          getData("/json/jsonTest.do?choice=object")
+            .then((text) => {
+              // 1. 서버에서 받은 텍스트를 객체로 변환 (obj 변수에 저장)
+              const obj = JSON.parse(text);
+
+              // 2. 구조 분해 할당 수정
+              // obj로부터 name, age, addr, tel을 뽑아옵니다.
+              const { name, age, addr, tel } = obj;
+
+              // 3. 템플릿 리터럴 내 변수명 일치 확인
+              let htmlCode = `
+                <p>이 름 : ${name}</p>
+                <p>나 이 : ${age}</p>
+                <p>주 소 : ${addr}</p>
+                <p>전 화 : ${tel}</p>
+              `;
+
+              document.querySelector("#result").innerHTML = htmlCode;
+            })
+            .catch((err) => {
+              console.error("데이터 처리 중 에러 발생:", err);
+            });
+        });
+        //=================================================================
+
+        document.querySelector("#listBtn").addEventListener("click", function () {
+          getData("/json/jsonTest.do?choice=list").then((text) => {
+            console.log("응답데이터", text);
+
+            const jsObjArr = JSON.parse(text);
+            console.log(jsObjArr);
+
+            let htmlCode = "";
+
+            //방법1 ==> 전통적인 for문 이용
+            /* for (let i = 0; i < jsObjArr.length; i++) {
+              htmlCode += `
+                  ${i + 1}번째 자료<br>
+                  이 름 : ${jsObjArr[i].name}<br>
+                  나 이 : ${jsObjArr[i].age}<br>
+                  주 소 : ${jsObjArr[i].addr}<br>
+                  번 호 : ${jsObjArr[i].tel}<br>
+                `;
+            } */
+
+            //방법2 ==> 스크립트 forEach()메서드와 구조분해할당 이용
+            /* jsObjArr.forEach(function({name, age, addr:address, tel}, i){
+              htmlCode += `
+                  ${i + 1}번째 자료<br>
+                  이 름 : ${jsObjArr[i].name}<br>
+                  나 이 : ${jsObjArr[i].age}<br>
+                  주 소 : ${jsObjArr[i].addr}<br>
+                  번 호 : ${jsObjArr[i].tel}<br>
+                `;
+            }) */
+
+            // 방법3 ==> for ~ of 명령과 구조 분해 할당 이용
+            let i = 0;
+            for (const { name: irum, age, addr, tel } of jsObjArr) {
+              htmlCode += `
+                  ${i + 1}번째 자료(for ~ of, 구조분해)<br>
+                  이 름 : ${irum}<br>
+                  나 이 : ${age}<br>
+                  주 소 : ${addr}<br>
+                  번 호 : ${tel}<br>
+                  ------------------------------------------------<br>
+                `;
+
+              i++;
+            }
+            document.querySelector("#result").innerHTML = htmlCode;
+          });
+        });
+        //=================================================================
+
+        // Java의 Map ==> 일반 객체
+        document.querySelector("#mapBtn").addEventListener("click", function () {
+          getData("/json/jsonTest.do?choice=map") // 1. map으로 수정
+            .then((text) => {
+              console.log("응답데이터", text);
+
+              const jsObj = JSON.parse(text); // 2. 변수명 소문자로 통일
+
+              console.log(jsObj);
+
+              let htmlCode = `
+                  <p>이름 : ${jsObj.name}</p>  
+                  <p>전화 : ${jsObj.tel}</p>  
+                  <p>주소 : ${jsObj.address}</p> 
+              `; // 3. address 키값 확인
+
+              document.querySelector("#result").innerHTML = htmlCode;
+            });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <form>
+      <input type="button" value="text데이터(non Promise)" id="nontxtBtn" />
+      <input type="button" value="text데이터" id="txtBtn" />
+
+      <input type="button" value="array데이터" id="arrayBtn" />
+      <input type="button" value="obj데이터" id="objBtn" />
+      <input type="button" value="list데이터" id="listBtn" />
+      <input type="button" value="map데이터" id="mapBtn" />
+    </form>
+    <hr color="red" />
+    <div id="result"></div>
+  </body>
+</html>
