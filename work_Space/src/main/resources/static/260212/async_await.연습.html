@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script>
+        /*
+            자바스크립트에서 async와 await는 비동기 프로그래밍을 마치 동기 코드처럼 직관적으로 짤 수 있게 도와주는 키워드이다.
+            이전의 Callback 지옥이나 Promise의 체이닝(.then())보다 가독성이 훨씬 뛰어나다.
+            이것은 '비동기 코드의 처리를 기다려(await), 결과가 나오면 다음 줄을 실행하라'라는 의미이다.
+
+            1. async    ==> 함수 앞에 붙이다. , 비동기 함수를 만든다.
+                        ==> 이 키워드가 붙은 함수는 항상 Promise객체를 반환한다.
+                            (함수 내부에서 일반 값을 반환하더라도 자동으로 Promise로 감싸져서 반환된다.)
+
+            2. await    ==> async함수 내부에서만 사용할 수 있다.
+                        ==> Promise가 처리될 때까지 함수의 실행을 잠시 중단하고, 결과값이 나오면 다시 실행한다.
+                        ==> 비동기 작업이 끝날 때까지 기다려주기 때문에 코드가 위에서 아래로 동기 방식처럼 순차적으로 처리된다.
+            
+            3. 에러처리 ==> try ~ catch 구문을 사용해서 처리한다.
+                        ==> await하는 작업이 실패(reject)하면 바로 catch 블럭으로 제어가 넘어간다.
+        */
+
+        // 서버에서 데이터를 가져오는 것을 흉내내는 함수 정의 (비동기 처리 - Promise객체 반환하는 함수)
+        function fetchItem(id){
+            return new Promise( (resolve, rejest) => {
+                setTimeout(()=>{
+                    console.log(`id가 ${id}인 상품 데이터를 가져왔습니다.`);
+                    resolve( {id:id, name:"고급 키보드", price:150000});
+                }, 2000); //소요시간 2초
+            });
+        }
+
+        // async / await 를 사용하지 않는 비동기 처리
+        function nonAsyncTest(){
+            console.log("nonAsync 주문을 시작합니다.");
+
+            fetchItem(100)
+            .then( item => {
+                console.log(`상품명 : ${item.name}`);
+                console.log(`가 격 : ${item.price}`);
+                console.log("nonAsync 주무이 완료되었습니다.");
+            })
+            .catch( error =>{
+                console.error("데이터를 가져오는 중 오류 발생 : ", error);
+            });
+        }
+
+        // async / await 를 사용한 않는 비동기 처리
+        async function asyncAwaitTest(){
+            try{
+                console.log("async/await 주문을 시작합니다.");
+
+                // await가 붙으면 fetchItem()함수의 작업이 끝날 때까지 기다린다.
+                const item = await fetchItem(200);      // 2초간 기다린다.
+
+                // 데이터가 도착한 후에야 아래의 작업이 진행된다.
+                console.log(`상품명 : ${item.name}`);
+                console.log(`가 격 : ${item.price}`);
+                console.log("async/await 주문이 완료되었습니다.");
+            }catch(error){
+                // 에러 발생 시 처리할 내용들을 작성한다.
+                console.error("데이터를 가져오는 중 오류 발생", error);
+            }
+        }
+
+        /*
+            // async 함수에서 fetch 사용하기
+            async function 함수명(){
+                const res = await fetch("url", 옵션);       // fetch()함수 실행
+                const data = await res.json();  // 또는 await res.text();
+
+                // 처리결과가 저장된 data 변수를 이용하여 후속 작업을 진행한다.
+                // ~~~
+            }
+        */
+
+    </script>
+</head>
+<body>
+    <input type="button" value="async/await를 사용하지 않기" onclick="nonAsyncTest()">
+    <input type="button" value="async/await를 사용하기" onclick="asyncAwaitTest()">
+</body>
+</html>
